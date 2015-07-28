@@ -8,6 +8,7 @@ public class Main {
 
     public static void main(String[] args) {
         View view = new View();
+        Parser parser = new Parser();
         HashMap bookOne = new HashMap();
         HashMap bookTwo = new HashMap();
         bookOne.put("bookName", "Java");
@@ -20,7 +21,7 @@ public class Main {
         books.add(bookOne);
         books.add(bookTwo);
         Library library = new Library(books);
-        Application application = new Application(view, library);
+        Application application = new Application(view, library, parser);
         application.start();
     }
 }

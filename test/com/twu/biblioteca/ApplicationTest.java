@@ -11,8 +11,6 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import static org.junit.Assert.assertEquals;
-
 public class ApplicationTest {
 
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
@@ -42,8 +40,9 @@ public class ApplicationTest {
         books.add(bookOne);
         books.add(bookTwo);
         Library library = new Library(books);
+        Parser parser = new Parser();
         View view = Mockito.mock(View.class);
-        Application application = new Application(view, library);
+        Application application = new Application(view, library, parser);
         application.start();
         Mockito.verify(view).showBook(bookOne);
         Mockito.verify(view).showBook(bookTwo);
