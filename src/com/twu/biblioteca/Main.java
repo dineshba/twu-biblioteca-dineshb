@@ -4,9 +4,9 @@ package com.twu.biblioteca;
 public class Main {
 
     public static void main(String[] args) {
-        StartUp start = new StartUp();
-        Book book = new Book();
-        Application application = new Application(start, book);
+        View view = new View();
+        Library library = new Library();
+        Application application = new Application(view, library);
         application.start();
     }
 }

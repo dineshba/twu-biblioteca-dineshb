@@ -2,16 +2,17 @@ package com.twu.biblioteca;
 
 public class Application {
 
-    private StartUp startUp;
-    private Book book;
+    private View view;
+    private Library library;
 
-    public Application(StartUp startUp, Book book) {
-        this.startUp = startUp;
-        this.book = book;
+    public Application(View view, Library library) {
+        this.view = view;
+        this.library = library;
     }
 
     public void start() {
-        startUp.welcomeMessage();
-        book.display();
+        view.welcomeMessage();
+        library.giveBookTo(view);
     }
+
 }

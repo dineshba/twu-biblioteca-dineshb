@@ -16,7 +16,7 @@
 
     <target name="runjunit" depends="compile">
         <junit haltonfailure="true" printsummary="true" showoutput="yes">
-            <test name="com.twu.biblioteca.StartUpTest"/>
+            <test name="com.twu.biblioteca.ViewTest"/>
             <classpath>
                 <pathelement location="out"/>
                 <path refid="classpath"/>

@@ -10,7 +10,7 @@ import java.io.PrintStream;
 import static org.junit.Assert.assertEquals;
 
 
-public class StartUpTest {
+public class ViewTest {
 
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     PrintStream original;
@@ -28,9 +28,9 @@ public class StartUpTest {
 
     @Test
     public void shouldShowWelcomeMessage() {
-        StartUp start = new StartUp();
+        View view = new View();
 
-        start.welcomeMessage();
+        view.welcomeMessage();
 
         assertEquals("Welcome\n", outContent.toString());
     }

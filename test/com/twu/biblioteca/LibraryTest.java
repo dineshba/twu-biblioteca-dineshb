@@ -10,37 +10,27 @@ import java.io.PrintStream;
 
 import static org.junit.Assert.assertEquals;
 
-public class BookTest {
-
+public class LibraryTest {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     PrintStream original;
 
     @Before
-    public void setUpStreams() {
+    public void setUpStream(){
         original = System.out;
         System.setOut(new PrintStream(outContent));
     }
 
     @After
-    public void cleanUpStreams() {
+    public void clearStream() {
         System.setOut(original);
     }
-
     @Test
-    public void shouldShowOneBook() {
-        Book book = new Book();
+    public void displayTwoBooks() {
+        Library library = new Library();
+        View view = new View();
 
-        book.display();
+        library.giveBookTo(view);
 
-        assertEquals("HeadStart Java", outContent.toString());
+        assertEquals("Java\n", outContent.toString());
     }
-
-    @Test
-    public void shouldShowMoreThanOneBook() {
-        Book book = new Book();
-
-        book.display();
-
-        assertEquals("HeadStart Java\nBasics of C\n",outContent.toString());
-    }
-    }
+}
