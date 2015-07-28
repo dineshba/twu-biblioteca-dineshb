@@ -30,7 +30,7 @@ public class ViewTest {
     public void shouldShowWelcomeMessage() {
         View view = new View();
 
-        view.welcomeMessage();
+        view.show("Welcome");
 
         assertEquals("Welcome\n", outContent.toString());
     }

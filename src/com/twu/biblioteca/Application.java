@@ -11,7 +11,8 @@ public class Application {
     }
 
     public void start() {
-        view.welcomeMessage();
+        view.show("=====================Welcome=====================");
+        view.show(String.format("%-15s %-15s %-10s", "BookName", "Author", "Year of Published"));
         library.giveBookTo(view);
     }
 

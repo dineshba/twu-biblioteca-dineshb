@@ -5,11 +5,11 @@ import java.util.HashMap;
 
 public class View {
 
-    public void welcomeMessage() {
-        System.out.println("Welcome");
+    public void show(String message) {
+        System.out.println(message);
     }
 
-    public void showBooks(HashMap book) {
-        System.out.println(book.get("bookName") + " " + book.get("Author") + " " + book.get("Year of Published"));
+    public void showBook(HashMap book) {
+        System.out.println(String.format("%-15s %-15s %-10s", book.get("bookName"), book.get("Author"), book.get("Year of Published")));
     }
 }

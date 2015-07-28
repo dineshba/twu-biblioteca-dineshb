@@ -13,7 +13,7 @@ public class Library {
 
     public void giveBookTo(View view) {
         for(HashMap oneBook : books) {
-            view.showBooks(oneBook);
+            view.showBook(oneBook);
         }
     }
 }

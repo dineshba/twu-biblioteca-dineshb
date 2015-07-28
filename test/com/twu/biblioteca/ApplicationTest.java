@@ -4,6 +4,7 @@ package com.twu.biblioteca;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -41,10 +42,10 @@ public class ApplicationTest {
         books.add(bookOne);
         books.add(bookTwo);
         Library library = new Library(books);
-        View view = new View();
+        View view = Mockito.mock(View.class);
         Application application = new Application(view, library);
         application.start();
-
-        assertEquals("Welcome\nJava Robert 2009\nC++ Dinesh 2010\n", outContent.toString());
+        Mockito.verify(view).showBook(bookOne);
+        Mockito.verify(view).showBook(bookTwo);
     }
 }
