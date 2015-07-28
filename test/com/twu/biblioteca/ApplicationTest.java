@@ -4,6 +4,7 @@ package com.twu.biblioteca;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import java.io.ByteArrayOutputStream;
@@ -40,11 +41,10 @@ public class ApplicationTest {
         books.add(bookOne);
         books.add(bookTwo);
         Library library = new Library(books);
-        Parser parser = new Parser();
-        View view = Mockito.mock(View.class);
+        Parser parser = Mockito.mock(Parser.class);
+        View view = new View();
         Application application = new Application(view, library, parser);
         application.start();
-        Mockito.verify(view).showBook(bookOne);
-        Mockito.verify(view).showBook(bookTwo);
+        Mockito.verify(parser).userInput(library, view, "List Books");
     }
 }
