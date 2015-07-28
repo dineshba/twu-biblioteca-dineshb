@@ -8,6 +8,7 @@ import org.junit.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import static org.junit.Assert.assertEquals;
 
@@ -28,15 +29,15 @@ public class ApplicationTest {
     }
     @Test
     public void displayTwoBooks() {
-        ArrayList<String> bookOne = new ArrayList<String>();
-        ArrayList<String> bookTwo = new ArrayList<String>();
-        bookOne.add("Java");
-        bookOne.add("Author");
-        bookOne.add("2009");
-        bookTwo.add("C++");
-        bookTwo.add("Dinesh");
-        bookTwo.add("2010");
-        ArrayList<ArrayList<String>> books = new ArrayList<ArrayList<String>>();
+        HashMap bookOne = new HashMap();
+        HashMap bookTwo = new HashMap();
+        bookOne.put("bookName", "Java");
+        bookOne.put("Author", "Robert");
+        bookOne.put("Year of Published", "2009");
+        bookTwo.put("bookName", "C++");
+        bookTwo.put("Author", "Dinesh");
+        bookTwo.put("Year of Published", "2010");
+        ArrayList<HashMap> books = new ArrayList<HashMap>();
         books.add(bookOne);
         books.add(bookTwo);
         Library library = new Library(books);
@@ -44,6 +45,6 @@ public class ApplicationTest {
         Application application = new Application(view, library);
         application.start();
 
-        assertEquals("Welcome\nJava Author 2009\nC++ Dinesh 2010\n", outContent.toString());
+        assertEquals("Welcome\nJava Robert 2009\nC++ Dinesh 2010\n", outContent.toString());
     }
 }

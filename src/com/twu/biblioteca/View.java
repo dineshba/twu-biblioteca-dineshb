@@ -1,7 +1,7 @@
 package com.twu.biblioteca;
 
+import java.util.HashMap;
 
-import java.util.ArrayList;
 
 public class View {
 
@@ -9,7 +9,7 @@ public class View {
         System.out.println("Welcome");
     }
 
-    public void showBooks(ArrayList<String> book) {
-        System.out.println(book.get(0) + " " + book.get(1) + " " + book.get(2));
+    public void showBooks(HashMap book) {
+        System.out.println(book.get("bookName") + " " + book.get("Author") + " " + book.get("Year of Published"));
     }
 }

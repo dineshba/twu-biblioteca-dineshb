@@ -1,17 +1,18 @@
 package com.twu.biblioteca;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class Library {
-    private ArrayList<ArrayList<String>> books = new ArrayList<ArrayList<String>>();
+    private ArrayList<HashMap> books = new ArrayList<HashMap>();
 
-    public Library(ArrayList<ArrayList<String>> books) {
+    public Library(ArrayList<HashMap> books) {
         this.books = books;
     }
 
     public void giveBookTo(View view) {
-        for(ArrayList<String> oneBook : books) {
+        for(HashMap oneBook : books) {
             view.showBooks(oneBook);
         }
     }
