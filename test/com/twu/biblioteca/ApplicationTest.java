@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 
@@ -27,11 +28,22 @@ public class ApplicationTest {
     }
     @Test
     public void displayTwoBooks() {
-        Library library = new Library();
+        ArrayList<String> bookOne = new ArrayList<String>();
+        ArrayList<String> bookTwo = new ArrayList<String>();
+        bookOne.add("Java");
+        bookOne.add("Author");
+        bookOne.add("2009");
+        bookTwo.add("C++");
+        bookTwo.add("Dinesh");
+        bookTwo.add("2010");
+        ArrayList<ArrayList<String>> books = new ArrayList<ArrayList<String>>();
+        books.add(bookOne);
+        books.add(bookTwo);
+        Library library = new Library(books);
         View view = new View();
         Application application = new Application(view, library);
         application.start();
 
-        assertEquals("Welcome\nJava\nBasics of C\n", outContent.toString());
+        assertEquals("Welcome\nJava Author 2009\nC++ Dinesh 2010\n", outContent.toString());
     }
 }

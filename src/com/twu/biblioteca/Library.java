@@ -4,15 +4,15 @@ import java.util.ArrayList;
 
 
 public class Library {
-    private ArrayList<String> book = new ArrayList<String>();
+    private ArrayList<ArrayList<String>> books = new ArrayList<ArrayList<String>>();
 
-    public Library() {
-        book.add("Java");
-        book.add("Basics of C");
+    public Library(ArrayList<ArrayList<String>> books) {
+        this.books = books;
     }
 
     public void giveBookTo(View view) {
-        for(String oneBook : this.book)
-        view.showBooks(oneBook);
+        for(ArrayList<String> oneBook : books) {
+            view.showBooks(oneBook);
+        }
     }
 }
