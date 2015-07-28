@@ -32,6 +32,15 @@ public class BookTest {
 
         book.display();
 
-        assertEquals("HeadStart Java",outContent.toString());
+        assertEquals("HeadStart Java", outContent.toString());
+    }
+
+    @Test
+    public void shouldShowMoreThanOneBook() {
+        Book book = new Book();
+
+        book.display();
+
+        assertEquals("HeadStart Java\nBasics of C\n",outContent.toString());
     }
     }
