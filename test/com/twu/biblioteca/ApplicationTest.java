@@ -32,6 +32,6 @@ public class ApplicationTest {
         Application application = new Application(view, library);
         application.start();
 
-        assertEquals("Welcome\nJava\n", outContent.toString());
+        assertEquals("Welcome\nJava\nBasics of C\n", outContent.toString());
     }
 }

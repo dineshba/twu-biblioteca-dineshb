@@ -31,6 +31,6 @@ public class LibraryTest {
 
         library.giveBookTo(view);
 
-        assertEquals("Java\n", outContent.toString());
+        assertEquals("Java\nBasics of C\n", outContent.toString());
     }
 }
