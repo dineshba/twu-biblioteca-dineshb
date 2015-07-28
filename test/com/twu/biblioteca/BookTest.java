@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,8 +10,7 @@ import java.io.PrintStream;
 
 import static org.junit.Assert.assertEquals;
 
-
-public class StartUpTest {
+public class BookTest {
 
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     PrintStream original;
@@ -27,11 +27,11 @@ public class StartUpTest {
     }
 
     @Test
-    public void shouldShowWelcomeMessage() {
-        StartUp start = new StartUp();
+    public void shouldShowOneBook() {
+        Book book = new Book();
 
-        start.welcomeMessage();
+        book.display();
 
-        assertEquals("Welcome\n", outContent.toString());
+        assertEquals("HeadStart Java",outContent.toString());
     }
-}
+    }
