@@ -16,4 +16,8 @@ public class Library {
             view.showBook(oneBook);
         }
     }
+
+    public Boolean checkBook(String userBook) {
+        return true;
+    }
 }

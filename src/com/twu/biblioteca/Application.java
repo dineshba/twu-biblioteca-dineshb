@@ -7,7 +7,6 @@ public class Application {
     private Library library;
     private Parser parse;
     private Operation operation;
-    private Boolean run = true;
 
     public Application(View view, Library library, Parser parser) {
         this.view = view;

@@ -9,6 +9,8 @@ public class Parser {
         else if(input.equals("Quit")){
             return new Quit();
         }
+        else if(input.equals("CheckOut"))
+            return new CheckOut(library, view);
         else
             return new InvalidOption(view);
 
