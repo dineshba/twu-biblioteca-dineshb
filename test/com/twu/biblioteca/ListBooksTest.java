@@ -1,14 +1,16 @@
 package com.twu.biblioteca;
 
+import org.junit.Test;
+import org.mockito.Mockito;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Main {
 
-    public static void main(String[] args) {
-        View view = new View();
-        Parser parser = new Parser();
+public class ListBooksTest {
+
+    @Test
+    public void libraryShouldGiveBookToView() {
         HashMap bookOne = new HashMap();
         HashMap bookTwo = new HashMap();
         bookOne.put("bookName", "Java");
@@ -21,7 +23,11 @@ public class Main {
         books.add(bookOne);
         books.add(bookTwo);
         Library library = new Library(books);
-        Application application = new Application(view, library, parser);
-        application.start(true);
+        View view = Mockito.mock(View.class);
+        ListBooks listBooks = new ListBooks(library, view);
+
+        listBooks.execute();
+        Mockito.verify(view).showBook(bookOne);
+        Mockito.verify(view).showBook(bookTwo);
     }
 }

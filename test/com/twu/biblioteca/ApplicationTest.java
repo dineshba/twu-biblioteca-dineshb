@@ -10,6 +10,9 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import static org.mockito.Matchers.any;
+import static org.mockito.internal.verification.VerificationModeFactory.atLeast;
+
 
 public class ApplicationTest {
 
@@ -28,22 +31,38 @@ public class ApplicationTest {
     }
     @Test
     public void displayTwoBooks() {
-        HashMap bookOne = new HashMap();
-        HashMap bookTwo = new HashMap();
-        bookOne.put("bookName", "Java");
-        bookOne.put("Author", "Robert");
-        bookOne.put("Year of Published", "2009");
-        bookTwo.put("bookName", "C++");
-        bookTwo.put("Author", "Dinesh");
-        bookTwo.put("Year of Published", "2010");
+        HashMap bookOne = buildBookOne();
+        HashMap bookTwo = buildBookTwo();
+        Library library = buildLibrary(bookOne, bookTwo);
+        Parser parser = new Parser();
+        View view = Mockito.mock(View.class);
+        Application application = new Application(view, library, parser);
+
+        Mockito.when(view.getInput()).thenReturn("abc");
+        application.start(false);
+        Mockito.verify(view, atLeast(2)).show(any(String.class));
+    }
+
+    private Library buildLibrary(HashMap bookOne, HashMap bookTwo) {
         ArrayList<HashMap> books = new ArrayList<HashMap>();
         books.add(bookOne);
         books.add(bookTwo);
-        Library library = new Library(books);
-        Parser parser = Mockito.mock(Parser.class);
-        View view = new View();
-        Application application = new Application(view, library, parser);
-        application.start();
-        Mockito.verify(parser).userInput(library, view, "List Books");
+        return new Library(books);
+    }
+
+    private HashMap buildBookTwo() {
+        return buildBook("C++", "Dinesh", "2010");
+    }
+
+    private HashMap buildBook(String name, String author, String yearOfPublishing) {
+        HashMap book = new HashMap();
+        book.put("bookName", name);
+        book.put("Author", author);
+        book.put("Year of Published", yearOfPublishing);
+        return book;
+    }
+
+    private HashMap buildBookOne() {
+        return buildBook("Java", "Robert", "2009");
     }
 }

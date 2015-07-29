@@ -8,8 +8,7 @@ public class InvalidOption implements Operation {
         this.view = view;
     }
     @Override
-    public Boolean execute() {
+    public void execute() {
         view.show("Select a valid option!");
-        return true;
     }
 }

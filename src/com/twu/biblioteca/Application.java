@@ -15,13 +15,17 @@ public class Application {
         this.parse = parser;
     }
 
-    public void start() {
+    public void start(boolean runUntilQuit) {
         view.show("=====================Welcome=====================");
         view.show("Enter the Options\n1.ListBooks\n2.Quit");
-        while (run) {
+        inputOutputLoop(runUntilQuit);
+    }
+
+    private void inputOutputLoop(boolean runUntilQuit) {
+        while (runUntilQuit) {
             String option = view.getInput();
             operation = parse.userInput(library, view, option);
-            run = operation.execute();
+            operation.execute();
         }
     }
 }

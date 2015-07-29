@@ -4,7 +4,7 @@ package com.twu.biblioteca;
 public class Quit implements Operation {
 
     @Override
-    public Boolean execute() {
-        return false;
+    public void execute() {
+        System.exit(1);
     }
 }
