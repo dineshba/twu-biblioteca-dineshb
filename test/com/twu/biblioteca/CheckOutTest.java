@@ -17,10 +17,24 @@ public class CheckOutTest {
         View view = Mockito.mock(View.class);
         CheckOut checkOut = new CheckOut(library, view);
 
-        Mockito.when(view.getInput()).thenReturn("Java");
+        Mockito.when(view.getInput()).thenReturn("C++");
         checkOut.execute();
 
-        Mockito.verify(view).show("true");
+        Mockito.verify(view).show("Thank you! Enjoy the book");
+    }
+
+    @Test
+    public void displayNotAvailableAsBookInCheckedOutList() {
+        HashMap bookOne = buildBookOne();
+        HashMap bookTwo = buildBookTwo();
+        Library library = buildLibrary(bookOne, bookTwo);
+        View view = Mockito.mock(View.class);
+        CheckOut checkOut = new CheckOut(library, view);
+
+        Mockito.when(view.getInput()).thenReturn("C");
+        checkOut.execute();
+
+        Mockito.verify(view).show("Check Your Spelling");
     }
 
     private Library buildLibrary(HashMap bookOne, HashMap bookTwo) {
