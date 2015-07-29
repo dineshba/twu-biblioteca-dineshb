@@ -27,7 +27,6 @@ public class ListBooksTest {
         ListBooks listBooks = new ListBooks(library, view);
 
         listBooks.execute();
-        Mockito.verify(view).showBook(bookOne);
-        Mockito.verify(view).showBook(bookTwo);
+        Mockito.verify(view).showBooks(library);
     }
 }

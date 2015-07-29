@@ -13,11 +13,9 @@ public class Library {
         this.checkOutBooks = new ArrayList<HashMap>();
     }
 
-    public void display(View view) {
-        for(HashMap oneBook : availableBooks) {
-            view.showBook(oneBook);
+    public ArrayList<HashMap> display() {
+            return availableBooks;
         }
-    }
 
     public void checkOut(View view, String userBook) {
         for (HashMap book : availableBooks) {

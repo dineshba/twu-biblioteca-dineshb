@@ -4,7 +4,6 @@ package com.twu.biblioteca;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import java.io.ByteArrayOutputStream;
@@ -13,6 +12,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import static org.junit.Assert.assertEquals;
+
 
 public class LibraryTest {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
@@ -42,11 +42,8 @@ public class LibraryTest {
         books.add(bookOne);
         books.add(bookTwo);
         Library library = new Library(books);
-        View view = Mockito.mock(View.class);
-        library.display(view);
 
-        Mockito.verify(view).showBook(bookOne);
-        Mockito.verify(view).showBook(bookTwo);
+        assertEquals(books, library.display());
     }
 
     @Test

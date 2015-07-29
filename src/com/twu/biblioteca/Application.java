@@ -6,7 +6,6 @@ public class Application {
     private View view;
     private Library library;
     private Parser parse;
-    private Operation operation;
 
     public Application(View view, Library library, Parser parser) {
         this.view = view;
@@ -23,7 +22,7 @@ public class Application {
     private void inputOutputLoop(boolean runUntilQuit) {
         while (runUntilQuit) {
             String option = view.getInput();
-            operation = parse.userInput(library, view, option);
+            Operation operation = parse.userInput(library, view, option);
             operation.execute();
         }
     }

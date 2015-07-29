@@ -6,6 +6,8 @@ import org.mockito.Mockito;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import static org.junit.Assert.assertEquals;
+
 
 public class ParserTest {
 
@@ -21,9 +23,8 @@ public class ParserTest {
         Library library = new Library(books);
         View view = Mockito.mock(View.class);
 
-        parser.userInput(library, view, "List Books");
+        assertEquals(ListBooks.class, parser.userInput(library, view, "ListBooks").getClass());
 
-        Mockito.verify(view).showBook(book);
     }
 
     @Test
@@ -38,8 +39,6 @@ public class ParserTest {
         Library library = new Library(books);
         View view = Mockito.mock(View.class);
 
-        parser.userInput(library, view, "List");
-
-        Mockito.verify(view).show("Select a valid option!");
+        assertEquals(InvalidOption.class, parser.userInput(library, view, "InvalidOption").getClass());
     }
 }

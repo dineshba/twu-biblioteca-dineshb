@@ -13,6 +13,5 @@ public class Parser {
             return new CheckOut(library, view);
         else
             return new InvalidOption(view);
-
     }
 }
