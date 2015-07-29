@@ -13,8 +13,8 @@ public class CheckOut implements Operation {
     @Override
     public void execute() {
         view.show("Enter the Book Name");
-        String userBook =view.getInput();
-        if(library.checkOut(userBook) != null)
+        String userBook = view.getInput();
+        if (library.checkOut(userBook) != null)
             view.show("Thank you! Enjoy the book");
         else
             view.show("That Book is not available");

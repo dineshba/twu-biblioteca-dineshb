@@ -14,8 +14,8 @@ public class Library {
     }
 
     public ArrayList<HashMap> display() {
-            return availableBooks;
-        }
+        return availableBooks;
+    }
 
     public HashMap checkOut(String userBook) {
         for (HashMap book : availableBooks) {

@@ -19,7 +19,6 @@ public class View {
 
     public String getInput() {
         Scanner in = new Scanner(System.in);
-        String input = in.next();
-        return input;
+        return in.next();
     }
 }

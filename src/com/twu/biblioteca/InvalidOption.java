@@ -7,6 +7,7 @@ public class InvalidOption implements Operation {
     InvalidOption(View view) {
         this.view = view;
     }
+
     @Override
     public void execute() {
         view.show("Select a valid option!");

@@ -1,10 +1,8 @@
 package com.twu.biblioteca;
 
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mockito;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -19,7 +17,7 @@ public class LibraryTest {
     PrintStream original;
 
     @Before
-    public void setUpStream(){
+    public void setUpStream() {
         original = System.out;
         System.setOut(new PrintStream(outContent));
     }
@@ -28,9 +26,12 @@ public class LibraryTest {
     public void clearStream() {
         System.setOut(original);
     }
+
     @Test
     public void displayTwoBooks() {
-        ArrayList<HashMap> books = buildBook();
+        HashMap bookOne = buildBookOne();
+        HashMap bookTwo = buildBookTwo();
+        ArrayList<HashMap> books = buildLibrary(bookOne, bookTwo);
         Library library = new Library(books);
 
         assertEquals(books, library.display());
@@ -38,7 +39,9 @@ public class LibraryTest {
 
     @Test
     public void checkOut() {
-        ArrayList<HashMap> books = buildBook();
+        HashMap bookOne = buildBookOne();
+        HashMap bookTwo = buildBookTwo();
+        ArrayList<HashMap> books = buildLibrary(bookOne, bookTwo);
         Library library = new Library(books);
 
         assertEquals(books.get(0), library.checkOut("Java"));
@@ -46,23 +49,34 @@ public class LibraryTest {
 
     @Test
     public void checkIn() {
-        ArrayList<HashMap> books = buildBook();
+        HashMap bookOne = buildBookOne();
+        HashMap bookTwo = buildBookTwo();
+        ArrayList<HashMap> books = buildLibrary(bookOne, bookTwo);
         Library library = new Library(books);
 
         assertEquals(null, library.checkIn("Java"));
     }
-    private ArrayList<HashMap> buildBook() {
-        HashMap bookOne = new HashMap();
-        HashMap bookTwo = new HashMap();
-        bookOne.put("bookName", "Java");
-        bookOne.put("Author", "Robert");
-        bookOne.put("Year of Published", "2009");
-        bookTwo.put("bookName", "C++");
-        bookTwo.put("Author", "Dinesh");
-        bookTwo.put("Year of Published", "2010");
+
+    private ArrayList<HashMap> buildLibrary(HashMap bookOne, HashMap bookTwo) {
         ArrayList<HashMap> books = new ArrayList<HashMap>();
         books.add(bookOne);
         books.add(bookTwo);
         return books;
+    }
+
+    private HashMap buildBookTwo() {
+        return buildBook("C++", "Dinesh", "2010");
+    }
+
+    private HashMap buildBook(String name, String author, String yearOfPublishing) {
+        HashMap book = new HashMap();
+        book.put("bookName", name);
+        book.put("Author", author);
+        book.put("Year of Published", yearOfPublishing);
+        return book;
+    }
+
+    private HashMap buildBookOne() {
+        return buildBook("Java", "Robert", "2009");
     }
 }

@@ -80,7 +80,7 @@
         </junit>
     </target>
 
-    <target name="createjar" depends="compile">
+    <target name="createjar" depends="runjunit">
         <jar destfile="lib/app.jar"
              basedir="out"
              excludes="**/Test.class"
