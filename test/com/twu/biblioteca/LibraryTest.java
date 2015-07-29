@@ -30,17 +30,7 @@ public class LibraryTest {
     }
     @Test
     public void displayTwoBooks() {
-        HashMap bookOne = new HashMap();
-        HashMap bookTwo = new HashMap();
-        bookOne.put("bookName", "Java");
-        bookOne.put("Author", "Robert");
-        bookOne.put("Year of Published", "2009");
-        bookTwo.put("bookName", "C++");
-        bookTwo.put("Author", "Dinesh");
-        bookTwo.put("Year of Published", "2010");
-        ArrayList<HashMap> books = new ArrayList<HashMap>();
-        books.add(bookOne);
-        books.add(bookTwo);
+        ArrayList<HashMap> books = buildBook();
         Library library = new Library(books);
 
         assertEquals(books, library.display());
@@ -48,6 +38,20 @@ public class LibraryTest {
 
     @Test
     public void checkOut() {
+        ArrayList<HashMap> books = buildBook();
+        Library library = new Library(books);
+
+        assertEquals(books.get(0), library.checkOut("Java"));
+    }
+
+    @Test
+    public void checkIn() {
+        ArrayList<HashMap> books = buildBook();
+        Library library = new Library(books);
+
+        assertEquals(null, library.checkIn("Java"));
+    }
+    private ArrayList<HashMap> buildBook() {
         HashMap bookOne = new HashMap();
         HashMap bookTwo = new HashMap();
         bookOne.put("bookName", "Java");
@@ -59,11 +63,6 @@ public class LibraryTest {
         ArrayList<HashMap> books = new ArrayList<HashMap>();
         books.add(bookOne);
         books.add(bookTwo);
-        Library library = new Library(books);
-        View view = Mockito.mock(View.class);
-
-        library.checkOut(view, "Java");
-
-        Mockito.verify(view).show("Thank you! Enjoy the book");
+        return books;
     }
 }

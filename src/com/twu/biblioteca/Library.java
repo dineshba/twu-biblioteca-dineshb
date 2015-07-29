@@ -17,21 +17,18 @@ public class Library {
             return availableBooks;
         }
 
-    public void checkOut(View view, String userBook) {
+    public HashMap checkOut(String userBook) {
         for (HashMap book : availableBooks) {
             if (book.get("bookName").equals(userBook)) {
                 checkOutBooks.add(book);
                 availableBooks.remove(book);
-                view.show("Thank you! Enjoy the book");
-                return;
+                return book;
             }
         }
-        for (HashMap book : checkOutBooks) {
-            if (book.get("bookName").equals(userBook)) {
-                view.show("Already Checked Out");
-                return;
-            }
-        }
-        view.show("Enter the Book Name Correctly");
+        return null;
+    }
+
+    public HashMap checkIn(String userBook) {
+        return null;
     }
 }

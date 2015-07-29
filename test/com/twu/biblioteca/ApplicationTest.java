@@ -31,9 +31,8 @@ public class ApplicationTest {
     }
     @Test
     public void displayTwoBooks() {
-        HashMap bookOne = buildBookOne();
-        HashMap bookTwo = buildBookTwo();
-        Library library = buildLibrary(bookOne, bookTwo);
+        ArrayList<HashMap> books = buildBooks();
+        Library library = new Library(books);
         Parser parser = new Parser();
         View view = Mockito.mock(View.class);
         Application application = new Application(view, library, parser);
@@ -43,26 +42,19 @@ public class ApplicationTest {
         Mockito.verify(view, atLeast(2)).show(any(String.class));
     }
 
-    private Library buildLibrary(HashMap bookOne, HashMap bookTwo) {
+    private ArrayList<HashMap> buildBooks() {
+        HashMap bookOne = new HashMap();
+        HashMap bookTwo = new HashMap();
+        bookOne.put("bookName", "Java");
+        bookOne.put("Author", "Robert");
+        bookOne.put("Year of Published", "2009");
+        bookTwo.put("bookName", "C++");
+        bookTwo.put("Author", "Dinesh");
+        bookTwo.put("Year of Published", "2010");
         ArrayList<HashMap> books = new ArrayList<HashMap>();
         books.add(bookOne);
         books.add(bookTwo);
-        return new Library(books);
+        return books;
     }
 
-    private HashMap buildBookTwo() {
-        return buildBook("C++", "Dinesh", "2010");
-    }
-
-    private HashMap buildBook(String name, String author, String yearOfPublishing) {
-        HashMap book = new HashMap();
-        book.put("bookName", name);
-        book.put("Author", author);
-        book.put("Year of Published", yearOfPublishing);
-        return book;
-    }
-
-    private HashMap buildBookOne() {
-        return buildBook("Java", "Robert", "2009");
-    }
 }

@@ -14,12 +14,7 @@ public class ParserTest {
     @Test
     public void showTheBooksWhenUserInputIsListBook() {
         Parser parser = new Parser();
-        ArrayList<HashMap> books = new ArrayList<HashMap>();
-        HashMap book = new HashMap();
-        book.put("bookName", "C++");
-        book.put("Author", "Dinesh");
-        book.put("Year of Published", "2010");
-        books.add(book);
+        ArrayList<HashMap> books = buildbooks();
         Library library = new Library(books);
         View view = Mockito.mock(View.class);
 
@@ -30,15 +25,20 @@ public class ParserTest {
     @Test
     public void showSelectAValidOptionForInvalidOption() {
         Parser parser = new Parser();
+        ArrayList<HashMap> books = buildbooks();
+        Library library = new Library(books);
+        View view = Mockito.mock(View.class);
+
+        assertEquals(InvalidOption.class, parser.userInput(library, view, "InvalidOption").getClass());
+    }
+
+    private ArrayList<HashMap> buildbooks() {
         ArrayList<HashMap> books = new ArrayList<HashMap>();
         HashMap book = new HashMap();
         book.put("bookName", "C++");
         book.put("Author", "Dinesh");
         book.put("Year of Published", "2010");
         books.add(book);
-        Library library = new Library(books);
-        View view = Mockito.mock(View.class);
-
-        assertEquals(InvalidOption.class, parser.userInput(library, view, "InvalidOption").getClass());
+        return books;
     }
 }

@@ -1,26 +1,28 @@
 package com.twu.biblioteca;
 
 import org.junit.Test;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-
-public class ListBooksTest {
+public class CheckInTest {
 
     @Test
-    public void libraryShouldGiveBookToView() {
-        ArrayList<HashMap> books = buildBooks();
+    public void shouldNotAllowToCheckInWhenCheckOutListIsEmpty() {
+        ArrayList<HashMap> books = buildBook();
         Library library = new Library(books);
         View view = Mockito.mock(View.class);
-        ListBooks listBooks = new ListBooks(library, view);
+        CheckIn checkIn = new CheckIn(library, view);
+        Mockito.when(view.getInput()).thenReturn("Java");
 
-        listBooks.execute();
-        Mockito.verify(view).showBooks(library);
+        checkIn.execute();
+
+        Mockito.verify(view).show("That is not a valid book to return");
     }
 
-    private ArrayList<HashMap> buildBooks() {
+    private ArrayList<HashMap> buildBook() {
         HashMap bookOne = new HashMap();
         HashMap bookTwo = new HashMap();
         bookOne.put("bookName", "Java");

@@ -71,6 +71,13 @@
             </classpath>
         </junit>
 
+        <junit haltonfailure="true" printsummary="true" showoutput="yes">
+            <test name="com.twu.biblioteca.CheckInTest"/>
+            <classpath>
+                <pathelement location="out"/>
+                <path refid="classpath"/>
+            </classpath>
+        </junit>
     </target>
 
     <target name="createjar" depends="compile">
