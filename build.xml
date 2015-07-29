@@ -24,7 +24,7 @@
         </junit>
     </target>
 
-    <target name="createjar" depends="runjunit">
+    <target name="createjar" depends="compile">
         <jar destfile="lib/app.jar"
              basedir="out"
              excludes="**/Test.class"
