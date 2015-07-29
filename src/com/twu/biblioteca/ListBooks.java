@@ -14,6 +14,6 @@ public class ListBooks implements Operation {
     @Override
     public void execute() {
         view.show(String.format("%-15s %-15s %-10s", "BookName", "Author", "Year of Published"));
-        library.giveBookTo(view);
+        library.display(view);
     }
 }

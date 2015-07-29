@@ -34,7 +34,7 @@ public class CheckOutTest {
         Mockito.when(view.getInput()).thenReturn("C");
         checkOut.execute();
 
-        Mockito.verify(view).show("Check Your Spelling");
+        Mockito.verify(view).show("Enter the Book Name Correctly");
     }
 
     private Library buildLibrary(HashMap bookOne, HashMap bookTwo) {

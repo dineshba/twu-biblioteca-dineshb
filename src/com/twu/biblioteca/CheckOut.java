@@ -14,13 +14,6 @@ public class CheckOut implements Operation {
     public void execute() {
         view.show("Enter the Book Name");
         String userBook =view.getInput();
-        Boolean availability = library.checkBook(userBook);
-        if(!availability) {
-            if(library.checkBookInCheckOutList(userBook))
-                view.show("Already Checked Out");
-            else
-                view.show("Check Your Spelling");
-        }
-        view.show("Thank you! Enjoy the book");
+        library.checkOut(view, userBook);
     }
 }

@@ -4,6 +4,7 @@ package com.twu.biblioteca;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import java.io.ByteArrayOutputStream;
@@ -42,9 +43,30 @@ public class LibraryTest {
         books.add(bookTwo);
         Library library = new Library(books);
         View view = Mockito.mock(View.class);
-        library.giveBookTo(view);
+        library.display(view);
 
         Mockito.verify(view).showBook(bookOne);
         Mockito.verify(view).showBook(bookTwo);
+    }
+
+    @Test
+    public void checkOut() {
+        HashMap bookOne = new HashMap();
+        HashMap bookTwo = new HashMap();
+        bookOne.put("bookName", "Java");
+        bookOne.put("Author", "Robert");
+        bookOne.put("Year of Published", "2009");
+        bookTwo.put("bookName", "C++");
+        bookTwo.put("Author", "Dinesh");
+        bookTwo.put("Year of Published", "2010");
+        ArrayList<HashMap> books = new ArrayList<HashMap>();
+        books.add(bookOne);
+        books.add(bookTwo);
+        Library library = new Library(books);
+        View view = Mockito.mock(View.class);
+
+        library.checkOut(view, "Java");
+
+        Mockito.verify(view).show("Thank you! Enjoy the book");
     }
 }
