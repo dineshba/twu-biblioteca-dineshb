@@ -22,6 +22,55 @@
                 <path refid="classpath"/>
             </classpath>
         </junit>
+
+        <junit haltonfailure="true" printsummary="true" showoutput="yes">
+            <test name="com.twu.biblioteca.ApplicationTest"/>
+            <classpath>
+                <pathelement location="out"/>
+                <path refid="classpath"/>
+            </classpath>
+        </junit>
+
+        <junit haltonfailure="true" printsummary="true" showoutput="yes">
+            <test name="com.twu.biblioteca.CheckOutTest"/>
+            <classpath>
+                <pathelement location="out"/>
+                <path refid="classpath"/>
+            </classpath>
+        </junit>
+
+        <junit haltonfailure="true" printsummary="true" showoutput="yes">
+            <test name="com.twu.biblioteca.InvalidOptionTest"/>
+            <classpath>
+                <pathelement location="out"/>
+                <path refid="classpath"/>
+            </classpath>
+        </junit>
+
+        <junit haltonfailure="true" printsummary="true" showoutput="yes">
+            <test name="com.twu.biblioteca.LibraryTest"/>
+            <classpath>
+                <pathelement location="out"/>
+                <path refid="classpath"/>
+            </classpath>
+        </junit>
+
+        <junit haltonfailure="true" printsummary="true" showoutput="yes">
+            <test name="com.twu.biblioteca.ListBooksTest"/>
+            <classpath>
+                <pathelement location="out"/>
+                <path refid="classpath"/>
+            </classpath>
+        </junit>
+
+        <junit haltonfailure="true" printsummary="true" showoutput="yes">
+            <test name="com.twu.biblioteca.ParserTest"/>
+            <classpath>
+                <pathelement location="out"/>
+                <path refid="classpath"/>
+            </classpath>
+        </junit>
+
     </target>
 
     <target name="createjar" depends="compile">
