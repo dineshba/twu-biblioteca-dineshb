@@ -13,6 +13,10 @@ public class CheckIn implements Operation {
     public void execute() {
         view.show("Enter the book Name");
         String userBook = view.getInput();
-        view.show("That is not a valid book to return");
+        if (library.checkIn(userBook) != null) {
+            view.show("Thank you for returning the book");
+        }
+        else
+            view.show("That is not a valid book to return");
     }
 }

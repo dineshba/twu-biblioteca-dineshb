@@ -29,6 +29,13 @@ public class Library {
     }
 
     public HashMap checkIn(String userBook) {
+        for (HashMap book : checkOutBooks) {
+            if (book.get("bookName").equals(userBook)) {
+                checkOutBooks.remove(book);
+                availableBooks.add(book);
+                return book;
+            }
+        }
         return null;
     }
 }
