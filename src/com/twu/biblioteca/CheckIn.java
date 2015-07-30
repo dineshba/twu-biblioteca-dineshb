@@ -14,7 +14,7 @@ public class CheckIn implements Operation {
     public void execute() {
         view.show("Enter the book Name");
         String userBook = view.getInput();
-        if (library.checkIn(userBook) != null) {
+        if (library.checkIn(userBook)) {
             view.show("Thank you for returning the book");
         }
         else

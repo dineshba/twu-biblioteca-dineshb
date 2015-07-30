@@ -9,15 +9,9 @@ public class Main {
     public static void main(String[] args) {
         View view = new View();
         Parser parser = new Parser();
-        HashMap bookOne = new HashMap();
-        HashMap bookTwo = new HashMap();
-        bookOne.put("bookName", "Java");
-        bookOne.put("Author", "Robert");
-        bookOne.put("Year of Published", "2009");
-        bookTwo.put("bookName", "C++");
-        bookTwo.put("Author", "Dinesh");
-        bookTwo.put("Year of Published", "2010");
-        ArrayList<HashMap> books = new ArrayList<HashMap>();
+        Book bookOne = new Book("Java", "Robert", "2009");
+        Book bookTwo = new Book("C++", "Dinesh", "2020");
+        ArrayList<Book> books = new ArrayList<Book>();
         books.add(bookOne);
         books.add(bookTwo);
         Library library = new Library(books);

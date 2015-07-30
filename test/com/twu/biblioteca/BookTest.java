@@ -37,4 +37,11 @@ public class BookTest {
 
         assertEquals(bookOne, bookTwo);
     }
+
+    @Test
+    public void compareTheBookName() {
+        Book book = new Book("C++", "Dinesh", "2020");
+
+        assertEquals(true, book.compareName("C++"));
+    }
 }

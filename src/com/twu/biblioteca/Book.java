@@ -32,4 +32,12 @@ public class Book {
         result = 31 * result + (yearOfPublish != null ? yearOfPublish.hashCode() : 0);
         return result;
     }
+
+    public boolean compareName(String requestedBookName) {
+        return bookName.equals(requestedBookName);
+    }
+
+    public String getDetail() {
+        return bookName + " " + author + " " + yearOfPublish;
+    }
 }

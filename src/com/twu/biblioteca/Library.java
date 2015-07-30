@@ -1,42 +1,40 @@
 package com.twu.biblioteca;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 
 public class Library {
-    private ArrayList<HashMap> availableBooks;
-    private ArrayList<HashMap> checkOutBooks;
+    private ArrayList<Book> availableBooks;
+    private ArrayList<Book> checkOutBooks;
 
-    public Library(ArrayList<HashMap> availableBooks) {
+    public Library(ArrayList<Book> availableBooks) {
         this.availableBooks = availableBooks;
-        this.checkOutBooks = new ArrayList<HashMap>();
+        this.checkOutBooks = new ArrayList<Book>();
     }
 
-    public ArrayList<HashMap> availableBooks() {
+    public ArrayList<Book> availableBooks() {
         return availableBooks;
     }
 
-    public HashMap checkOut(String requestedBookName) {
-        for (HashMap book : availableBooks) {
-            //book.hasName(requestedBookName)
-            if (book.get("bookName").equals(requestedBookName)) {
+    public Boolean checkOut(String requestedBookName) {
+        for (Book book : availableBooks) {
+            if (book.compareName(requestedBookName)) {
                 checkOutBooks.add(book);
                 availableBooks.remove(book);
-                return book;
+                return true;
             }
         }
-        return null;
+        return false;
     }
 
-    public HashMap checkIn(String userBook) {
-        for (HashMap book : checkOutBooks) {
-            if (book.get("bookName").equals(userBook)) {
-                checkOutBooks.remove(book);
+    public Boolean checkIn(String requestedBookName) {
+        for (Book book : checkOutBooks) {
+            if (book.compareName(requestedBookName)) {
                 availableBooks.add(book);
-                return book;
+                checkOutBooks.remove(book);
+                return true;
             }
         }
-        return null;
+        return false;
     }
 }

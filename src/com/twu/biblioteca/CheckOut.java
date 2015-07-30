@@ -14,7 +14,7 @@ public class CheckOut implements Operation {
     public void execute() {
         view.show("Enter the Book Name");
         String userBook = view.getInput();
-        if (library.checkOut(userBook) != null)
+        if (library.checkOut(userBook))
             view.show("Thank you! Enjoy the book");
         else
             view.show("That Book is not available");
