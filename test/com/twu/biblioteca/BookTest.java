@@ -2,6 +2,7 @@ package com.twu.biblioteca;
 
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
 
@@ -20,5 +21,12 @@ public class BookTest {
         Book bookTwo = new Book("C++", "Dinesh", "2020");
 
         assertNotEquals(bookOne, bookTwo);
+    }
+
+    @Test
+    public void compareSameBooks() {
+        Book bookOne = new Book("C++", "Dinesh", "2020");
+
+        assertEquals(bookOne, bookOne);
     }
 }
