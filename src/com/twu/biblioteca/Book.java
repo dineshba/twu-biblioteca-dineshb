@@ -18,6 +18,10 @@ public class Book {
             return true;
         if (that == null || getClass() != that.getClass())
             return false;
+
+        Book another = (Book) that;
+        if(bookName.equals(another.bookName))
+            return true;
         return false;
     }
 

@@ -18,7 +18,7 @@ public class BookTest {
     @Test
     public void compareTwoDifferentBooks() {
         Book bookOne = new Book("C++", "Dinesh", "2020");
-        Book bookTwo = new Book("C++", "Dinesh", "2020");
+        Book bookTwo = new Book("C", "Dinesh", "2020");
 
         assertNotEquals(bookOne, bookTwo);
     }
@@ -28,5 +28,13 @@ public class BookTest {
         Book bookOne = new Book("C++", "Dinesh", "2020");
 
         assertEquals(bookOne, bookOne);
+    }
+
+    @Test
+    public void compareTwoBooksOfSameName() {
+        Book bookOne = new Book("C++", "Dinesh", "2020");
+        Book bookTwo = new Book("C++", "Bala", "2020");
+
+        assertEquals(bookOne, bookTwo);
     }
 }
