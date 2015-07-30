@@ -34,7 +34,7 @@ public class LibraryTest {
         ArrayList<HashMap> books = buildLibrary(bookOne, bookTwo);
         Library library = new Library(books);
 
-        assertEquals(books, library.display());
+        assertEquals(books, library.availableBooks());
     }
 
     @Test

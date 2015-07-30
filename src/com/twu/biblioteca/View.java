@@ -12,7 +12,7 @@ public class View {
     }
 
     public void showBooks(Library library) {
-        ArrayList<HashMap> books = library.display();
+        ArrayList<HashMap> books = library.availableBooks();
         for(HashMap book : books)
         System.out.println(String.format("%-15s %-15s %-10s", book.get("bookName"), book.get("Author"), book.get("Year of Published")));
     }

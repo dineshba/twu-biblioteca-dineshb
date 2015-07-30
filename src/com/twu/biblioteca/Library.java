@@ -13,13 +13,14 @@ public class Library {
         this.checkOutBooks = new ArrayList<HashMap>();
     }
 
-    public ArrayList<HashMap> display() {
+    public ArrayList<HashMap> availableBooks() {
         return availableBooks;
     }
 
-    public HashMap checkOut(String userBook) {
+    public HashMap checkOut(String requestedBookName) {
         for (HashMap book : availableBooks) {
-            if (book.get("bookName").equals(userBook)) {
+            //book.hasName(requestedBookName)
+            if (book.get("bookName").equals(requestedBookName)) {
                 checkOutBooks.add(book);
                 availableBooks.remove(book);
                 return book;
