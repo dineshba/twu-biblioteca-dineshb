@@ -13,4 +13,12 @@ public class BookTest {
 
         assertNotEquals(bookOne, null);
     }
+
+    @Test
+    public void compareTwoDifferentBooks() {
+        Book bookOne = new Book("C++", "Dinesh", "2020");
+        Book bookTwo = new Book("C++", "Dinesh", "2020");
+
+        assertNotEquals(bookOne, bookTwo);
+    }
 }
