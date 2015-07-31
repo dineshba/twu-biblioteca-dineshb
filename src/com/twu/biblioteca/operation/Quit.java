@@ -1,10 +1,11 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.operation;
 
 
 public class Quit implements Operation {
 
     @Override
-    public void execute() {
+    public String execute() {
         System.exit(1);
+        return null;
     }
 }

@@ -1,9 +1,11 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.operation.CheckIn;
 import org.junit.Test;
-import org.mockito.Mockito;
 
 import java.util.ArrayList;
+
+import static org.junit.Assert.assertEquals;
 
 
 public class CheckInTest {
@@ -16,12 +18,8 @@ public class CheckInTest {
         books.add(bookOne);
         books.add(bookTwo);
         Library library = new Library(books);
-        View view = Mockito.mock(View.class);
-        CheckIn checkIn = new CheckIn(library, view);
-        Mockito.when(view.getInput()).thenReturn("Java");
+        CheckIn checkIn = new CheckIn(library, "Java");
 
-        checkIn.execute();
-
-        Mockito.verify(view).show("That is not a valid book to return");
+        assertEquals("That is not a valid book to return", checkIn.execute());
     }
 }

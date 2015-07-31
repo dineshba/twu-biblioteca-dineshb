@@ -1,18 +1,18 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.operation.InvalidOption;
 import org.junit.Test;
-import org.mockito.Mockito;
+
+import static org.junit.Assert.assertEquals;
 
 
 public class InvalidOptionTest {
 
     @Test
     public void ShouldCallViewToDisplayInvalidMessageAndReturnTrue() {
-        View view = Mockito.mock(View.class);
-        InvalidOption invalidOption = new InvalidOption(view);
+        InvalidOption invalidOption = new InvalidOption();
 
-        invalidOption.execute();
-        Mockito.verify(view).show("Select a valid option!");
+        assertEquals("Select a valid option!", invalidOption.execute());
     }
 
 }
