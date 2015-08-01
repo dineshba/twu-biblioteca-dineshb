@@ -1,11 +1,13 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.operation.ListBooks;
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
-import static org.junit.Assert.assertEquals;
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.atLeast;
 
 
 public class ListBooksTest {
@@ -13,14 +15,15 @@ public class ListBooksTest {
     @Test
     public void libraryShouldGiveBookToView() {
         Book bookOne = new Book("Java", "Robert", "2009");
+        Book bookTwo = new Book("C++", "Dinesh", "2020");
         ArrayList<Book> books = new ArrayList<Book>();
         books.add(bookOne);
+        books.add(bookTwo);
         Library library = new Library(books);
-        ListBooks listBooks = new ListBooks(library);
-        String expected = String.format("%-15s %-15s %-10s", "BookName", "Author", "Year of Published");
-        expected += "\n";
-        expected += String.format("%-15s %-15s %-10s", "Java", "Robert", "2009");
+        View view = Mockito.mock(View.class);
+        ListBooks listBooks = new ListBooks(library, view);
 
-        assertEquals(expected, listBooks.execute());
+        listBooks.execute();
+        Mockito.verify(view, atLeast(2)).show(any(String.class));
     }
 }

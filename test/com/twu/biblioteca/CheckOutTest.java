@@ -1,11 +1,9 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.operation.CheckOut;
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import java.util.ArrayList;
-
-import static org.junit.Assert.assertEquals;
 
 
 public class CheckOutTest {
@@ -18,9 +16,13 @@ public class CheckOutTest {
         books.add(bookOne);
         books.add(bookTwo);
         Library library = new Library(books);
-        CheckOut checkOut = new CheckOut(library, "C++");
+        View view = Mockito.mock(View.class);
+        CheckOut checkOut = new CheckOut(library, view);
 
-        assertEquals("Thank you! Enjoy the book", checkOut.execute());
+        Mockito.when(view.getInput()).thenReturn("C++");
+        checkOut.execute();
+
+        Mockito.verify(view).show("Thank you! Enjoy the book");
     }
 
     @Test
@@ -31,8 +33,12 @@ public class CheckOutTest {
         books.add(bookOne);
         books.add(bookTwo);
         Library library = new Library(books);
-        CheckOut checkOut = new CheckOut(library, "C+");
+        View view = Mockito.mock(View.class);
+        CheckOut checkOut = new CheckOut(library, view);
 
-        assertEquals("That Book is not available", checkOut.execute());
+        Mockito.when(view.getInput()).thenReturn("C");
+        checkOut.execute();
+
+        Mockito.verify(view).show("That Book is not available");
     }
 }

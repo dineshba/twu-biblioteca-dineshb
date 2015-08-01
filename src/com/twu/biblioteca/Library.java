@@ -18,20 +18,18 @@ public class Library {
 
     public Boolean checkOut(String requestedBookName) {
         for (Book book : availableBooks) {
-            if (book.hasName(requestedBookName)) {
+            if (book.compareName(requestedBookName)) {
                 checkOutBooks.add(book);
                 availableBooks.remove(book);
-                //return success response
                 return true;
             }
         }
-        //return success response
         return false;
     }
 
     public Boolean checkIn(String requestedBookName) {
         for (Book book : checkOutBooks) {
-            if (book.hasName(requestedBookName)) {
+            if (book.compareName(requestedBookName)) {
                 availableBooks.add(book);
                 checkOutBooks.remove(book);
                 return true;

@@ -1,6 +1,5 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.operation.Parser;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,6 +8,7 @@ import org.mockito.Mockito;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import static org.mockito.Matchers.any;
 import static org.mockito.internal.verification.VerificationModeFactory.atLeast;
@@ -37,8 +37,8 @@ public class ApplicationTest {
         books.add(bookOne);
         books.add(bookTwo);
         Library library = new Library(books);
+        Parser parser = new Parser();
         View view = Mockito.mock(View.class);
-        Parser parser = new Parser(library, view);
         Application application = new Application(view, library, parser);
 
         Mockito.when(view.getInput()).thenReturn("abc");

@@ -1,9 +1,6 @@
 package com.twu.biblioteca;
 
 
-import com.twu.biblioteca.operation.Operation;
-import com.twu.biblioteca.operation.Parser;
-
 public class Application {
 
     private View view;
@@ -25,8 +22,8 @@ public class Application {
     private void inputOutputLoop(boolean runUntilQuit) {
         while (runUntilQuit) {
             String option = view.getInput();
-            Operation operation = parse.userInput(option);
-            view.show(operation.execute());
+            Operation operation = parse.userInput(library, view, option);
+            operation.execute();
         }
     }
 }
