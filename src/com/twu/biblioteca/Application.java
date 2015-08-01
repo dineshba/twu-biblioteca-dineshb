@@ -22,7 +22,7 @@ public class Application {
     private void inputOutputLoop(boolean runUntilQuit) {
         while (runUntilQuit) {
             String option = view.getInput();
-            Operation operation = parse.userInput(library, view, option);
+            Operation operation = parse.userInput(option);
             operation.execute();
         }
     }

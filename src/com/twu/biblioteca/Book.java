@@ -12,32 +12,12 @@ public class Book {
         this.yearOfPublish = yearOfPublish;
     }
 
-    @Override
-    public boolean equals(Object that) {
-        if (this == that)
-            return true;
-        if (that == null || getClass() != that.getClass())
-            return false;
-
-        Book another = (Book) that;
-        if(bookName.equals(another.bookName))
-            return true;
-        return false;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = bookName != null ? bookName.hashCode() : 0;
-        result = 31 * result + (author != null ? author.hashCode() : 0);
-        result = 31 * result + (yearOfPublish != null ? yearOfPublish.hashCode() : 0);
-        return result;
-    }
-
-    public boolean compareName(String requestedBookName) {
+    public boolean hasName(String requestedBookName) {
         return bookName.equals(requestedBookName);
     }
 
-    public String getDetail() {
+    @Override
+    public String toString() {
         return bookName + " " + author + " " + yearOfPublish;
     }
 }

@@ -18,7 +18,7 @@ public class ListBooks implements Operation {
         view.show(String.format("%-15s %-15s %-10s", "BookName", "Author", "Year of Published"));
         ArrayList<Book> books = library.availableBooks();
         for (Book book : books) {
-            String bookDetail = book.getDetail();
+            String bookDetail = book.toString();
             String[] detail = bookDetail.split(" ");
             String formattedBookDetail = String.format("%-15s %-15s %-10s", detail[0], detail[1], detail[2]);
             view.show(formattedBookDetail);
