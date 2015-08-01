@@ -1,7 +1,7 @@
 package com.twu.biblioteca;
 
 
-public class Movie {
+public class Movie implements LibrarySection {
     private final String name;
     private final String year;
     private final String director;
@@ -14,6 +14,7 @@ public class Movie {
         this.rating = rating;
     }
 
+    @Override
     public boolean hasName(String requestedMovie) {
         return name.equals(requestedMovie);
     }

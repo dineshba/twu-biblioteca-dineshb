@@ -1,6 +1,6 @@
 package com.twu.biblioteca;
 
-public class Book {
+public class Book implements LibrarySection{
 
     private final String bookName;
     private final String author;
@@ -12,6 +12,7 @@ public class Book {
         this.yearOfPublish = yearOfPublish;
     }
 
+    @Override
     public boolean hasName(String requestedBookName) {
         return bookName.equals(requestedBookName);
     }
