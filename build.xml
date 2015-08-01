@@ -32,7 +32,7 @@
         </junit>
 
         <junit haltonfailure="true" printsummary="true" showoutput="yes">
-            <test name="com.twu.biblioteca.CheckOutTest"/>
+            <test name="com.twu.biblioteca.operation.CheckOutTest"/>
             <classpath>
                 <pathelement location="out"/>
                 <path refid="classpath"/>
@@ -40,7 +40,7 @@
         </junit>
 
         <junit haltonfailure="true" printsummary="true" showoutput="yes">
-            <test name="com.twu.biblioteca.InvalidOptionTest"/>
+            <test name="com.twu.biblioteca.operation.InvalidOptionTest"/>
             <classpath>
                 <pathelement location="out"/>
                 <path refid="classpath"/>
@@ -56,7 +56,7 @@
         </junit>
 
         <junit haltonfailure="true" printsummary="true" showoutput="yes">
-            <test name="com.twu.biblioteca.ListBooksTest"/>
+            <test name="com.twu.biblioteca.operation.ListBooksTest"/>
             <classpath>
                 <pathelement location="out"/>
                 <path refid="classpath"/>
@@ -64,7 +64,7 @@
         </junit>
 
         <junit haltonfailure="true" printsummary="true" showoutput="yes">
-            <test name="com.twu.biblioteca.ParserTest"/>
+            <test name="com.twu.biblioteca.operation.ParserTest"/>
             <classpath>
                 <pathelement location="out"/>
                 <path refid="classpath"/>
@@ -72,7 +72,7 @@
         </junit>
 
         <junit haltonfailure="true" printsummary="true" showoutput="yes">
-            <test name="com.twu.biblioteca.CheckInTest"/>
+            <test name="com.twu.biblioteca.operation.CheckInTest"/>
             <classpath>
                 <pathelement location="out"/>
                 <path refid="classpath"/>

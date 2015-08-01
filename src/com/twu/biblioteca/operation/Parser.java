@@ -23,6 +23,8 @@ public class Parser {
             return new CheckOut(library, view);
         else if (input.equals("3"))
             return new CheckIn(library, view);
+        else if(input.equals("4"))
+            return new ListCheckedOutBooks(library, view);
         else
             return new InvalidOption(view);
     }

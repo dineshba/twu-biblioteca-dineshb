@@ -37,4 +37,8 @@ public class Library {
         }
         return false;
     }
+
+    public ArrayList<Book> checkedOutBooks() {
+        return checkOutBooks;
+    }
 }

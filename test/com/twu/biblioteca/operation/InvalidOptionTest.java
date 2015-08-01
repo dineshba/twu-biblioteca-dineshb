@@ -1,6 +1,6 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.operation;
 
-import com.twu.biblioteca.operation.InvalidOption;
+import com.twu.biblioteca.View;
 import org.junit.Test;
 import org.mockito.Mockito;
 

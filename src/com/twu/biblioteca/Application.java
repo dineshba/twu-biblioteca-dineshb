@@ -18,7 +18,7 @@ public class Application {
 
     public void start(boolean runUntilQuit) {
         view.show("=====================Welcome=====================");
-        view.show("Type the Options\n1.ListBooks\n2.CheckOut\n3.CheckIn\n4.Quit");
+        view.show("Type the Options\n1.ListBooks\n2.CheckOut\n3.CheckIn\n4.ListCheckedOutBooks\n0.Quit");
         inputOutputLoop(runUntilQuit);
     }
 
