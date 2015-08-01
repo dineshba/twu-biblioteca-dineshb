@@ -1,8 +1,6 @@
 package com.twu.biblioteca.operation;
 
 
-import com.twu.biblioteca.Operation;
-
 public class Quit implements Operation {
 
     @Override
