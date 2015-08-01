@@ -1,5 +1,8 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.operation;
 
+
+import com.twu.biblioteca.Operation;
+import com.twu.biblioteca.View;
 
 public class InvalidOption implements Operation {
     private final View view;

@@ -1,5 +1,8 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.operation.InvalidOption;
+import com.twu.biblioteca.operation.ListBooks;
+import com.twu.biblioteca.operation.Parser;
 import org.junit.Test;
 
 import java.util.ArrayList;

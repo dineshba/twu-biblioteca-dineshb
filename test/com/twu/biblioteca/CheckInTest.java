@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.operation.CheckIn;
 import org.junit.Test;
 import org.mockito.Mockito;
 
