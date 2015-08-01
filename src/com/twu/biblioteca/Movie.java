@@ -17,4 +17,9 @@ public class Movie {
     public boolean hasName(String requestedMovie) {
         return name.equals(requestedMovie);
     }
+
+    @Override
+    public String toString() {
+        return name + " " + year + " " + director + " " + rating;
+    }
 }
