@@ -56,7 +56,7 @@
         </junit>
 
         <junit haltonfailure="true" printsummary="true" showoutput="yes">
-            <test name="com.twu.biblioteca.operation.ListBooksTest"/>
+            <test name="com.twu.biblioteca.operation.ListItemsTest"/>
             <classpath>
                 <pathelement location="out"/>
                 <path refid="classpath"/>

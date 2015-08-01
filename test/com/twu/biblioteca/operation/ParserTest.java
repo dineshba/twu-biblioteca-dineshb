@@ -2,6 +2,7 @@ package com.twu.biblioteca.operation;
 
 import com.twu.biblioteca.Book;
 import com.twu.biblioteca.Library;
+import com.twu.biblioteca.LibrarySection;
 import com.twu.biblioteca.View;
 import org.junit.Test;
 
@@ -16,14 +17,14 @@ public class ParserTest {
     public void showTheBooksWhenUserInputIsListBook() {
         Book bookOne = new Book("Java", "Robert", "2009");
         Book bookTwo = new Book("C++", "Dinesh", "2020");
-        ArrayList<Book> books = new ArrayList<Book>();
+        ArrayList<LibrarySection> books = new ArrayList<LibrarySection>();
         books.add(bookOne);
         books.add(bookTwo);
         Library library = new Library(books);
         View view = new View();
-        Parser parser = new Parser(library, view);
+        Parser parser = new Parser(library, library, view);
 
-        assertEquals(ListBooks.class, parser.userInput("1").getClass());
+        assertEquals(ListItems.class, parser.userInput("1").getClass());
 
     }
 
@@ -31,12 +32,12 @@ public class ParserTest {
     public void showSelectAValidOptionForInvalidOption() {
         Book bookOne = new Book("Java", "Robert", "2009");
         Book bookTwo = new Book("C++", "Dinesh", "2020");
-        ArrayList<Book> books = new ArrayList<Book>();
+        ArrayList<LibrarySection> books = new ArrayList<LibrarySection>();
         books.add(bookOne);
         books.add(bookTwo);
         Library library = new Library(books);
         View view = new View();
-        Parser parser = new Parser(library, view);
+        Parser parser = new Parser(library, library, view);
 
         assertEquals(InvalidOption.class, parser.userInput("InvalidOption").getClass());
     }

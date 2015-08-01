@@ -11,12 +11,18 @@ public class Main {
         View view = new View();
         Book bookOne = new Book("Java", "Robert", "2009");
         Book bookTwo = new Book("C++", "Dinesh", "2020");
-        ArrayList<Book> books = new ArrayList<Book>();
+        ArrayList<LibrarySection> books = new ArrayList<LibrarySection>();
         books.add(bookOne);
         books.add(bookTwo);
-        Library library = new Library(books);
-        Parser parser = new Parser(library, view);
-        Application application = new Application(view, library, parser);
+        Library bookLibrary = new Library(books);
+        Movie movieOne = new Movie("Sivaji", "2009", "Sankar", "10");
+        Movie movieTwo = new Movie("kaakaaMuttai", "2009", "Bala", "9");
+        ArrayList<LibrarySection> movies = new ArrayList<LibrarySection>();
+        movies.add(movieOne);
+        movies.add(movieTwo);
+        Library movieLibrary = new Library(movies);
+        Parser parser = new Parser(bookLibrary, movieLibrary, view);
+        Application application = new Application(view, bookLibrary, parser);
         application.start(true);
     }
 }

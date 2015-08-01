@@ -33,12 +33,12 @@ public class ApplicationTest {
     public void displayTwoBooks() {
         Book bookOne = new Book("Java", "Robert", "2009");
         Book bookTwo = new Book("C++", "Dinesh", "2020");
-        ArrayList<Book> books = new ArrayList<Book>();
+        ArrayList<LibrarySection> books = new ArrayList<LibrarySection>();
         books.add(bookOne);
         books.add(bookTwo);
         Library library = new Library(books);
         View view = Mockito.mock(View.class);
-        Parser parser = new Parser(library, view);
+        Parser parser = new Parser(library, library, view);
         Application application = new Application(view, library, parser);
 
         Mockito.when(view.getInput()).thenReturn("abc");
