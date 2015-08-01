@@ -1,11 +1,10 @@
 package com.twu.biblioteca.operation;
 
-
 import com.twu.biblioteca.Library;
 import com.twu.biblioteca.View;
 
-public class Parser {
 
+public class Parser {
     private final Library library;
     private final View view;
 
