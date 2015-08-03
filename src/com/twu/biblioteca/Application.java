@@ -19,7 +19,7 @@ public class Application {
 
     public void start(boolean runUntilQuit) {
         view.show("=====================Welcome=====================");
-        view.show("Type the Options\n1.ListItems\n2.CheckOutBook\n3.CheckInBook\n4.ListCheckedOutBooks\n5.ListMovies\n6.CheckOutMovie\n0.Quit");
+        view.show("Type the Options\n1.ListItems\n2.CheckOutBook\n3.CheckInBook\n4.ListCheckedOutBooks\n5.ListMovies\n6.CheckOutMovie\n7.CheckInMovie\n0.Quit");
         inputOutputLoop(runUntilQuit);
     }
 

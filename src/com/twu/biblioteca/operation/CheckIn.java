@@ -15,12 +15,12 @@ public class CheckIn implements Operation {
 
     @Override
     public void execute() {
-        view.show("Enter the book Name");
+        view.show("Enter the Name");
         String userBook = view.getInput();
         if (library.checkIn(userBook)) {
-            view.show("Thank you for returning the book");
+            view.show("Thank you for returning");
         }
         else
-            view.show("That is not a valid book to return");
+            view.show("That is not a valid item to return");
     }
 }

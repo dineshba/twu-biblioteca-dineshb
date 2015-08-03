@@ -26,6 +26,6 @@ public class CheckInTest {
 
         checkIn.execute();
 
-        Mockito.verify(view).show("That is not a valid book to return");
+        Mockito.verify(view).show("That is not a valid item to return");
     }
 }

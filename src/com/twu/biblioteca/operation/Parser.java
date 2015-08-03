@@ -28,15 +28,17 @@ public class Parser {
         else if (input.equals("3")) {
             return new CheckIn(bookLibrary, view);
         }
-        else if(input.equals("4")) {
+        else if (input.equals("4")) {
             return new ListCheckedOutItems(bookLibrary, view);
         }
-        else if(input.equals("5")) {
+        else if (input.equals("5")) {
             view.show(String.format("%-15s %-15s %-10s %-10s", "MovieName", "Year", "Director", "Rating"));
             return new ListItems(movieLibrary, view);
         }
-        else if(input.equals("6"))
+        else if (input.equals("6"))
             return new CheckOut(movieLibrary, view);
+        else if (input.equals("7"))
+            return new CheckIn(movieLibrary, view);
         else
             return new InvalidOption(view);
     }
