@@ -1,8 +1,8 @@
 package com.twu.biblioteca.operation;
 
-import com.twu.biblioteca.Book;
-import com.twu.biblioteca.Library;
-import com.twu.biblioteca.LibrarySection;
+import com.twu.biblioteca.Model.Book;
+import com.twu.biblioteca.Model.Library;
+import com.twu.biblioteca.Model.LibrarySection;
 import com.twu.biblioteca.View;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -26,7 +26,7 @@ public class CheckOutTest {
         Mockito.when(view.getInput()).thenReturn("C++");
         checkOut.execute();
 
-        Mockito.verify(view).show("Thank you! Enjoy the book");
+        Mockito.verify(view).show("Thank you! Enjoy");
     }
 
     @Test
@@ -43,6 +43,6 @@ public class CheckOutTest {
         Mockito.when(view.getInput()).thenReturn("C");
         checkOut.execute();
 
-        Mockito.verify(view).show("That Book is not available");
+        Mockito.verify(view).show("That requested item is not available");
     }
 }

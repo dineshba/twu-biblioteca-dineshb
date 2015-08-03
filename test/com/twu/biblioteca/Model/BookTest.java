@@ -1,5 +1,6 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.Model;
 
+import com.twu.biblioteca.Model.Book;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

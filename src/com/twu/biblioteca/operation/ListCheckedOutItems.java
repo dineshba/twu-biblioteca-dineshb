@@ -1,17 +1,17 @@
 package com.twu.biblioteca.operation;
 
-import com.twu.biblioteca.Book;
-import com.twu.biblioteca.Library;
-import com.twu.biblioteca.LibrarySection;
+import com.twu.biblioteca.Model.Library;
+import com.twu.biblioteca.Model.LibrarySection;
 import com.twu.biblioteca.View;
 
 import java.util.ArrayList;
 
-public class ListCheckedOutBooks implements Operation{
+
+public class ListCheckedOutItems implements Operation{
     private final Library library;
     private final View view;
 
-    public ListCheckedOutBooks(Library library, View view) {
+    public ListCheckedOutItems(Library library, View view) {
         this.library = library;
         this.view = view;
 

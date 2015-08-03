@@ -1,8 +1,8 @@
 package com.twu.biblioteca.operation;
 
-import com.twu.biblioteca.Book;
-import com.twu.biblioteca.Library;
-import com.twu.biblioteca.LibrarySection;
+import com.twu.biblioteca.Model.Book;
+import com.twu.biblioteca.Model.Library;
+import com.twu.biblioteca.Model.LibrarySection;
 import com.twu.biblioteca.View;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.atLeast;
 
-public class ListCheckedOutBooksTest {
+public class ListCheckedOutItemTest {
 
     @Test
     public void shouldDisplayTheCheckedOutBookLists() {
@@ -24,11 +24,11 @@ public class ListCheckedOutBooksTest {
         Library library = new Library(books);
         View view = Mockito.mock(View.class);
         CheckOut checkOut = new CheckOut(library, view);
-        ListCheckedOutBooks listCheckedOutBooks = new ListCheckedOutBooks(library, view);
+        ListCheckedOutItems listCheckedOutItems = new ListCheckedOutItems(library, view);
         checkOut.execute();
         Mockito.when(view.getInput()).thenReturn("Java");
 
-        listCheckedOutBooks.execute();
+        listCheckedOutItems.execute();
         Mockito.verify(view, atLeast(3)).show(any(String.class));
     }
 

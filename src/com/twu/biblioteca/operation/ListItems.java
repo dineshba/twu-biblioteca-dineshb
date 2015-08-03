@@ -1,12 +1,11 @@
 package com.twu.biblioteca.operation;
 
-
-import com.twu.biblioteca.Book;
-import com.twu.biblioteca.Library;
-import com.twu.biblioteca.LibrarySection;
+import com.twu.biblioteca.Model.Library;
+import com.twu.biblioteca.Model.LibrarySection;
 import com.twu.biblioteca.View;
 
 import java.util.ArrayList;
+
 
 public class ListItems implements Operation {
     private final Library library;

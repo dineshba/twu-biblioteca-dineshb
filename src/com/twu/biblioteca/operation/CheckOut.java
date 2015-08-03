@@ -1,8 +1,8 @@
 package com.twu.biblioteca.operation;
 
-
-import com.twu.biblioteca.Library;
+import com.twu.biblioteca.Model.Library;
 import com.twu.biblioteca.View;
+
 
 public class CheckOut implements Operation {
     private final Library library;
@@ -15,11 +15,11 @@ public class CheckOut implements Operation {
 
     @Override
     public void execute() {
-        view.show("Enter the Book Name");
-        String userBook = view.getInput();
-        if (library.checkOut(userBook))
-            view.show("Thank you! Enjoy the book");
+        view.show("Enter the Name");
+        String requestedItem = view.getInput();
+        if (library.checkOut(requestedItem))
+            view.show("Thank you! Enjoy");
         else
-            view.show("That Book is not available");
+            view.show("That requested item is not available");
     }
 }

@@ -1,5 +1,7 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.Model;
 
+
+import com.twu.biblioteca.Model.LibrarySection;
 
 public class Movie implements LibrarySection {
     private final String name;
@@ -15,8 +17,8 @@ public class Movie implements LibrarySection {
     }
 
     @Override
-    public boolean hasName(String requestedMovie) {
-        return name.equals(requestedMovie);
+    public boolean hasName(String requestedItem) {
+        return name.equals(requestedItem);
     }
 
     @Override

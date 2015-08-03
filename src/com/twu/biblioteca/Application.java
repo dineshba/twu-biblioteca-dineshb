@@ -1,8 +1,9 @@
 package com.twu.biblioteca;
 
-
+import com.twu.biblioteca.Model.Library;
 import com.twu.biblioteca.operation.Operation;
 import com.twu.biblioteca.operation.Parser;
+
 
 public class Application {
 
@@ -18,7 +19,7 @@ public class Application {
 
     public void start(boolean runUntilQuit) {
         view.show("=====================Welcome=====================");
-        view.show("Type the Options\n1.ListItems\n2.CheckOut\n3.CheckIn\n4.ListCheckedOutBooks\n5.ListMovies\n0.Quit");
+        view.show("Type the Options\n1.ListItems\n2.CheckOutBook\n3.CheckInBook\n4.ListCheckedOutBooks\n5.ListMovies\n6.CheckOutMovie\n0.Quit");
         inputOutputLoop(runUntilQuit);
     }
 

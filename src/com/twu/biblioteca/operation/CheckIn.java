@@ -1,8 +1,8 @@
 package com.twu.biblioteca.operation;
 
-
-import com.twu.biblioteca.Library;
+import com.twu.biblioteca.Model.Library;
 import com.twu.biblioteca.View;
+
 
 public class CheckIn implements Operation {
     private final Library library;

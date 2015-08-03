@@ -1,4 +1,5 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.Model;
+
 
 public class Book implements LibrarySection{
 
@@ -13,8 +14,8 @@ public class Book implements LibrarySection{
     }
 
     @Override
-    public boolean hasName(String requestedBookName) {
-        return bookName.equals(requestedBookName);
+    public boolean hasName(String requestedItem) {
+        return bookName.equals(requestedItem);
     }
 
     @Override

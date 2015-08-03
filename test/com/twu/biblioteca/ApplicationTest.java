@@ -1,5 +1,8 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.Model.Book;
+import com.twu.biblioteca.Model.Library;
+import com.twu.biblioteca.Model.LibrarySection;
 import com.twu.biblioteca.operation.Parser;
 import org.junit.After;
 import org.junit.Before;

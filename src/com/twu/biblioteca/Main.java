@@ -1,5 +1,9 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.Model.Book;
+import com.twu.biblioteca.Model.Library;
+import com.twu.biblioteca.Model.LibrarySection;
+import com.twu.biblioteca.Model.Movie;
 import com.twu.biblioteca.operation.Parser;
 
 import java.util.ArrayList;
