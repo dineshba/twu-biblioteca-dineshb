@@ -1,4 +1,5 @@
-import com.twu.biblioteca.Users;
+package com.twu.biblioteca;
+
 import org.junit.Test;
 
 import static org.junit.Assert.assertFalse;
