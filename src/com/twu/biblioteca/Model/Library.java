@@ -45,9 +45,9 @@ public class Library {
             String itemDetail = item.toString();
             String[] detail = itemDetail.split(" ");
             if (detail.length == 3)
-                formattedDetail += String.format("%-15s %-15s %-10s\n", detail[0], detail[1], detail[2]);
+                formattedDetail += String.format("%-15s %-15s %-15s\n", detail[0], detail[1], detail[2]);
             else
-                formattedDetail += String.format("%-15s %-15s %-10s %-10s\n", detail[0], detail[1], detail[2], detail[3]);
+                formattedDetail += String.format("%-15s %-15s %-15s %-15s\n", detail[0], detail[1], detail[2], detail[3]);
         }
         return formattedDetail;
     }
@@ -56,11 +56,12 @@ public class Library {
         String formattedDetail = "";
         for (LibrarySection item : checkedOut) {
             String itemDetail = item.toString();
+            itemDetail += " " + checkedOutUser.get(item);
             String[] detail = itemDetail.split(" ");
-            if (detail.length == 3)
-                formattedDetail += String.format("%-15s %-15s %-10s\n", detail[0], detail[1], detail[2]);
+            if (detail.length == 4)
+                formattedDetail += String.format("%-15s %-15s %-15s %-15s\n", detail[0], detail[1], detail[2], detail[3]);
             else
-                formattedDetail += String.format("%-15s %-15s %-10s %-10s\n", detail[0], detail[1], detail[2], detail[3]);
+                formattedDetail += String.format("%-15s %-15s %-15s %-15s %-15s\n", detail[0], detail[1], detail[2], detail[3], detail[4]);
         }
         return formattedDetail;
     }

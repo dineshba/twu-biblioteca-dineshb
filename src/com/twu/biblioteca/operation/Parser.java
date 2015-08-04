@@ -20,7 +20,7 @@ public class Parser {
         if (input.equals("0"))
             return new Quit();
         else if (input.equals("1")) {
-            view.show(String.format("%-15s %-15s %-10s", "BookName", "Author", "Year of Published"));
+            view.show(String.format("%-15s %-15s %-15s", "BookName", "Author", "Year of Published"));
             return new ListItems(bookLibrary, view);
         }
         else if (input.equals("2")) {
@@ -30,10 +30,11 @@ public class Parser {
             return new CheckIn(bookLibrary, view);
         }
         else if (input.equals("4")) {
+            view.show(String.format("%-15s %-15s %-15s %-15s", "BookName", "Author", "Year of Published", "CheckedOutBy"));
             return new ListCheckedOutItems(bookLibrary, view);
         }
         else if (input.equals("5")) {
-            view.show(String.format("%-15s %-15s %-10s %-10s", "MovieName", "Year", "Director", "Rating"));
+            view.show(String.format("%-15s %-15s %-15s %-15s", "MovieName", "Year", "Director", "Rating"));
             return new ListItems(movieLibrary, view);
         }
         else if (input.equals("6")) {
@@ -43,7 +44,7 @@ public class Parser {
             return new CheckIn(movieLibrary, view);
         }
         else if(input.equals("8")) {
-            view.show(String.format("%-15s %-15s %-10s %-10s", "MovieName", "Year", "Director", "Rating"));
+            view.show(String.format("%-15s %-15s %-15s %-15s %-15s", "MovieName", "Year", "Director", "Rating", "CheckedOutBy"));
             return new ListCheckedOutItems(movieLibrary, view);
         }
         else

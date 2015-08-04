@@ -22,4 +22,9 @@ public class Users {
     public boolean isEmpty() {
         return role.isEmpty();
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }
