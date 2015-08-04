@@ -26,7 +26,13 @@ public class Main {
         movies.add(movieTwo);
         Library movieLibrary = new Library(movies);
         Parser parser = new Parser(bookLibrary, movieLibrary, view);
-        Application application = new Application(view, bookLibrary, parser);
+        Users userOne = new Users("111-1111", "dinydiny", "Customer");
+        Users userTwo = new Users("111-1112", "admin", "Librarian");
+        ArrayList<Users> users = new ArrayList<Users>();
+        users.add(userOne);
+        users.add(userTwo);
+        Login login = new Login(users);
+        Application application = new Application(view, bookLibrary, parser, login);
         application.start(true);
     }
 }

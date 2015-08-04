@@ -42,7 +42,13 @@ public class ApplicationTest {
         Library library = new Library(books);
         View view = Mockito.mock(View.class);
         Parser parser = new Parser(library, library, view);
-        Application application = new Application(view, library, parser);
+        Users userOne = new Users("Dinesh", "dinydiny", "Customer");
+        Users userTwo = new Users("Arun", "admin", "Librarian");
+        ArrayList<Users> users = new ArrayList<Users>();
+        users.add(userOne);
+        users.add(userTwo);
+        Login login = new Login(users);
+        Application application = new Application(view, library, parser, login);
 
         Mockito.when(view.getInput()).thenReturn("abc");
         application.start(false);

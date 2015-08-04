@@ -16,4 +16,14 @@ public class Login {
         }
         return false;
     }
+
+    public boolean execute(View view) {
+        view.show("Enter the Roll");
+        String roll = view.getInput();
+        view.show("Enter the Name");
+        String name = view.getInput();
+        view.show("Enter the Password");
+        String password = view.getInput();
+        return authenticate(name, password, roll);
+    }
 }
