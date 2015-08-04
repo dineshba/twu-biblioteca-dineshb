@@ -12,6 +12,6 @@ public class Users {
     }
 
     public boolean authenticate(String requestedName, String requestedPassword, String requestedRoll) {
-        return false;
+        return requestedName.equals(name) && requestedPassword.equals(password) && requestedRoll.equals(roll);
     }
 }
