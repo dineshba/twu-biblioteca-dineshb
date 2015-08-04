@@ -19,13 +19,16 @@ public class ListCheckedOutItems implements Operation{
 
     @Override
     public void execute() {
-        view.show(String.format("%-15s %-15s %-10s", "BookName", "Author", "Year of Published"));
         ArrayList<LibrarySection> items = library.checkedOut();
         for (LibrarySection item : items) {
-            String bookDetail = item.toString();
-            String[] detail = bookDetail.split(" ");
-            String formattedBookDetail = String.format("%-15s %-15s %-10s", detail[0], detail[1], detail[2]);
-            view.show(formattedBookDetail);
+            String itemDetail = item.toString();
+            String[] detail = itemDetail.split(" ");
+            String formattedDetail = "";
+            if(detail.length == 3)
+                formattedDetail = String.format("%-15s %-15s %-10s", detail[0], detail[1], detail[2]);
+            else
+                formattedDetail = String.format("%-15s %-15s %-10s %-10s", detail[0], detail[1], detail[2], detail[3]);
+            view.show(formattedDetail);
         }
     }
 }

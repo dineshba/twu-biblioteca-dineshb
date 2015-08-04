@@ -9,15 +9,15 @@ public class Login {
         this.users = users;
     }
 
-    public boolean authenticate(String name, String password, String roll) {
+    public Users authenticate(String name, String password, String roll) {
         for (Users user : users) {
             if (user.authenticate(name, password, roll))
-                return true;
+                return user;
         }
-        return false;
+        return new Users("", "", "");
     }
 
-    public boolean execute(View view) {
+    public Users execute(View view) {
         view.show("Enter the Roll");
         String roll = view.getInput();
         view.show("Enter the Name");
