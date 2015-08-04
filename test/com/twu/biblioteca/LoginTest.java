@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
-import static junit.framework.TestCase.assertTrue;
+import static junit.framework.Assert.assertEquals;
 
 public class LoginTest {
 
@@ -17,6 +17,6 @@ public class LoginTest {
         users.add(userTwo);
         Login login = new Login(users);
 
-        assertTrue(login.authenticate("Dinesh", "dinydiny", "Customer"));
+        assertEquals(userOne.getClass(), login.authenticate("Dinesh", "dinydiny", "Customer").getClass());
     }
 }

@@ -86,6 +86,39 @@
                 <path refid="classpath"/>
             </classpath>
         </junit>
+
+        <junit haltonfailure="true" printsummary="true" showoutput="yes">
+            <test name="com.twu.biblioteca.Model.MovieTest"/>
+            <classpath>
+                <pathelement location="out"/>
+                <path refid="classpath"/>
+            </classpath>
+        </junit>
+
+        <junit haltonfailure="true" printsummary="true" showoutput="yes">
+            <test name="com.twu.biblioteca.operation.ListCheckedOutItemTest"/>
+            <classpath>
+                <pathelement location="out"/>
+                <path refid="classpath"/>
+            </classpath>
+        </junit>
+
+        <junit haltonfailure="true" printsummary="true" showoutput="yes">
+            <test name="com.twu.biblioteca.LoginTest"/>
+            <classpath>
+                <pathelement location="out"/>
+                <path refid="classpath"/>
+            </classpath>
+        </junit>
+
+        <junit haltonfailure="true" printsummary="true" showoutput="yes">
+            <test name="com.twu.biblioteca.UsersTest"/>
+            <classpath>
+                <pathelement location="out"/>
+                <path refid="classpath"/>
+            </classpath>
+        </junit>
+
     </target>
 
     <target name="createjar" depends="runjunit">

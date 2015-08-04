@@ -1,5 +1,6 @@
-package com.twu.biblioteca.Model;
+package com.twu.biblioteca.model;
 
+import com.twu.biblioteca.Users;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -47,7 +48,7 @@ public class LibraryTest {
         books.add(bookTwo);
         Library library = new Library(books);
 
-        assertEquals(true, library.checkOut("Java"));
+        assertEquals(true, library.checkOut("Java", new Users("", "", "")));
     }
 
     @Test

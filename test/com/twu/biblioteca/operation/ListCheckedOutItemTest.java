@@ -29,7 +29,7 @@ public class ListCheckedOutItemTest {
         Mockito.when(view.getInput()).thenReturn("Java");
 
         listCheckedOutItems.execute();
-        Mockito.verify(view, atLeast(3)).show(any(String.class));
+        Mockito.verify(view, atLeast(2)).show(any(String.class));
     }
 
 }
