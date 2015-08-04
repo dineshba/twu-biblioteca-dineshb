@@ -27,7 +27,7 @@ public class Parser {
             return new CheckOut(bookLibrary, view, user);
         }
         else if (input.equals("3")) {
-            return new CheckIn(bookLibrary, view);
+            return new CheckIn(bookLibrary, view, user);
         }
         else if (input.equals("4")) {
             view.show(String.format("%-15s %-15s %-15s %-15s", "BookName", "Author", "Year of Published", "CheckedOutBy"));
@@ -41,7 +41,7 @@ public class Parser {
             return new CheckOut(movieLibrary, view, user);
         }
         else if (input.equals("7")) {
-            return new CheckIn(movieLibrary, view);
+            return new CheckIn(movieLibrary, view, user);
         }
         else if(input.equals("8")) {
             view.show(String.format("%-15s %-15s %-15s %-15s %-15s", "MovieName", "Year", "Director", "Rating", "CheckedOutBy"));

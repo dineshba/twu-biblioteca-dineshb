@@ -27,4 +27,8 @@ public class Users {
     public String toString() {
         return name;
     }
+
+    public boolean hasName(Users thatUsers) {
+        return name.equals(thatUsers.name);
+    }
 }

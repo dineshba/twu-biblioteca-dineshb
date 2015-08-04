@@ -28,12 +28,15 @@ public class Library {
         return false;
     }
 
-    public Boolean checkIn(String requestedItem) {
+    public Boolean checkIn(String requestedItem, Users user) {
         for (LibrarySection item : checkedOut) {
             if (item.hasName(requestedItem)) {
-                available.add(item);
-                checkedOut.remove(item);
-                return true;
+                if (user.hasName(checkedOutUser.get(item))) {
+                    available.add(item);
+                    checkedOut.remove(item);
+                    checkedOutUser.remove(item);
+                    return true;
+                }
             }
         }
         return false;

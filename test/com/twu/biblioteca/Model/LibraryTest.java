@@ -36,7 +36,7 @@ public class LibraryTest {
         books.add(bookTwo);
         Library library = new Library(books);
 
-        assertEquals(String.format("%-15s %-15s %-10s\n%-15s %-15s %-10s\n", "Java", "Robert", "2009", "C++", "Dinesh", "2020"), library.availableDetails());
+        assertEquals(String.format("%-15s %-15s %-15s\n%-15s %-15s %-15s\n", "Java", "Robert", "2009", "C++", "Dinesh", "2020"), library.availableDetails());
     }
 
     @Test
@@ -61,6 +61,6 @@ public class LibraryTest {
         books.add(bookTwo);
         Library library = new Library(books);
 
-        assertEquals(false, library.checkIn("Java"));
+        assertEquals(false, library.checkIn("Java", new Users("", "", "")));
     }
 }
