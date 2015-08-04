@@ -19,16 +19,9 @@ public class ListItems implements Operation {
 
     @Override
     public void execute() {
-        ArrayList<LibrarySection> items = library.available();
-        String formattedDetail;
-        for (LibrarySection item : items) {
-            String itemDetail = item.toString();
-            String[] detail = itemDetail.split(" ");
-            if(detail.length == 3)
-                formattedDetail = String.format("%-15s %-15s %-10s", detail[0], detail[1], detail[2]);
-            else
-                formattedDetail = String.format("%-15s %-15s %-10s %-10s", detail[0], detail[1], detail[2], detail[3]);
-            view.show(formattedDetail);
-        }
+        String items = library.availableDetails();
+        for (String item : items.split("\n")) {
+            view.show(item);
         }
     }
+}

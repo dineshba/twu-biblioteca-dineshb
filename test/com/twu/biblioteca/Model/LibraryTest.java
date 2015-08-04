@@ -1,5 +1,6 @@
 package com.twu.biblioteca.Model;
 
+import com.twu.biblioteca.Users;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -35,7 +36,7 @@ public class LibraryTest {
         books.add(bookTwo);
         Library library = new Library(books);
 
-        assertEquals(books, library.available());
+        assertEquals(String.format("%-15s %-15s %-10s\n%-15s %-15s %-10s\n", "Java", "Robert", "2009", "C++", "Dinesh", "2020"), library.availableDetails());
     }
 
     @Test
@@ -46,8 +47,9 @@ public class LibraryTest {
         books.add(bookOne);
         books.add(bookTwo);
         Library library = new Library(books);
+        Users user = new Users("111-1111", "dinydiny", "User");
 
-        assertEquals(true, library.checkOut("Java"));
+        assertEquals(true, library.checkOut("Java", user));
     }
 
     @Test

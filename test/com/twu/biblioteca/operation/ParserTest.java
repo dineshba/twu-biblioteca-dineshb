@@ -3,6 +3,7 @@ package com.twu.biblioteca.operation;
 import com.twu.biblioteca.Model.Book;
 import com.twu.biblioteca.Model.Library;
 import com.twu.biblioteca.Model.LibrarySection;
+import com.twu.biblioteca.Users;
 import com.twu.biblioteca.View;
 import org.junit.Test;
 
@@ -23,8 +24,9 @@ public class ParserTest {
         Library library = new Library(books);
         View view = new View();
         Parser parser = new Parser(library, library, view);
+        Users user = new Users("111-1111", "dinydiny", "User");
 
-        assertEquals(ListItems.class, parser.userInput("1").getClass());
+        assertEquals(ListItems.class, parser.userInput("1", user).getClass());
 
     }
 
@@ -38,7 +40,8 @@ public class ParserTest {
         Library library = new Library(books);
         View view = new View();
         Parser parser = new Parser(library, library, view);
+        Users user = new Users("111-1111", "dinydiny", "User");
 
-        assertEquals(InvalidOption.class, parser.userInput("InvalidOption").getClass());
+        assertEquals(InvalidOption.class, parser.userInput("InvalidOption", user).getClass());
     }
 }

@@ -1,6 +1,7 @@
 package com.twu.biblioteca.operation;
 
 import com.twu.biblioteca.Model.Library;
+import com.twu.biblioteca.Users;
 import com.twu.biblioteca.View;
 
 
@@ -15,7 +16,7 @@ public class Parser {
         this.view = view;
     }
 
-    public Operation userInput(String input) {
+    public Operation userInput(String input, Users user) {
         if (input.equals("0"))
             return new Quit();
         else if (input.equals("1")) {
@@ -23,7 +24,7 @@ public class Parser {
             return new ListItems(bookLibrary, view);
         }
         else if (input.equals("2")) {
-            return new CheckOut(bookLibrary, view);
+            return new CheckOut(bookLibrary, view, user);
         }
         else if (input.equals("3")) {
             return new CheckIn(bookLibrary, view);
@@ -36,7 +37,7 @@ public class Parser {
             return new ListItems(movieLibrary, view);
         }
         else if (input.equals("6")) {
-            return new CheckOut(movieLibrary, view);
+            return new CheckOut(movieLibrary, view, user);
         }
         else if (input.equals("7")) {
             return new CheckIn(movieLibrary, view);

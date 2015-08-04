@@ -3,6 +3,7 @@ package com.twu.biblioteca.operation;
 import com.twu.biblioteca.Model.Book;
 import com.twu.biblioteca.Model.Library;
 import com.twu.biblioteca.Model.LibrarySection;
+import com.twu.biblioteca.Users;
 import com.twu.biblioteca.View;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -23,7 +24,8 @@ public class ListCheckedOutItemTest {
         books.add(bookTwo);
         Library library = new Library(books);
         View view = Mockito.mock(View.class);
-        CheckOut checkOut = new CheckOut(library, view);
+        Users user = new Users("111-1111", "dinydiny", "User");
+        CheckOut checkOut = new CheckOut(library, view, user);
         ListCheckedOutItems listCheckedOutItems = new ListCheckedOutItems(library, view);
         checkOut.execute();
         Mockito.when(view.getInput()).thenReturn("Java");
