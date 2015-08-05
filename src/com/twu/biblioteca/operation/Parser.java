@@ -17,9 +17,7 @@ public class Parser {
     }
 
     public Operation userInput(String input, Users user) {
-        if (input.equals("0"))
-            return new Quit();
-        else if (input.equals("1")) {
+        if (input.equals("1")) {
             view.show(String.format("%-15s %-15s %-15s", "BookName", "Author", "Year of Published"));
             return new ListItems(bookLibrary, view);
         }

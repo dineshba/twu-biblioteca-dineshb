@@ -15,7 +15,7 @@ public class UserInformation implements Operation{
 
     @Override
     public void execute() {
-        view.show(String.format("%-15s %-15s %-15s", "Name", "Email", "Phone Number"));
+        view.show(String.format("%-15s %-15s %-15s %-15s", "Number", "Name", "Email", "Phone Number"));
         view.show(user.toString());
     }
 }
