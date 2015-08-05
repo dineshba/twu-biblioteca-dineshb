@@ -14,7 +14,7 @@ public class Login {
             if (user.authenticate(name, password, roll))
                 return user;
         }
-        return new Users("", "", "");
+        return new Users("", "", "", "", "", "");
     }
 
     public Users execute(View view) {

@@ -48,7 +48,7 @@
         </junit>
 
         <junit haltonfailure="true" printsummary="true" showoutput="yes">
-            <test name="com.twu.biblioteca.Model.LibraryTest"/>
+            <test name="com.twu.biblioteca.model.LibraryTest"/>
             <classpath>
                 <pathelement location="out"/>
                 <path refid="classpath"/>
@@ -80,7 +80,7 @@
         </junit>
 
         <junit haltonfailure="true" printsummary="true" showoutput="yes">
-            <test name="com.twu.biblioteca.Model.BookTest"/>
+            <test name="com.twu.biblioteca.model.BookTest"/>
             <classpath>
                 <pathelement location="out"/>
                 <path refid="classpath"/>
@@ -88,7 +88,7 @@
         </junit>
 
         <junit haltonfailure="true" printsummary="true" showoutput="yes">
-            <test name="com.twu.biblioteca.Model.MovieTest"/>
+            <test name="com.twu.biblioteca.model.MovieTest"/>
             <classpath>
                 <pathelement location="out"/>
                 <path refid="classpath"/>

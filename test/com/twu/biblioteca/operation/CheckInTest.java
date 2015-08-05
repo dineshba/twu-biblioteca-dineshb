@@ -1,8 +1,8 @@
 package com.twu.biblioteca.operation;
 
-import com.twu.biblioteca.Model.Book;
-import com.twu.biblioteca.Model.Library;
-import com.twu.biblioteca.Model.LibrarySection;
+import com.twu.biblioteca.model.Book;
+import com.twu.biblioteca.model.Library;
+import com.twu.biblioteca.model.LibrarySection;
 import com.twu.biblioteca.Users;
 import com.twu.biblioteca.View;
 import org.junit.Test;
@@ -22,7 +22,7 @@ public class CheckInTest {
         books.add(bookTwo);
         Library library = new Library(books);
         View view = Mockito.mock(View.class);
-        Users user = new Users("111-1111", "dinydiny", "User");
+        Users user = new Users("111-1111", "dinydiny", "User", "Dinesh", "dinesh@gmail.com", "8973882730");
         CheckIn checkIn = new CheckIn(library, view, user);
         Mockito.when(view.getInput()).thenReturn("Java");
 

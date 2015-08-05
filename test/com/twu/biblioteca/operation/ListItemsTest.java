@@ -1,8 +1,8 @@
 package com.twu.biblioteca.operation;
 
-import com.twu.biblioteca.Model.Book;
-import com.twu.biblioteca.Model.Library;
-import com.twu.biblioteca.Model.LibrarySection;
+import com.twu.biblioteca.model.Book;
+import com.twu.biblioteca.model.Library;
+import com.twu.biblioteca.model.LibrarySection;
 import com.twu.biblioteca.View;
 import org.junit.Test;
 import org.mockito.Mockito;

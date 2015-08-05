@@ -1,8 +1,8 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.Model.Book;
-import com.twu.biblioteca.Model.Library;
-import com.twu.biblioteca.Model.LibrarySection;
+import com.twu.biblioteca.model.Book;
+import com.twu.biblioteca.model.Library;
+import com.twu.biblioteca.model.LibrarySection;
 import com.twu.biblioteca.operation.Parser;
 import org.junit.After;
 import org.junit.Before;
@@ -42,8 +42,8 @@ public class ApplicationTest {
         Library library = new Library(books);
         View view = Mockito.mock(View.class);
         Parser parser = new Parser(library, library, view);
-        Users userOne = new Users("Dinesh", "dinydiny", "Customer");
-        Users userTwo = new Users("Arun", "admin", "Librarian");
+        Users userOne = new Users("Dinesh", "dinydiny", "Customer", "Dinesh", "dinesh@gmail.com", "8973882730");
+        Users userTwo = new Users("Arun", "admin", "Librarian", "Dinesh", "dinesh@gmail.com", "8973882730");
         ArrayList<Users> users = new ArrayList<Users>();
         users.add(userOne);
         users.add(userTwo);

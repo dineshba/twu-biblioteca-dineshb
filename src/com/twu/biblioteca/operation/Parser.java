@@ -1,6 +1,6 @@
 package com.twu.biblioteca.operation;
 
-import com.twu.biblioteca.Model.Library;
+import com.twu.biblioteca.model.Library;
 import com.twu.biblioteca.Users;
 import com.twu.biblioteca.View;
 
@@ -43,9 +43,12 @@ public class Parser {
         else if (input.equals("7")) {
             return new CheckIn(movieLibrary, view, user);
         }
-        else if(input.equals("8")) {
+        else if (input.equals("8")) {
             view.show(String.format("%-15s %-15s %-15s %-15s %-15s", "MovieName", "Year", "Director", "Rating", "CheckedOutBy"));
             return new ListCheckedOutItems(movieLibrary, view);
+        }
+        else if (input.equals("9")) {
+             return new UserInformation(view, user);
         }
         else
             return new InvalidOption(view);

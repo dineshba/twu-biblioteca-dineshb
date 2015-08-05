@@ -1,10 +1,7 @@
 package com.twu.biblioteca.operation;
 
-import com.twu.biblioteca.Model.Library;
-import com.twu.biblioteca.Model.LibrarySection;
+import com.twu.biblioteca.model.Library;
 import com.twu.biblioteca.View;
-
-import java.util.ArrayList;
 
 
 public class ListItems implements Operation {
