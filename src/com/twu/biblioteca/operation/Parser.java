@@ -30,25 +30,25 @@ public class Parser {
             return new CheckIn(bookLibrary, view, user);
         }
         else if (input.equals("4")) {
-            view.show(String.format("%-15s %-15s %-15s %-15s", "BookName", "Author", "Year of Published", "CheckedOutBy"));
-            return new ListCheckedOutItems(bookLibrary, view);
-        }
-        else if (input.equals("5")) {
             view.show(String.format("%-15s %-15s %-15s %-15s", "MovieName", "Year", "Director", "Rating"));
             return new ListItems(movieLibrary, view);
         }
-        else if (input.equals("6")) {
+        else if (input.equals("5")) {
             return new CheckOut(movieLibrary, view, user);
         }
-        else if (input.equals("7")) {
+        else if (input.equals("6")) {
             return new CheckIn(movieLibrary, view, user);
         }
+        else if (input.equals("7")) {
+             return new UserInformation(view, user);
+        }
         else if (input.equals("8")) {
-            view.show(String.format("%-15s %-15s %-15s %-15s %-15s", "MovieName", "Year", "Director", "Rating", "CheckedOutBy"));
-            return new ListCheckedOutItems(movieLibrary, view);
+            view.show(String.format("%-15s %-15s %-15s %-15s", "BookName", "Author", "Year of Published", "CheckedOutBy"));
+            return new ListCheckedOutItems(bookLibrary, view);
         }
         else if (input.equals("9")) {
-             return new UserInformation(view, user);
+            view.show(String.format("%-15s %-15s %-15s %-15s %-15s", "MovieName", "Year", "Director", "Rating", "CheckedOutBy"));
+            return new ListCheckedOutItems(movieLibrary, view);
         }
         else
             return new InvalidOption(view);
