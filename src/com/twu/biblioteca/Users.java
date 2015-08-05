@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+
 public class Users {
     private final String role;
     private final String number;
@@ -31,7 +32,7 @@ public class Users {
 
     @Override
     public String toString() {
-        return String.format("%-15s %-15s %-15s %-15s", number, name, email, phoneNumber);
+        return String.format("%-20s %-15s %-15s %-15s", number, name, email, phoneNumber);
     }
 
     public boolean hasName(Users that) {

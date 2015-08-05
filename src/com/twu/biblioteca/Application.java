@@ -6,8 +6,8 @@ import com.twu.biblioteca.operation.Parser;
 
 public class Application {
     private final Login login;
-    private View view;
-    private Parser parse;
+    private final View view;
+    private final Parser parse;
     private Users user;
     private String menu;
 
@@ -22,10 +22,15 @@ public class Application {
         while (runUntilQuit) {
             view.show("\n\nEnter the Options\n1.Login\n0.Quit");
             String option = view.getInput();
-            if(option.equals("0"))
+            if (option.equals("0")) {
                 break;
-            user = login.execute(view);
-            assignMenuToUserAndRun();
+            }
+            else if (option.equals("1")) {
+                user = login.execute(view);
+                assignMenuToUserAndRun();
+            }
+            else
+                view.show("Invalid option");
         }
     }
 
