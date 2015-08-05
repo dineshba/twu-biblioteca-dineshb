@@ -31,7 +31,7 @@ public class Users {
 
     @Override
     public String toString() {
-        return String.format("%-15s %-15s %-15s", name, email, phoneNumber);
+        return String.format("%-15s %-15s %-15s %-15s", number, name, email, phoneNumber);
     }
 
     public boolean hasName(Users that) {

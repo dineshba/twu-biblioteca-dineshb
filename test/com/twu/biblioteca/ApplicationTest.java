@@ -48,7 +48,7 @@ public class ApplicationTest {
         users.add(userOne);
         users.add(userTwo);
         Login login = new Login(users);
-        Application application = new Application(view, library, parser, login);
+        Application application = new Application(view, parser, login);
 
         Mockito.when(view.getInput()).thenReturn("abc");
         application.start(false);

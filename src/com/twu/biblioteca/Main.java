@@ -32,7 +32,7 @@ public class Main {
         users.add(userOne);
         users.add(userTwo);
         Login login = new Login(users);
-        Application application = new Application(view, bookLibrary, parser, login);
+        Application application = new Application(view, parser, login);
         application.start(true);
     }
 }
