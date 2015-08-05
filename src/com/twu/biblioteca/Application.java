@@ -22,15 +22,24 @@ public class Application {
 
     public void start(boolean runUntilQuit) {
         view.show("=====================Welcome=====================");
-        user = login.execute(view);
-        if (!user.isEmpty()) {
-            if (user.isAdmin()) {
-                menu = "\n\n\nType the Options\n1.ListBooks\n2.CheckOutBook\n3.CheckInBook\n4.ListMovies\n5.CheckOutMovie\n6.CheckInMovie\n7.UserInformation\n8.ListCheckedOutBooks\n9.ListCheckOutMovies\n0.Quit\n\n\n";
-                inputOutputLoop(runUntilQuit, user);
-        }
+        while (runUntilQuit) {
+            view.show("\n\nEnter the Options\n1.Login\n2.Quit");
+            String option = view.getInput();
+            if(option.equals("2"))
+                break;
+            user = login.execute(view);
+            if (!user.isEmpty()) {
+                if (user.isAdmin()) {
+                    menu = "\n\n\nEnter the Options\n1.ListBooks\n2.CheckOutBook\n3.CheckInBook\n4.ListMovies\n5.CheckOutMovie\n6.CheckInMovie\n7.UserInformation\n8.ListCheckedOutBooks\n9.ListCheckOutMovies\n0.Logout\n\n\n";
+                    inputOutputLoop(runUntilQuit, user);
+                    }
+                else {
+                    menu = "\n\n\nEnter the Options\n1.ListBooks\n2.CheckOutBook\n3.CheckInBook\n4.ListMovies\n5.CheckOutMovie\n6.CheckInMovie\n7.UserInformation\n0.Logout\n\n\n";
+                    inputOutputLoop(runUntilQuit, user);
+                }
+            }
             else
-                menu = "\n\n\nType the Options\n1.ListBooks\n2.CheckOutBook\n3.CheckInBook\n4.ListMovies\n5.CheckOutMovie\n6.CheckInMovie\n7.UserInformation\n0.Quit\n\n\n";
-                inputOutputLoop(runUntilQuit, user);
+                view.show("Mismatch between User and Password");
         }
     }
 
@@ -44,6 +53,8 @@ public class Application {
                     if(userOption == 8 || userOption == 9)
                         option = "Invalid";
             }
+            if(option.equals("0"))
+                break;
             Operation operation = parse.userInput(option, user);
             operation.execute();
         }

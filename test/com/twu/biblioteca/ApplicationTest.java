@@ -52,6 +52,6 @@ public class ApplicationTest {
 
         Mockito.when(view.getInput()).thenReturn("abc");
         application.start(false);
-        Mockito.verify(view, atLeast(2)).show(any(String.class));
+        Mockito.verify(view, atLeast(1)).show(any(String.class));
     }
 }
