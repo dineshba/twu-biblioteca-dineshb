@@ -61,7 +61,7 @@ public class Application {
             }
             if(option.equals("0"))
                 break;
-            Operation operation = parse.userInput(option, user);
+            Operation operation = parse.userInput(option);
             operation.execute();
         }
     }

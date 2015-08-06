@@ -18,7 +18,7 @@ public class Login {
     }
 
     public Users execute(View view) {
-        view.show("Enter the Roll");
+        view.show("Enter the Role");
         String roll = view.getInput();
         view.show("Enter the Name");
         String name = view.getInput();

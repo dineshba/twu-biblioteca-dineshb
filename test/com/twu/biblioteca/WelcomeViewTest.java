@@ -5,14 +5,17 @@ import com.twu.biblioteca.model.Library;
 import com.twu.biblioteca.model.LibrarySection;
 import com.twu.biblioteca.model.Movie;
 import com.twu.biblioteca.operation.*;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import static org.junit.Assert.assertEquals;
 
-public class Main {
+public class WelcomeViewTest {
 
-    public static void main(String[] args) {
+    @Test
+    public void shouldReturnTheLoginView() {
         View view = new View();
         Book bookOne = new Book("Java", "Robert", "2009");
         Book bookTwo = new Book("C++", "Dinesh", "2020");
@@ -44,7 +47,6 @@ public class Main {
         librarianCommands.put("8", new ListCheckedOutItems(bookLibrary, view));
         librarianCommands.put("9", new ListCheckedOutItems(movieLibrary, view));
 
-
         HashMap<String, Operation> customerCommands = new HashMap<String, Operation>();
         customerCommands.put("1", new ListItems(bookLibrary, view));
         customerCommands.put("2", new CheckOut(bookLibrary, view, userOne));
@@ -56,25 +58,17 @@ public class Main {
         customerCommands.put("8", new ListCheckedOutItems(bookLibrary, view));
         customerCommands.put("9", new ListCheckedOutItems(movieLibrary, view));
 
-
         Parser customerParser = new Parser(bookLibrary, movieLibrary, view, customerCommands);
         Parser librarianParser = new Parser(bookLibrary, movieLibrary, view, librarianCommands);
         Login login = new Login(users);
-        Application application = new Application(view, librarianParser, login);
-
-
 
         UserView userView = new UserView(view, customerParser);
         LibraryView libraryView = new LibraryView(view, librarianParser);
         NoUserView noUserView = new NoUserView();
-        LoginView loginView = new LoginView(login, view, libraryView, userView, noUserView);
+        LoginView loginView = new LoginView(login, view, libraryView, userView, noUserView );
+        WelcomeView welcomeView = new WelcomeView(loginView);
 
-        IView iView;
-        iView = new WelcomeView(loginView);
-
-
-        while (true) {
-            iView = iView.execute();
-        }
+        assertEquals(loginView.getClass(), welcomeView.execute().getClass());
     }
+
 }

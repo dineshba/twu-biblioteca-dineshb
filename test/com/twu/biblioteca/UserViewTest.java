@@ -5,15 +5,19 @@ import com.twu.biblioteca.model.Library;
 import com.twu.biblioteca.model.LibrarySection;
 import com.twu.biblioteca.model.Movie;
 import com.twu.biblioteca.operation.*;
+import org.junit.Test;
+import org.mockito.Mockito;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import static junit.framework.TestCase.assertNull;
 
-public class Main {
+public class UserViewTest {
 
-    public static void main(String[] args) {
-        View view = new View();
+    @Test
+    public void shouldReturnMainView() {
+        View view = Mockito.mock(View.class);
         Book bookOne = new Book("Java", "Robert", "2009");
         Book bookTwo = new Book("C++", "Dinesh", "2020");
         ArrayList<LibrarySection> books = new ArrayList<LibrarySection>();
@@ -33,18 +37,6 @@ public class Main {
         users.add(userOne);
         users.add(userTwo);
 
-        HashMap<String, Operation> librarianCommands = new HashMap<String, Operation>();
-        librarianCommands.put("1", new ListItems(bookLibrary, view));
-        librarianCommands.put("2", new CheckOut(bookLibrary, view, userOne));
-        librarianCommands.put("3", new CheckIn(bookLibrary, view, userOne));
-        librarianCommands.put("4", new ListItems(movieLibrary, view));
-        librarianCommands.put("5", new CheckOut(movieLibrary, view, userOne));
-        librarianCommands.put("6", new CheckIn(movieLibrary, view, userOne));
-        librarianCommands.put("7", new UserInformation(view, userOne));
-        librarianCommands.put("8", new ListCheckedOutItems(bookLibrary, view));
-        librarianCommands.put("9", new ListCheckedOutItems(movieLibrary, view));
-
-
         HashMap<String, Operation> customerCommands = new HashMap<String, Operation>();
         customerCommands.put("1", new ListItems(bookLibrary, view));
         customerCommands.put("2", new CheckOut(bookLibrary, view, userOne));
@@ -56,25 +48,11 @@ public class Main {
         customerCommands.put("8", new ListCheckedOutItems(bookLibrary, view));
         customerCommands.put("9", new ListCheckedOutItems(movieLibrary, view));
 
-
         Parser customerParser = new Parser(bookLibrary, movieLibrary, view, customerCommands);
-        Parser librarianParser = new Parser(bookLibrary, movieLibrary, view, librarianCommands);
-        Login login = new Login(users);
-        Application application = new Application(view, librarianParser, login);
-
-
-
         UserView userView = new UserView(view, customerParser);
-        LibraryView libraryView = new LibraryView(view, librarianParser);
-        NoUserView noUserView = new NoUserView();
-        LoginView loginView = new LoginView(login, view, libraryView, userView, noUserView);
 
-        IView iView;
-        iView = new WelcomeView(loginView);
+        Mockito.when(view.getInput()).thenReturn("1");
 
-
-        while (true) {
-            iView = iView.execute();
-        }
+        assertNull(userView.execute());
     }
 }
