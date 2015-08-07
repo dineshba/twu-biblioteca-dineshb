@@ -18,6 +18,8 @@ public class UserView implements IView{
         String input = view.getInput();
         Operation operation = parser.userInput(input);
         operation.execute();
-        return null;
+        if (input.equals("0"))
+            return null;
+        return this;
     }
 }

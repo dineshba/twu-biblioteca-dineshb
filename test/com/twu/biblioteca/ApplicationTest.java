@@ -62,7 +62,7 @@ public class ApplicationTest {
         customerCommands.put("7", new UserInformation(view, user));
         customerCommands.put("8", new ListCheckedOutItems(bookLibrary, view));
         customerCommands.put("9", new ListCheckedOutItems(movieLibrary, view));
-        Parser parser = new Parser(bookLibrary, movieLibrary, view, customerCommands);
+        Parser parser = new Parser(view, customerCommands);
 
         Login login = new Login(users);
         Application application = new Application(view, parser, login);

@@ -48,7 +48,7 @@ public class UserViewTest {
         customerCommands.put("8", new ListCheckedOutItems(bookLibrary, view));
         customerCommands.put("9", new ListCheckedOutItems(movieLibrary, view));
 
-        Parser customerParser = new Parser(bookLibrary, movieLibrary, view, customerCommands);
+        Parser customerParser = new Parser(view, customerCommands);
         UserView userView = new UserView(view, customerParser);
 
         Mockito.when(view.getInput()).thenReturn("1");

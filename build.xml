@@ -4,13 +4,14 @@
 
     <property name="lib.dir" value="lib"/>
     <property name="jar.dir" value="jar"/>
-    <property name="main-class" value="/src/com/twu/biblioteca/Main"/>
     <property name="classes.dir" value="out"/>
     <path id="classpath">
         <fileset dir="${lib.dir}" includes="*.jar"/>
     </path>
 
     <target name="compile">
+        <delete dir="out"/>
+        <mkdir dir="out"/>
         <javac srcdir="src; test" includeantruntime="false" destdir="out" classpathref="classpath"/>
     </target>
 

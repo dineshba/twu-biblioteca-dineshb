@@ -48,7 +48,7 @@ public class LibraryViewTest {
         librarianCommands.put("8", new ListCheckedOutItems(bookLibrary, view));
         librarianCommands.put("9", new ListCheckedOutItems(movieLibrary, view));
 
-        Parser librarianParser = new Parser(bookLibrary, movieLibrary, view, librarianCommands);
+        Parser librarianParser = new Parser(view, librarianCommands);
 
 
         UserView userView = new UserView(view, librarianParser);

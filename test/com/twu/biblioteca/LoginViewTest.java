@@ -59,14 +59,13 @@ public class LoginViewTest {
         customerCommands.put("8", new ListCheckedOutItems(bookLibrary, view));
         customerCommands.put("9", new ListCheckedOutItems(movieLibrary, view));
 
-        Parser customerParser = new Parser(bookLibrary, movieLibrary, view, customerCommands);
-        Parser librarianParser = new Parser(bookLibrary, movieLibrary, view, librarianCommands);
+        Parser customerParser = new Parser(view, customerCommands);
+        Parser librarianParser = new Parser(view, librarianCommands);
         Login login = Mockito.mock(Login.class);
 
         UserView userView = new UserView(view, customerParser);
         LibraryView libraryView = new LibraryView(view, librarianParser);
-        NoUserView noUserView = new NoUserView();
-        LoginView loginView = new LoginView(login, view, libraryView, userView, noUserView );
+        LoginView loginView = new LoginView(login, view, libraryView, userView);
 
         Mockito.when(login.execute(view)).thenReturn(userTwo);
 

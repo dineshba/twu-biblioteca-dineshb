@@ -58,15 +58,15 @@ public class WelcomeViewTest {
         customerCommands.put("8", new ListCheckedOutItems(bookLibrary, view));
         customerCommands.put("9", new ListCheckedOutItems(movieLibrary, view));
 
-        Parser customerParser = new Parser(bookLibrary, movieLibrary, view, customerCommands);
-        Parser librarianParser = new Parser(bookLibrary, movieLibrary, view, librarianCommands);
+        Parser customerParser = new Parser(view, customerCommands);
+        Parser librarianParser = new Parser(view, librarianCommands);
         Login login = new Login(users);
 
         UserView userView = new UserView(view, customerParser);
         LibraryView libraryView = new LibraryView(view, librarianParser);
-        NoUserView noUserView = new NoUserView();
-        LoginView loginView = new LoginView(login, view, libraryView, userView, noUserView );
-        WelcomeView welcomeView = new WelcomeView(loginView);
+        LoginView loginView = new LoginView(login, view, libraryView, userView);
+        MainMenuView mainMenuView = new MainMenuView(view, loginView);
+        WelcomeView welcomeView = new WelcomeView(mainMenuView);
 
         assertEquals(loginView.getClass(), welcomeView.execute().getClass());
     }

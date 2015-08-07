@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Login {
     private final ArrayList<Users> users;
+    private boolean logInStatus;
 
     public Login(ArrayList<Users> users) {
         this.users = users;
@@ -11,8 +12,10 @@ public class Login {
 
     public Users authenticate(String name, String password, String roll) {
         for (Users user : users) {
-            if (user.authenticate(name, password, roll))
+            if (user.authenticate(name, password, roll)) {
+                logInStatus = true;
                 return user;
+            }
         }
         return new Users("", "", "", "", "", "");
     }
@@ -25,5 +28,9 @@ public class Login {
         view.show("Enter the Password");
         String password = view.getInput();
         return authenticate(name, password, roll);
+    }
+
+    public void resetStatus() {
+        logInStatus = !logInStatus;
     }
 }

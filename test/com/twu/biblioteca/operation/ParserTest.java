@@ -44,8 +44,8 @@ public class ParserTest {
         customerCommands.put("7", new UserInformation(view, user));
         customerCommands.put("8", new ListCheckedOutItems(bookLibrary, view));
         customerCommands.put("9", new ListCheckedOutItems(movieLibrary, view));
-        Parser customerParser = new Parser(bookLibrary, movieLibrary, view, customerCommands);
-        Parser parser = new Parser(bookLibrary, movieLibrary, view, customerCommands);
+        Parser customerParser = new Parser(view, customerCommands);
+        Parser parser = new Parser(view, customerCommands);
 
         assertEquals(ListItems.class, parser.userInput("1").getClass());
 
@@ -79,9 +79,9 @@ public class ParserTest {
         customerCommands.put("7", new UserInformation(view, user));
         customerCommands.put("8", new ListCheckedOutItems(bookLibrary, view));
         customerCommands.put("9", new ListCheckedOutItems(movieLibrary, view));
-        Parser customerParser = new Parser(bookLibrary, movieLibrary, view, customerCommands);
-        Parser parser = new Parser(bookLibrary, movieLibrary, view, customerCommands);
+        Parser customerParser = new Parser(view, customerCommands);
+        Parser parser = new Parser(view, customerCommands);
 
-        assertEquals(InvalidOption.class, parser.userInput("InvalidOption").getClass());
+        assertEquals(CheckOut.class, parser.userInput("2").getClass());
     }
 }

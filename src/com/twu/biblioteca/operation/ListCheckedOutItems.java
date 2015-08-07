@@ -4,7 +4,7 @@ import com.twu.biblioteca.model.Library;
 import com.twu.biblioteca.View;
 
 
-public class ListCheckedOutItems implements Operation {
+public class  ListCheckedOutItems implements Operation {
     private final Library library;
     private final View view;
 
