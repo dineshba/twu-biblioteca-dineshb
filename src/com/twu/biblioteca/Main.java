@@ -65,14 +65,8 @@ public class Main {
         MainMenuView mainMenuView = new MainMenuView(view, loginView);
         WelcomeView welcomeView = new WelcomeView(mainMenuView);
 
-        IView iView = welcomeView;
-        while (true) {
-            try {
-                iView = iView.execute();
-            }
-            catch (NullPointerException e) {
-                iView = mainMenuView;
-            }
-        }
+        Application application = new Application(welcomeView, mainMenuView);
+
+        application.start();
     }
 }
