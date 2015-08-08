@@ -57,10 +57,13 @@ public class Main {
         customerCommands.put("7", new UserInformation(view, login));
 
         Executer executer = new Executer(new InvalidOption(view));
-        UserView userView = new UserView(view, executer, customerCommands, login);
-        LibraryView libraryView = new LibraryView(view, executer, librarianCommands, login);
-        LoginView loginView = new LoginView(login, view, libraryView, userView);
-        MainMenuView mainMenuView = new MainMenuView(view, loginView);
+        CustomerView customerView = new CustomerView(view, executer, customerCommands, login);
+        LibrarianView librarianView = new LibrarianView(view, executer, librarianCommands, login);
+        LoginView loginView = new LoginView(login, view, librarianView, customerView);
+        HashMap<String, IView> mainMenuCommands = new HashMap<>();
+        mainMenuCommands.put("0", new QuitView());
+        mainMenuCommands.put("1", new LoginView(login, view, librarianView, customerView));
+        MainMenuView mainMenuView = new MainMenuView(view, mainMenuCommands, executer);
         WelcomeView welcomeView = new WelcomeView(mainMenuView);
 
         Application application = new Application(welcomeView, mainMenuView);

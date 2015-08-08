@@ -13,7 +13,7 @@ public class Executer {
         this.invalidOption = invalidOption;
     }
 
-    public void execute(View view, HashMap<String, Operation> commands) {
+    public void executeUserCommands(View view, HashMap<String, Operation> commands) {
         String input = view.getInput();
         if (commands.containsKey(input)) {
             Operation operation = commands.get(input);
@@ -21,5 +21,14 @@ public class Executer {
         }
         else
             invalidOption.execute();
+    }
+
+    public IView executeMainMenu(View view, HashMap<String, IView> commands) {
+        String option = view.getInput();
+        if (commands.containsKey(option))
+            return commands.get(option);
+        else
+        invalidOption.execute();
+            return null;
     }
 }

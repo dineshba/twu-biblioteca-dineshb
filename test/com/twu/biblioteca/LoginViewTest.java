@@ -58,12 +58,12 @@ public class LoginViewTest {
         customerCommands.put("7", new UserInformation(view, login));
 
         Executer executer = new Executer(new InvalidOption(view));
-        UserView userView = new UserView(view, executer, customerCommands, login);
-        LibraryView libraryView = new LibraryView(view, executer, librarianCommands, login);
-        LoginView loginView = new LoginView(login, view, libraryView, userView);
+        CustomerView customerView = new CustomerView(view, executer, customerCommands, login);
+        LibrarianView librarianView = new LibrarianView(view, executer, librarianCommands, login);
+        LoginView loginView = new LoginView(login, view, librarianView, customerView);
 
         Mockito.when(login.execute(view)).thenReturn(userTwo);
 
-        assertEquals(libraryView.getClass(), loginView.execute().getClass());
+        assertEquals(librarianView.getClass(), loginView.execute().getClass());
     }
 }

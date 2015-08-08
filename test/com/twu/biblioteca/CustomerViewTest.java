@@ -13,7 +13,7 @@ import java.util.HashMap;
 
 import static junit.framework.TestCase.assertNull;
 
-public class UserViewTest {
+public class CustomerViewTest {
 
     @Test
     public void shouldReturnMainView() {
@@ -47,10 +47,10 @@ public class UserViewTest {
         customerCommands.put("7", new UserInformation(view, login));
 
         Executer executer = new Executer(new InvalidOption(view));
-        UserView userView = new UserView(view, executer, customerCommands, login);
+        CustomerView customerView = new CustomerView(view, executer, customerCommands, login);
 
         Mockito.when(view.getInput()).thenReturn("1");
 
-        assertNull(userView.execute());
+        assertNull(customerView.execute());
     }
 }

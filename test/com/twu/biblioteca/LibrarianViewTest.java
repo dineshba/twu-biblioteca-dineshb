@@ -13,7 +13,7 @@ import java.util.HashMap;
 
 import static junit.framework.TestCase.assertNull;
 
-public class LibraryViewTest {
+public class LibrarianViewTest {
 
     @Test
     public void shouldReturnMainView() {
@@ -50,11 +50,11 @@ public class LibraryViewTest {
 
         Executer executer = new Executer(new InvalidOption(view));
 
-        LibraryView libraryView = new LibraryView(view, executer, librarianCommands, login);
+        LibrarianView librarianView = new LibrarianView(view, executer, librarianCommands, login);
 
         Mockito.when(view.getInput()).thenReturn("1");
 
-        assertNull(libraryView.execute());
+        assertNull(librarianView.execute());
     }
 
 }

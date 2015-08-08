@@ -4,14 +4,14 @@ public class LoginView implements IView{
 
     private final Login login;
     private final View view;
-    private final UserView userView;
-    private final LibraryView libraryView;
+    private final CustomerView customerView;
+    private final LibrarianView librarianView;
 
-    public LoginView(Login login, View view, LibraryView libraryView, UserView userView) {
+    public LoginView(Login login, View view, LibrarianView librarianView, CustomerView customerView) {
         this.login = login;
         this.view = view;
-        this.libraryView = libraryView;
-        this.userView = userView;
+        this.librarianView = librarianView;
+        this.customerView = customerView;
     }
 
     @Override
@@ -19,13 +19,18 @@ public class LoginView implements IView{
         Users user = login.execute(view);
             if (!user.isEmpty()) {
             if (user.isAdmin()) {
-                return libraryView;
+                return librarianView;
             }
             else {
-                return userView;
+                return customerView;
             }
         }
         view.show("Invalid Login");
         return null;
+    }
+
+    @Override
+    public String toString() {
+        return "Login";
     }
 }

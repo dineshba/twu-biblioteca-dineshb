@@ -4,14 +4,14 @@ import com.twu.biblioteca.operation.Operation;
 
 import java.util.HashMap;
 
-public class LibraryView implements IView {
+public class LibrarianView implements IView {
 
     private final HashMap<String, Operation> commands;
     private final Executer executer;
     private final Login login;
     private View view;
 
-    public LibraryView(View view, Executer executer, HashMap<String, Operation> commands, Login login) {
+    public LibrarianView(View view, Executer executer, HashMap<String, Operation> commands, Login login) {
         this.view = view;
         this.executer = executer;
         this.commands = commands;
@@ -21,9 +21,9 @@ public class LibraryView implements IView {
     @Override
     public IView execute() {
         view.show(this + "");
-        executer.execute(view, commands);
+        executer.executeUserCommands(view, commands);
         if (login.getCurrentStatus())
-        return this;
+            return this;
         else
             return null;
     }

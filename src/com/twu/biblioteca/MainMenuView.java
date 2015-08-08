@@ -1,23 +1,34 @@
 package com.twu.biblioteca;
 
+import java.util.HashMap;
+
 public class MainMenuView implements IView {
 
     private final View view;
-    private final LoginView loginView;
+    private final HashMap<String, IView> commands;
+    private final Executer executer;
 
-    public MainMenuView(View view, LoginView loginView) {
+    public MainMenuView(View view, HashMap<String, IView> commands, Executer executer) {
         this.view = view;
-        this.loginView = loginView;
+        this.commands = commands;
+        this.executer = executer;
     }
+
     @Override
     public IView execute() {
-        view.show("\n\nEnter the Option\n1.Login\n0.Quit\n\n");
-        String option = view.getInput();
-        if (option.equals("0"))
-            System.exit(0);
-        if (option.equals("1"))
-            return loginView;
-        else
-            return this;
+        view.show(this + "");
+        return executer.executeMainMenu(view, commands);
+    }
+
+    @Override
+    public String toString() {
+        String input = "";
+        int index = 0;
+        String stringIndex = "" +index;
+        while (commands.containsKey(stringIndex)) {
+            input += stringIndex + " " + commands.get(stringIndex) + '\n';
+            stringIndex = "" + ++index;
+        }
+        return input;
     }
 }

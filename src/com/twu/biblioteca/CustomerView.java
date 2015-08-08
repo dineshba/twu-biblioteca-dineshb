@@ -5,14 +5,14 @@ import com.twu.biblioteca.operation.Operation;
 import java.util.HashMap;
 
 
-public class UserView implements IView{
+public class CustomerView implements IView{
 
     private final View view;
     private final HashMap<String, Operation> commands;
     private final Login login;
     private final Executer executer;
 
-    public UserView(View view, Executer executer, HashMap<String, Operation> commands, Login login) {
+    public CustomerView(View view, Executer executer, HashMap<String, Operation> commands, Login login) {
         this.view = view;
         this.executer = executer;
         this.commands = commands;
@@ -21,7 +21,7 @@ public class UserView implements IView{
     @Override
     public IView execute() {
         view.show("" + this);
-        executer.execute(view, commands);
+        executer.executeUserCommands(view, commands);
         if (login.getCurrentStatus())
             return this;
         else
