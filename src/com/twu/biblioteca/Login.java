@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Login {
     private final ArrayList<Users> users;
     private Users user;
+    private boolean status;
 
     public Login(ArrayList<Users> users) {
         this.users = users;
@@ -13,6 +14,7 @@ public class Login {
     public Users authenticate(String name, String password, String roll) {
         for (Users user : users) {
             if (user.authenticate(name, password, roll)) {
+                status = true;
                 this.user = user;
                 return user;
             }
@@ -32,5 +34,13 @@ public class Login {
 
     public Users getCurrentUser() {
         return user;
+    }
+
+    public void resetLoginStatus() {
+        status = !status;
+    }
+
+    public boolean getCurrentStatus() {
+        return status;
     }
 }

@@ -46,8 +46,8 @@ public class UserViewTest {
         customerCommands.put("6", new CheckIn(movieLibrary, view, "CheckIn Movie"));
         customerCommands.put("7", new UserInformation(view, login));
 
-        Parser customerParser = new Parser(view, customerCommands);
-        UserView userView = new UserView(view, customerParser, customerCommands);
+        Executer executer = new Executer(new InvalidOption(view));
+        UserView userView = new UserView(view, executer, customerCommands, login);
 
         Mockito.when(view.getInput()).thenReturn("1");
 

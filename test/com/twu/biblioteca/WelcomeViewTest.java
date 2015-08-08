@@ -56,12 +56,9 @@ public class WelcomeViewTest {
         customerCommands.put("6", new CheckIn(movieLibrary, view, "CheckIn Movie"));
         customerCommands.put("7", new UserInformation(view, login));
 
-
-        Parser customerParser = new Parser(view, customerCommands);
-        Parser librarianParser = new Parser(view, librarianCommands);
-
-        UserView userView = new UserView(view, customerParser, customerCommands);
-        LibraryView libraryView = new LibraryView(view, librarianParser, librarianCommands);
+        Executer executer = new Executer(new InvalidOption(view));
+        UserView userView = new UserView(view, executer, customerCommands, login);
+        LibraryView libraryView = new LibraryView(view, executer, librarianCommands, login);
         LoginView loginView = new LoginView(login, view, libraryView, userView);
         MainMenuView mainMenuView = new MainMenuView(view, loginView);
         WelcomeView welcomeView = new WelcomeView(mainMenuView);

@@ -48,10 +48,9 @@ public class LibraryViewTest {
         librarianCommands.put("8", new ListCheckedOutItems(bookLibrary, view, "List Checked Out Books"));
         librarianCommands.put("9", new ListCheckedOutItems(movieLibrary, view, "List Checked Out Movies"));
 
-        Parser librarianParser = new Parser(view, librarianCommands);
+        Executer executer = new Executer(new InvalidOption(view));
 
-
-        LibraryView libraryView = new LibraryView(view, librarianParser, librarianCommands);
+        LibraryView libraryView = new LibraryView(view, executer, librarianCommands, login);
 
         Mockito.when(view.getInput()).thenReturn("1");
 
