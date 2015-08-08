@@ -74,11 +74,4 @@ public class Library {
         }
         return formattedDetail;
     }
-
-    @Override
-    public String toString() {
-        if (available.get(0).getClass() == Book.class)
-            return "Book";
-        return "Movie";
-    }
 }

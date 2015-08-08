@@ -26,10 +26,6 @@ public class Users {
         return role.equals("Admin");
     }
 
-    public boolean isEmpty() {
-        return role.isEmpty();
-    }
-
     @Override
     public String toString() {
         return String.format("%-20s %-15s %-15s %-15s", number, name, email, phoneNumber);

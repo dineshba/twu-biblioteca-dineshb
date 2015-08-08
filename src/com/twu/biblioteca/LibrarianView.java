@@ -22,7 +22,7 @@ public class LibrarianView implements IView {
     public IView execute() {
         view.show(this + "");
         executer.executeUserCommands(view, commands);
-        if (login.getCurrentStatus())
+        if (login.status())
             return this;
         else
             return null;

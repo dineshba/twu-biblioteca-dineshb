@@ -40,7 +40,7 @@ public class Login {
         status = !status;
     }
 
-    public boolean getCurrentStatus() {
+    public boolean status() {
         return status;
     }
 }

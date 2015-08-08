@@ -1,6 +1,6 @@
 package com.twu.biblioteca;
 
-public class LoginView implements IView{
+public class LoginView implements IView {
 
     private final Login login;
     private final View view;
@@ -17,7 +17,7 @@ public class LoginView implements IView{
     @Override
     public IView execute() {
         Users user = login.execute(view);
-            if (!user.isEmpty()) {
+        if (login.status()) {
             if (user.isAdmin()) {
                 return librarianView;
             }
