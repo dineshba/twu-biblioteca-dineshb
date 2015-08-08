@@ -30,7 +30,7 @@ public class CheckOutTest {
         Library library = new Library(books, login);
         View view = Mockito.mock(View.class);
         Users user = new Users("111-1111", "dinydiny", "User", "Dinesh", "dinesh@gmail.com", "8973882730");
-        CheckOut checkOut = new CheckOut(library, view, user);
+        CheckOut checkOut = new CheckOut(library, view, " ");
 
         Mockito.when(view.getInput()).thenReturn("C++");
         checkOut.execute();
@@ -54,7 +54,7 @@ public class CheckOutTest {
         Library library = new Library(books, login);
         View view = Mockito.mock(View.class);
         Users user = new Users("111-1111", "dinydiny", "User", "Dinesh", "dinesh@gmail.com", "8973882730");
-        CheckOut checkOut = new CheckOut(library, view, user);
+        CheckOut checkOut = new CheckOut(library, view, " ");
 
         Mockito.when(view.getInput()).thenReturn("C");
         checkOut.execute();

@@ -32,8 +32,8 @@ public class ListCheckedOutItemTest {
         Library library = new Library(books, login);
         View view = Mockito.mock(View.class);
         Users user = new Users("111-1111", "dinydiny", "User", "Dinesh", "dinesh@gmail.com", "8973882730");
-        CheckOut checkOut = new CheckOut(library, view, user);
-        ListCheckedOutItems listCheckedOutItems = new ListCheckedOutItems(library, view);
+        CheckOut checkOut = new CheckOut(library, view, " ");
+        ListCheckedOutItems listCheckedOutItems = new ListCheckedOutItems(library, view, " ");
         checkOut.execute();
         Mockito.when(view.getInput()).thenReturn("Java");
 

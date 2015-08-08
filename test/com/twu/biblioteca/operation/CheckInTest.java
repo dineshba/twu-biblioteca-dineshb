@@ -30,7 +30,7 @@ public class CheckInTest {
         Library library = new Library(books, login);
         View view = Mockito.mock(View.class);
         Users user = new Users("111-1111", "dinydiny", "User", "Dinesh", "dinesh@gmail.com", "8973882730");
-        CheckIn checkIn = new CheckIn(library, view, user);
+        CheckIn checkIn = new CheckIn(library, view, "CheckIn Book");
         Mockito.when(view.getInput()).thenReturn("Java");
 
         checkIn.execute();

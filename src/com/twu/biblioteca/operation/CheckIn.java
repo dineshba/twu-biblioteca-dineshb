@@ -1,19 +1,18 @@
 package com.twu.biblioteca.operation;
 
 import com.twu.biblioteca.model.Library;
-import com.twu.biblioteca.Users;
 import com.twu.biblioteca.View;
 
 
 public class CheckIn implements Operation {
     private final Library library;
     private final View view;
-    private final Users user;
+    private String representation;
 
-    public CheckIn(Library library, View view, Users user) {
+    public CheckIn(Library library, View view, String representation) {
         this.library = library;
         this.view = view;
-        this.user = user;
+        this.representation = representation;
     }
 
     @Override
@@ -25,5 +24,10 @@ public class CheckIn implements Operation {
         }
         else
             view.show("That is not a valid item to return");
+    }
+
+    @Override
+    public String toString() {
+        return representation;
     }
 }

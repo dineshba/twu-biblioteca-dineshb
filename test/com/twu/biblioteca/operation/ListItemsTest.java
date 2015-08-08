@@ -32,7 +32,7 @@ public class ListItemsTest {
         Login login = new Login(users);
         Library library = new Library(books, login);
         View view = Mockito.mock(View.class);
-        ListItems listItems = new ListItems(library, view);
+        ListItems listItems = new ListItems(library, view, " ");
 
         listItems.execute();
         Mockito.verify(view, atLeast(2)).show(any(String.class));

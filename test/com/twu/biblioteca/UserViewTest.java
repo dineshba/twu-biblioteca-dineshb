@@ -37,19 +37,17 @@ public class UserViewTest {
         movies.add(movieTwo);
         Library movieLibrary = new Library(movies, login);
 
-        HashMap<String, Operation> customerCommands = new HashMap<String, Operation>();
-        customerCommands.put("1", new ListItems(bookLibrary, view));
-        customerCommands.put("2", new CheckOut(bookLibrary, view, userOne));
-        customerCommands.put("3", new CheckIn(bookLibrary, view, userOne));
-        customerCommands.put("4", new ListItems(movieLibrary, view));
-        customerCommands.put("5", new CheckOut(movieLibrary, view, userOne));
-        customerCommands.put("6", new CheckIn(movieLibrary, view, userOne));
-        customerCommands.put("7", new UserInformation(view, userOne));
-        customerCommands.put("8", new ListCheckedOutItems(bookLibrary, view));
-        customerCommands.put("9", new ListCheckedOutItems(movieLibrary, view));
+        HashMap<String, Operation> customerCommands = new HashMap<>();
+        customerCommands.put("1", new ListItems(bookLibrary, view, "List Books"));
+        customerCommands.put("2", new CheckOut(bookLibrary, view, "CheckOut Book"));
+        customerCommands.put("3", new CheckIn(bookLibrary, view, "CheckIn Book"));
+        customerCommands.put("4", new ListItems(movieLibrary, view, "List Movies"));
+        customerCommands.put("5", new CheckOut(movieLibrary, view, "CheckOut Movie"));
+        customerCommands.put("6", new CheckIn(movieLibrary, view, "CheckIn Movie"));
+        customerCommands.put("7", new UserInformation(view, login));
 
         Parser customerParser = new Parser(view, customerCommands);
-        UserView userView = new UserView(view, customerParser);
+        UserView userView = new UserView(view, customerParser, customerCommands);
 
         Mockito.when(view.getInput()).thenReturn("1");
 

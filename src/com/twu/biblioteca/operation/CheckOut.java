@@ -8,12 +8,12 @@ import com.twu.biblioteca.View;
 public class CheckOut implements Operation {
     private final Library library;
     private final View view;
-    private final Users user;
+    private String representation;
 
-    public CheckOut(Library library, View view, Users user) {
+    public CheckOut(Library library, View view,String representation) {
         this.view = view;
         this.library = library;
-        this.user = user;
+        this.representation = representation;
     }
 
     @Override
@@ -24,5 +24,10 @@ public class CheckOut implements Operation {
             view.show("Thank you! Enjoy");
         else
             view.show("That requested item is not availableDetails");
+    }
+
+    @Override
+    public String toString() {
+        return representation;
     }
 }
