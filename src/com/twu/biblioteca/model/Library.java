@@ -1,5 +1,6 @@
 package com.twu.biblioteca.model;
 
+import com.twu.biblioteca.Login;
 import com.twu.biblioteca.Users;
 
 import java.util.ArrayList;
@@ -7,14 +8,22 @@ import java.util.HashMap;
 
 
 public class Library {
+    private final Login login;
     private ArrayList<LibrarySection> available;
     private HashMap<LibrarySection, Users> checkedOutUser = new HashMap<LibrarySection, Users>();
+    private Users user;
 
-    public Library(ArrayList<LibrarySection> available) {
+    public Library(ArrayList<LibrarySection> available, Login login) {
+        this.login = login;
         this.available = available;
     }
 
-    public Boolean checkOut(String requestedItem, Users user) {
+    private void getCurrentUser() {
+        this.user = login.getCurrentUser();
+    }
+
+    public Boolean checkOut(String requestedItem) {
+        getCurrentUser();
         for (LibrarySection item : available) {
             if (item.hasName(requestedItem)) {
                 available.remove(item);
@@ -25,7 +34,8 @@ public class Library {
         return false;
     }
 
-    public Boolean checkIn(String requestedItem, Users user) {
+    public Boolean checkIn(String requestedItem) {
+        getCurrentUser();
         for (LibrarySection item : checkedOutUser.keySet()) {
             if (item.hasName(requestedItem)) {
                 if (user.hasName(checkedOutUser.get(item))) {

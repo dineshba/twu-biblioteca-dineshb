@@ -15,11 +15,9 @@ public class Parser {
     }
 
     public Operation userInput(String input) {
-            try {
+        if (commands.containsKey(input))
                 return commands.get(input);
-            }
-            catch (NullPointerException e) {
-                return new InvalidOption(view);
-            }
+        else
+            return new InvalidOption(view);
     }
 }

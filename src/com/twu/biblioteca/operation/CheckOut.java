@@ -20,7 +20,7 @@ public class CheckOut implements Operation {
     public void execute() {
         view.show("Enter the Name");
         String requestedItem = view.getInput();
-        if (library.checkOut(requestedItem, user))
+        if (library.checkOut(requestedItem))
             view.show("Thank you! Enjoy");
         else
             view.show("That requested item is not availableDetails");

@@ -12,6 +12,7 @@ import org.mockito.Mockito;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.lang.reflect.Member;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -39,36 +40,56 @@ public class ApplicationTest {
         View view = Mockito.mock(View.class);
         Book bookOne = new Book("Java", "Robert", "2009");
         Book bookTwo = new Book("C++", "Dinesh", "2020");
-        ArrayList<LibrarySection> books = new ArrayList<LibrarySection>();
+        ArrayList<LibrarySection> books = new ArrayList<>();
         books.add(bookOne);
         books.add(bookTwo);
-        Library bookLibrary = new Library(books);
+        Users userOne = new Users("111-1111", "dinydiny", "User", "Dinesh", "dinesh@gmail.com", "8973882730");
+        Users userTwo = new Users("111-1112", "admin", "Admin", "Babu", "babu@yahoo.com", "9791621203");
+        ArrayList<Users> users = new ArrayList<>();
+        users.add(userOne);
+        users.add(userTwo);
+        Login login = new Login(users);
+        Library bookLibrary = new Library(books, login);
         Movie movieOne = new Movie("Sivaji", "2009", "Sankar", "10");
         Movie movieTwo = new Movie("kaakaaMuttai", "2009", "Bala", "9");
-        ArrayList<LibrarySection> movies = new ArrayList<LibrarySection>();
+        ArrayList<LibrarySection> movies = new ArrayList<>();
         movies.add(movieOne);
         movies.add(movieTwo);
-        Library movieLibrary = new Library(movies);
-        Users user = new Users("111-1111", "dinydiny", "User", "Dinesh", "dinesh@gmail.com", "8973882730");
-        ArrayList<Users> users = new ArrayList<Users>();
-        users.add(user);
-        HashMap<String, Operation> customerCommands = new HashMap<String, Operation>();
+        Library movieLibrary = new Library(movies, login);
+
+        HashMap<String, Operation> librarianCommands = new HashMap<>();
+        librarianCommands.put("1", new ListItems(bookLibrary, view));
+        librarianCommands.put("2", new CheckOut(bookLibrary, view, userOne));
+        librarianCommands.put("3", new CheckIn(bookLibrary, view, userOne));
+        librarianCommands.put("4", new ListItems(movieLibrary, view));
+        librarianCommands.put("5", new CheckOut(movieLibrary, view, userOne));
+        librarianCommands.put("6", new CheckIn(movieLibrary, view, userOne));
+        librarianCommands.put("7", new UserInformation(view, userOne));
+        librarianCommands.put("8", new ListCheckedOutItems(bookLibrary, view));
+        librarianCommands.put("9", new ListCheckedOutItems(movieLibrary, view));
+
+        HashMap<String, Operation> customerCommands = new HashMap<>();
         customerCommands.put("1", new ListItems(bookLibrary, view));
-        customerCommands.put("2", new CheckOut(bookLibrary, view, user));
-        customerCommands.put("3", new CheckIn(bookLibrary, view, user));
+        customerCommands.put("2", new CheckOut(bookLibrary, view, userOne));
+        customerCommands.put("3", new CheckIn(bookLibrary, view, userOne));
         customerCommands.put("4", new ListItems(movieLibrary, view));
-        customerCommands.put("5", new CheckOut(movieLibrary, view, user));
-        customerCommands.put("6", new CheckIn(movieLibrary, view, user));
-        customerCommands.put("7", new UserInformation(view, user));
+        customerCommands.put("5", new CheckOut(movieLibrary, view, userOne));
+        customerCommands.put("6", new CheckIn(movieLibrary, view, userOne));
+        customerCommands.put("7", new UserInformation(view, userOne));
         customerCommands.put("8", new ListCheckedOutItems(bookLibrary, view));
         customerCommands.put("9", new ListCheckedOutItems(movieLibrary, view));
-        Parser parser = new Parser(view, customerCommands);
 
-        Login login = new Login(users);
-        Application application = new Application(view, parser, login);
+        Parser customerParser = new Parser(view, customerCommands);
+        Parser librarianParser = new Parser(view, librarianCommands);
 
-        Mockito.when(view.getInput()).thenReturn("abc");
-        application.start(false);
-        Mockito.verify(view, atLeast(1)).show(any(String.class));
+        UserView userView = new UserView(view, customerParser);
+        LibraryView libraryView = new LibraryView(view, librarianParser);
+        LoginView loginView = new LoginView(login, view, libraryView, userView);
+        MainMenuView mainMenuView = new MainMenuView(view, loginView);
+        WelcomeView welcomeView = new WelcomeView(mainMenuView);
+
+        Application application = new Application(welcomeView, mainMenuView);
+        //application.start();
+        //Mockito.verify(view, atLeast(1)).show(any(String.class));
     }
 }

@@ -1,5 +1,6 @@
 package com.twu.biblioteca.model;
 
+import com.twu.biblioteca.Login;
 import com.twu.biblioteca.model.Book;
 import com.twu.biblioteca.model.Library;
 import com.twu.biblioteca.model.LibrarySection;
@@ -37,7 +38,13 @@ public class LibraryTest {
         ArrayList<LibrarySection> books = new ArrayList<LibrarySection>();
         books.add(bookOne);
         books.add(bookTwo);
-        Library library = new Library(books);
+        Users userOne = new Users("111-1111", "dinydiny", "User", "Dinesh", "dinesh@gmail.com", "8973882730");
+        Users userTwo = new Users("111-1112", "admin", "Admin", "Babu", "babu@yahoo.com", "9791621203");
+        ArrayList<Users> users = new ArrayList<>();
+        users.add(userOne);
+        users.add(userTwo);
+        Login login = new Login(users);
+        Library library = new Library(books, login);
 
         assertEquals(String.format("%-15s %-15s %-20s\n%-15s %-15s %-20s\n", "Java", "Robert", "2009", "C++", "Dinesh", "2020"), library.availableDetails());
     }
@@ -49,10 +56,16 @@ public class LibraryTest {
         ArrayList<LibrarySection> books = new ArrayList<LibrarySection>();
         books.add(bookOne);
         books.add(bookTwo);
-        Library library = new Library(books);
+        Users userOne = new Users("111-1111", "dinydiny", "User", "Dinesh", "dinesh@gmail.com", "8973882730");
+        Users userTwo = new Users("111-1112", "admin", "Admin", "Babu", "babu@yahoo.com", "9791621203");
+        ArrayList<Users> users = new ArrayList<>();
+        users.add(userOne);
+        users.add(userTwo);
+        Login login = new Login(users);
+        Library library = new Library(books, login);
         Users user = new Users("111-1111", "dinydiny", "User", "Dinesh", "dinesh@gmail.com", "8973882730");
 
-        assertEquals(true, library.checkOut("Java", user));
+        assertEquals(true, library.checkOut("Java"));
     }
 
     @Test
@@ -62,8 +75,14 @@ public class LibraryTest {
         ArrayList<LibrarySection> books = new ArrayList<LibrarySection>();
         books.add(bookOne);
         books.add(bookTwo);
-        Library library = new Library(books);
+        Users userOne = new Users("111-1111", "dinydiny", "User", "Dinesh", "dinesh@gmail.com", "8973882730");
+        Users userTwo = new Users("111-1112", "admin", "Admin", "Babu", "babu@yahoo.com", "9791621203");
+        ArrayList<Users> users = new ArrayList<>();
+        users.add(userOne);
+        users.add(userTwo);
+        Login login = new Login(users);
+        Library library = new Library(books, login);
 
-        assertEquals(false, library.checkIn("Java", new Users("", "", "", "Dinesh", "dinesh@gmail.com", "8973882730")));
+        assertEquals(false, library.checkIn("Java"));
     }
 }

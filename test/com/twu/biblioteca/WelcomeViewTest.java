@@ -22,19 +22,19 @@ public class WelcomeViewTest {
         ArrayList<LibrarySection> books = new ArrayList<LibrarySection>();
         books.add(bookOne);
         books.add(bookTwo);
-        Library bookLibrary = new Library(books);
+        Users userOne = new Users("111-1111", "dinydiny", "User", "Dinesh", "dinesh@gmail.com", "8973882730");
+        Users userTwo = new Users("111-1112", "admin", "Admin", "Babu", "babu@yahoo.com", "9791621203");
+        ArrayList<Users> users = new ArrayList<>();
+        users.add(userOne);
+        users.add(userTwo);
+        Login login = new Login(users);
+        Library bookLibrary = new Library(books, login);
         Movie movieOne = new Movie("Sivaji", "2009", "Sankar", "10");
         Movie movieTwo = new Movie("kaakaaMuttai", "2009", "Bala", "9");
         ArrayList<LibrarySection> movies = new ArrayList<LibrarySection>();
         movies.add(movieOne);
         movies.add(movieTwo);
-        Library movieLibrary = new Library(movies);
-
-        Users userOne = new Users("111-1111", "dinydiny", "User", "Dinesh", "dinesh@gmail.com", "8973882730");
-        Users userTwo = new Users("111-1112", "admin", "Admin", "Babu", "babu@yahoo.com", "9791621203");
-        ArrayList<Users> users = new ArrayList<Users>();
-        users.add(userOne);
-        users.add(userTwo);
+        Library movieLibrary = new Library(movies, login);
 
         HashMap<String, Operation> librarianCommands = new HashMap<String, Operation>();
         librarianCommands.put("1", new ListItems(bookLibrary, view));
@@ -60,7 +60,6 @@ public class WelcomeViewTest {
 
         Parser customerParser = new Parser(view, customerCommands);
         Parser librarianParser = new Parser(view, librarianCommands);
-        Login login = new Login(users);
 
         UserView userView = new UserView(view, customerParser);
         LibraryView libraryView = new LibraryView(view, librarianParser);

@@ -1,5 +1,7 @@
 package com.twu.biblioteca.operation;
 
+import com.twu.biblioteca.Login;
+import com.twu.biblioteca.Users;
 import com.twu.biblioteca.model.Book;
 import com.twu.biblioteca.model.Library;
 import com.twu.biblioteca.model.LibrarySection;
@@ -22,7 +24,13 @@ public class ListItemsTest {
         ArrayList<LibrarySection> books = new ArrayList<LibrarySection>();
         books.add(bookOne);
         books.add(bookTwo);
-        Library library = new Library(books);
+        Users userOne = new Users("111-1111", "dinydiny", "User", "Dinesh", "dinesh@gmail.com", "8973882730");
+        Users userTwo = new Users("111-1112", "admin", "Admin", "Babu", "babu@yahoo.com", "9791621203");
+        ArrayList<Users> users = new ArrayList<>();
+        users.add(userOne);
+        users.add(userTwo);
+        Login login = new Login(users);
+        Library library = new Library(books, login);
         View view = Mockito.mock(View.class);
         ListItems listItems = new ListItems(library, view);
 

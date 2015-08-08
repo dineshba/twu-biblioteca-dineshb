@@ -16,10 +16,10 @@ public class UserView implements IView{
     public IView execute() {
         view.show("\n\n\nEnter the Options\n1.ListBooks\n2.CheckOutBook\n3.CheckInBook\n4.ListMovies\n5.CheckOutMovie\n6.CheckInMovie\n7.UserInformation\n0.Logout\n\n\n");
         String input = view.getInput();
-        Operation operation = parser.userInput(input);
-        operation.execute();
         if (input.equals("0"))
             return null;
+        Operation operation = parser.userInput(input);
+        operation.execute();
         return this;
     }
 }

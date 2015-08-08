@@ -14,25 +14,25 @@ public class Main {
 
     public static void main(String[] args) {
         View view = new View();
-        Book bookOne = new Book("Java", "Robert", "2009");
-        Book bookTwo = new Book("C++", "Dinesh", "2020");
-        ArrayList<LibrarySection> books = new ArrayList<>();
-        books.add(bookOne);
-        books.add(bookTwo);
-        Library bookLibrary = new Library(books);
-        Movie movieOne = new Movie("Sivaji", "2009", "Sankar", "10");
-        Movie movieTwo = new Movie("kaakaaMuttai", "2009", "Bala", "9");
-        ArrayList<LibrarySection> movies = new ArrayList<>();
-        movies.add(movieOne);
-        movies.add(movieTwo);
-        Library movieLibrary = new Library(movies);
-
         Users userOne = new Users("111-1111", "dinydiny", "User", "Dinesh", "dinesh@gmail.com", "8973882730");
         Users userTwo = new Users("111-1112", "admin", "Admin", "Babu", "babu@yahoo.com", "9791621203");
         ArrayList<Users> users = new ArrayList<>();
         users.add(userOne);
         users.add(userTwo);
         Login login = new Login(users);
+
+        Book bookOne = new Book("Java", "Robert", "2009");
+        Book bookTwo = new Book("C++", "Dinesh", "2020");
+        ArrayList<LibrarySection> books = new ArrayList<>();
+        books.add(bookOne);
+        books.add(bookTwo);
+        Library bookLibrary = new Library(books, login);
+        Movie movieOne = new Movie("Sivaji", "2009", "Sankar", "10");
+        Movie movieTwo = new Movie("kaakaaMuttai", "2009", "Bala", "9");
+        ArrayList<LibrarySection> movies = new ArrayList<>();
+        movies.add(movieOne);
+        movies.add(movieTwo);
+        Library movieLibrary = new Library(movies, login);
 
         HashMap<String, Operation> librarianCommands = new HashMap<>();
         librarianCommands.put("1", new ListItems(bookLibrary, view));

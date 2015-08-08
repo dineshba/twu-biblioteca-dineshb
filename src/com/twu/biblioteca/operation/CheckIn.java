@@ -20,7 +20,7 @@ public class CheckIn implements Operation {
     public void execute() {
         view.show("Enter the Name");
         String userBook = view.getInput();
-        if (library.checkIn(userBook, user)) {
+        if (library.checkIn(userBook)) {
             view.show("Thank you for returning");
         }
         else
