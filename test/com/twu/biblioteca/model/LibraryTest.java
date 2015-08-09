@@ -5,6 +5,7 @@ import com.twu.biblioteca.model.Book;
 import com.twu.biblioteca.model.Library;
 import com.twu.biblioteca.model.LibrarySection;
 import com.twu.biblioteca.Users;
+import com.twu.biblioteca.reponse.Success;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -44,7 +45,8 @@ public class LibraryTest {
         users.add(userOne);
         users.add(userTwo);
         Login login = new Login(users);
-        Library library = new Library(books, login);
+        Success success = new Success();
+        Library library = new Library(books, login, success);
 
         assertEquals(String.format("%-15s %-15s %-20s\n%-15s %-15s %-20s\n", "Java", "Robert", "2009", "C++", "Dinesh", "2020"), library.availableDetails());
     }
@@ -62,10 +64,11 @@ public class LibraryTest {
         users.add(userOne);
         users.add(userTwo);
         Login login = new Login(users);
-        Library library = new Library(books, login);
+        Success success = new Success();
+        Library library = new Library(books, login, success);
         Users user = new Users("111-1111", "dinydiny", "User", "Dinesh", "dinesh@gmail.com", "8973882730");
 
-        assertEquals(true, library.checkOut("Java"));
+        assertEquals(success, library.checkOut("Java"));
     }
 
     @Test
@@ -81,7 +84,8 @@ public class LibraryTest {
         users.add(userOne);
         users.add(userTwo);
         Login login = new Login(users);
-        Library library = new Library(books, login);
+        Success success = new Success();
+        Library library = new Library(books, login, success);
 
         assertEquals(false, library.checkIn("Java"));
     }

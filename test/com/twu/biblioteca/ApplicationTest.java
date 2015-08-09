@@ -5,6 +5,7 @@ import com.twu.biblioteca.model.Library;
 import com.twu.biblioteca.model.LibrarySection;
 import com.twu.biblioteca.model.Movie;
 import com.twu.biblioteca.operation.*;
+import com.twu.biblioteca.reponse.Success;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -47,13 +48,14 @@ public class ApplicationTest {
         users.add(userOne);
         users.add(userTwo);
         Login login = new Login(users);
-        Library bookLibrary = new Library(books, login);
+        Success success = new Success();
+        Library bookLibrary = new Library(books, login, success);
         Movie movieOne = new Movie("Sivaji", "2009", "Sankar", "10");
         Movie movieTwo = new Movie("kaakaaMuttai", "2009", "Bala", "9");
         ArrayList<LibrarySection> movies = new ArrayList<>();
         movies.add(movieOne);
         movies.add(movieTwo);
-        Library movieLibrary = new Library(movies, login);
+        Library movieLibrary = new Library(movies, login, success);
 
         HashMap<String, Operation> librarianCommands = new HashMap<>();
         librarianCommands.put("1", new ListItems(bookLibrary, view, "List Books"));

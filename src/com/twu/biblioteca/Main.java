@@ -5,6 +5,7 @@ import com.twu.biblioteca.model.Library;
 import com.twu.biblioteca.model.LibrarySection;
 import com.twu.biblioteca.model.Movie;
 import com.twu.biblioteca.operation.*;
+import com.twu.biblioteca.reponse.Success;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,20 +27,21 @@ public class Main {
         ArrayList<LibrarySection> books = new ArrayList<>();
         books.add(bookOne);
         books.add(bookTwo);
-        Library bookLibrary = new Library(books, login);
+        Success success = new Success();
+        Library bookLibrary = new Library(books, login, success);
         Movie movieOne = new Movie("Sivaji", "2009", "Sankar", "10");
         Movie movieTwo = new Movie("kaakaaMuttai", "2009", "Bala", "9");
         ArrayList<LibrarySection> movies = new ArrayList<>();
         movies.add(movieOne);
         movies.add(movieTwo);
-        Library movieLibrary = new Library(movies, login);
+        Library movieLibrary = new Library(movies, login, success);
 
         HashMap<String, Operation> librarianCommands = new HashMap<>();
         librarianCommands.put("0", new Logout(login));
         librarianCommands.put("1", new ListItems(bookLibrary, view, "List Books"));
-        librarianCommands.put("2", new CheckOut(bookLibrary, view, "CheckOut Books"));
-        librarianCommands.put("3", new CheckIn(bookLibrary, view, "CheckIn Books"));
-        librarianCommands.put("4", new ListItems(movieLibrary, view, "ListMovies"));
+        librarianCommands.put("2", new CheckOut(bookLibrary, view, "CheckOut Book"));
+        librarianCommands.put("3", new CheckIn(bookLibrary, view, "CheckIn Book"));
+        librarianCommands.put("4", new ListItems(movieLibrary, view, "ListMovie"));
         librarianCommands.put("5", new CheckOut(movieLibrary, view, "CheckOut Movie"));
         librarianCommands.put("6", new CheckIn(movieLibrary, view, "CheckIn Movie"));
         librarianCommands.put("7", new UserInformation(view, login));

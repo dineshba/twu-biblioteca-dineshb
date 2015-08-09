@@ -6,6 +6,7 @@ import com.twu.biblioteca.model.Library;
 import com.twu.biblioteca.model.LibrarySection;
 import com.twu.biblioteca.Users;
 import com.twu.biblioteca.View;
+import com.twu.biblioteca.reponse.Success;
 import org.junit.Test;
 import org.mockito.Mockito;
 
@@ -27,7 +28,8 @@ public class CheckInTest {
         users.add(userOne);
         users.add(userTwo);
         Login login = new Login(users);
-        Library library = new Library(books, login);
+        Success success = new Success();
+        Library library = new Library(books, login, success);
         View view = Mockito.mock(View.class);
         Users user = new Users("111-1111", "dinydiny", "User", "Dinesh", "dinesh@gmail.com", "8973882730");
         CheckIn checkIn = new CheckIn(library, view, "CheckIn Book");

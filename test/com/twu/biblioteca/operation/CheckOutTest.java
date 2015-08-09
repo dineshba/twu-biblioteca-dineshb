@@ -6,7 +6,9 @@ import com.twu.biblioteca.model.Library;
 import com.twu.biblioteca.model.LibrarySection;
 import com.twu.biblioteca.Users;
 import com.twu.biblioteca.View;
+import com.twu.biblioteca.reponse.Success;
 import org.junit.Test;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import java.util.ArrayList;
@@ -27,15 +29,16 @@ public class CheckOutTest {
         users.add(userOne);
         users.add(userTwo);
         Login login = new Login(users);
-        Library library = new Library(books, login);
+        Success success = new Success();
+        Library library = new Library(books, login, success);
         View view = Mockito.mock(View.class);
-        Users user = new Users("111-1111", "dinydiny", "User", "Dinesh", "dinesh@gmail.com", "8973882730");
-        CheckOut checkOut = new CheckOut(library, view, " ");
+        CheckOut checkOut = new CheckOut(library, view, "book");
 
         Mockito.when(view.getInput()).thenReturn("C++");
         checkOut.execute();
 
-        Mockito.verify(view).show("Thank you! Enjoy");
+        Mockito.verify(view).show("Enter the Name");
+        Mockito.verify(view).show("Thank you! Enjoy the book");
     }
 
     @Test
@@ -50,15 +53,16 @@ public class CheckOutTest {
         ArrayList<Users> users = new ArrayList<>();
         users.add(userOne);
         users.add(userTwo);
-        Login login = new Login(users);
-        Library library = new Library(books, login);
+        Success success = new Success();
+        Library library = Mockito.mock(Library.class);
         View view = Mockito.mock(View.class);
-        Users user = new Users("111-1111", "dinydiny", "User", "Dinesh", "dinesh@gmail.com", "8973882730");
         CheckOut checkOut = new CheckOut(library, view, " ");
 
-        Mockito.when(view.getInput()).thenReturn("C");
+        Mockito.when(view.getInput()).thenReturn("C++");
+        Mockito.when(library.checkOut("C++")).thenReturn(null);
         checkOut.execute();
 
-        Mockito.verify(view).show("That requested item is not availableDetails");
+        Mockito.verify(view).show("Enter the Name");
+        Mockito.verify(view).show("null ");
     }
 }
