@@ -2,8 +2,7 @@ package com.twu.biblioteca.model;
 
 import com.twu.biblioteca.Login;
 import com.twu.biblioteca.Users;
-import com.twu.biblioteca.reponse.Response;
-import com.twu.biblioteca.reponse.Success;
+import com.twu.biblioteca.reponse.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,15 +10,21 @@ import java.util.HashMap;
 
 public class Library {
     private final Login login;
+    private final FailureCheckIn failureCheckIn;
+    private final FailureCheckOut failureCheckOut;
+    private final SuccessCheckIn successCheckIn;
     private ArrayList<LibrarySection> available;
     private HashMap<LibrarySection, Users> checkedOutUser = new HashMap<LibrarySection, Users>();
     private Users user;
-    private final Success success;
+    private final SuccessCheckOut successCheckOut;
 
-    public Library(ArrayList<LibrarySection> available, Login login, Success success) {
+    public Library(ArrayList<LibrarySection> available, Login login, SuccessCheckOut successCheckOut, FailureCheckOut failureCheckOut, SuccessCheckIn successCheckIn, FailureCheckIn failureCheckIn) {
         this.login = login;
         this.available = available;
-        this.success = success;
+        this.successCheckOut = successCheckOut;
+        this.failureCheckOut = failureCheckOut;
+        this.successCheckIn = successCheckIn;
+        this.failureCheckIn = failureCheckIn;
     }
 
     private void getCurrentUser() {
@@ -32,24 +37,24 @@ public class Library {
             if (item.hasName(requestedItem)) {
                 available.remove(item);
                 checkedOutUser.put(item, user);
-                return success;
+                return successCheckOut;
             }
         }
-        return null;
+        return failureCheckOut;
     }
 
-    public Boolean checkIn(String requestedItem) {
+    public Response checkIn(String requestedItem) {
         getCurrentUser();
         for (LibrarySection item : checkedOutUser.keySet()) {
             if (item.hasName(requestedItem)) {
                 if (user.hasName(checkedOutUser.get(item))) {
                     available.add(item);
                     checkedOutUser.remove(item);
-                    return true;
+                    return successCheckIn;
                 }
             }
         }
-        return false;
+        return failureCheckIn;
     }
 
     public String availableDetails() {

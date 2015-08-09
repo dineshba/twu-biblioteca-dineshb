@@ -25,6 +25,6 @@ public class ListItems implements Operation {
 
     @Override
     public String toString() {
-        return representation;
+        return "List " + representation;
     }
 }

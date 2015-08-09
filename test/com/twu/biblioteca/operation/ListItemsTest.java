@@ -6,7 +6,10 @@ import com.twu.biblioteca.model.Book;
 import com.twu.biblioteca.model.Library;
 import com.twu.biblioteca.model.LibrarySection;
 import com.twu.biblioteca.View;
-import com.twu.biblioteca.reponse.Success;
+import com.twu.biblioteca.reponse.FailureCheckIn;
+import com.twu.biblioteca.reponse.FailureCheckOut;
+import com.twu.biblioteca.reponse.SuccessCheckIn;
+import com.twu.biblioteca.reponse.SuccessCheckOut;
 import org.junit.Test;
 import org.mockito.Mockito;
 
@@ -31,8 +34,11 @@ public class ListItemsTest {
         users.add(userOne);
         users.add(userTwo);
         Login login = new Login(users);
-        Success success = new Success();
-        Library library = new Library(books, login, success);
+        SuccessCheckOut successCheckOut = new SuccessCheckOut();
+        FailureCheckOut failureCheckOut = new FailureCheckOut();
+        SuccessCheckIn successCheckIn = new SuccessCheckIn();
+        FailureCheckIn failureCheckIn = new FailureCheckIn();
+        Library library = new Library(books, login, successCheckOut, failureCheckOut, successCheckIn, failureCheckIn);
         View view = Mockito.mock(View.class);
         ListItems listItems = new ListItems(library, view, " ");
 

@@ -25,14 +25,6 @@
         </junit>
 
         <junit haltonfailure="true" printsummary="true" showoutput="yes">
-            <test name="com.twu.biblioteca.ApplicationTest"/>
-            <classpath>
-                <pathelement location="out"/>
-                <path refid="classpath"/>
-            </classpath>
-        </junit>
-
-        <junit haltonfailure="true" printsummary="true" showoutput="yes">
             <test name="com.twu.biblioteca.operation.CheckOutTest"/>
             <classpath>
                 <pathelement location="out"/>
@@ -58,14 +50,6 @@
 
         <junit haltonfailure="true" printsummary="true" showoutput="yes">
             <test name="com.twu.biblioteca.operation.ListItemsTest"/>
-            <classpath>
-                <pathelement location="out"/>
-                <path refid="classpath"/>
-            </classpath>
-        </junit>
-
-        <junit haltonfailure="true" printsummary="true" showoutput="yes">
-            <test name="com.twu.biblioteca.operation.ParserTest"/>
             <classpath>
                 <pathelement location="out"/>
                 <path refid="classpath"/>

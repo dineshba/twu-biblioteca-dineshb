@@ -17,22 +17,23 @@ import java.util.HashMap;
 
 import static org.junit.Assert.assertEquals;
 
-public class LoginViewTest {
+public class MainMenuViewTest {
 
     @Test
-    public void shouldReturnNextViewBasedOnLoggedUser() {
+    public void shouldReturnTheLoginViewForOptionOne() {
         View view = new View();
-        Book bookOne = new Book("Java", "Robert", "2009");
-        Book bookTwo = new Book("C++", "Dinesh", "2020");
-        ArrayList<LibrarySection> books = new ArrayList<LibrarySection>();
-        books.add(bookOne);
-        books.add(bookTwo);
         Users userOne = new Users("111-1111", "dinydiny", "User", "Dinesh", "dinesh@gmail.com", "8973882730");
         Users userTwo = new Users("111-1112", "admin", "Admin", "Babu", "babu@yahoo.com", "9791621203");
         ArrayList<Users> users = new ArrayList<>();
         users.add(userOne);
         users.add(userTwo);
         Login login = new Login(users);
+
+        Book bookOne = new Book("Java", "Robert", "2009");
+        Book bookTwo = new Book("C++", "Dinesh", "2020");
+        ArrayList<LibrarySection> books = new ArrayList<>();
+        books.add(bookOne);
+        books.add(bookTwo);
         SuccessCheckOut successCheckOut = new SuccessCheckOut();
         FailureCheckOut failureCheckOut = new FailureCheckOut();
         SuccessCheckIn successCheckIn = new SuccessCheckIn();
@@ -40,38 +41,44 @@ public class LoginViewTest {
         Library bookLibrary = new Library(books, login, successCheckOut, failureCheckOut, successCheckIn, failureCheckIn);
         Movie movieOne = new Movie("Sivaji", "2009", "Sankar", "10");
         Movie movieTwo = new Movie("kaakaaMuttai", "2009", "Bala", "9");
-        ArrayList<LibrarySection> movies = new ArrayList<LibrarySection>();
+        ArrayList<LibrarySection> movies = new ArrayList<>();
         movies.add(movieOne);
         movies.add(movieTwo);
         Library movieLibrary = new Library(movies, login, successCheckOut, failureCheckOut, successCheckIn, failureCheckIn);
 
         HashMap<String, Operation> librarianCommands = new HashMap<>();
-        librarianCommands.put("1", new ListItems(bookLibrary, view, "List Books"));
-        librarianCommands.put("2", new CheckOut(bookLibrary, view, "CheckOut Books"));
-        librarianCommands.put("3", new CheckIn(bookLibrary, view, "CheckIn Books"));
-        librarianCommands.put("4", new ListItems(movieLibrary, view, "ListMovies"));
-        librarianCommands.put("5", new CheckOut(movieLibrary, view, "CheckOut Movie"));
-        librarianCommands.put("6", new CheckIn(movieLibrary, view, "CheckIn Movie"));
+        librarianCommands.put("0", new Logout(login));
+        librarianCommands.put("1", new ListItems(bookLibrary, view, "Books"));
+        librarianCommands.put("2", new CheckOut(bookLibrary, view, "Book"));
+        librarianCommands.put("3", new CheckIn(bookLibrary, view, "Book"));
+        librarianCommands.put("4", new ListItems(movieLibrary, view, "Movie"));
+        librarianCommands.put("5", new CheckOut(movieLibrary, view, "Movie"));
+        librarianCommands.put("6", new CheckIn(movieLibrary, view, "Movie"));
         librarianCommands.put("7", new UserInformation(view, login));
-        librarianCommands.put("8", new ListCheckedOutItems(bookLibrary, view, "List Checked Out Books"));
-        librarianCommands.put("9", new ListCheckedOutItems(movieLibrary, view, "List Checked Out Movies"));
+        librarianCommands.put("8", new ListCheckedOutItems(bookLibrary, view, "Books"));
+        librarianCommands.put("9", new ListCheckedOutItems(movieLibrary, view, "Movies"));
 
         HashMap<String, Operation> customerCommands = new HashMap<>();
-        customerCommands.put("1", new ListItems(bookLibrary, view, "List Books"));
-        customerCommands.put("2", new CheckOut(bookLibrary, view, "CheckOut Book"));
-        customerCommands.put("3", new CheckIn(bookLibrary, view, "CheckIn Book"));
-        customerCommands.put("4", new ListItems(movieLibrary, view, "List Movies"));
-        customerCommands.put("5", new CheckOut(movieLibrary, view, "CheckOut Movie"));
-        customerCommands.put("6", new CheckIn(movieLibrary, view, "CheckIn Movie"));
+        customerCommands.put( "0", new Logout(login));
+        customerCommands.put("1", new ListItems(bookLibrary, view, "Books"));
+        customerCommands.put("2", new CheckOut(bookLibrary, view, "Book"));
+        customerCommands.put("3", new CheckIn(bookLibrary, view, "Book"));
+        customerCommands.put("4", new ListItems(movieLibrary, view, "Movies"));
+        customerCommands.put("5", new CheckOut(movieLibrary, view, "Movie"));
+        customerCommands.put("6", new CheckIn(movieLibrary, view, "Movie"));
         customerCommands.put("7", new UserInformation(view, login));
 
-        Executer executer = new Executer(new InvalidOption(view));
+        Executer executer = Mockito.mock(Executer.class);
         CustomerView customerView = new CustomerView(view, executer, customerCommands, login);
         LibrarianView librarianView = new LibrarianView(view, executer, librarianCommands, login);
-        LoginView loginView = new LoginView(login, view, librarianView, customerView);
+        HashMap<String, IView> mainMenuCommands = new HashMap<>();
+        mainMenuCommands.put("0", new QuitView());
+        mainMenuCommands.put("1", new LoginView(login, view, librarianView, customerView));
+        MainMenuView mainMenuView = new MainMenuView(view, mainMenuCommands, executer);
 
-        Mockito.when(login.execute(view)).thenReturn(userTwo);
+        Mockito.when(executer.executeMainMenu(view, mainMenuCommands)).thenReturn(new LoginView(login, view, librarianView, customerView));
 
-        assertEquals(librarianView.getClass(), loginView.execute().getClass());
+        assertEquals(LoginView.class, mainMenuView.execute().getClass());
     }
+
 }

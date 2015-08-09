@@ -5,6 +5,7 @@ import com.twu.biblioteca.operation.Operation;
 
 import java.util.HashMap;
 
+
 public class Executer {
 
     private final InvalidOption invalidOption;
@@ -28,7 +29,7 @@ public class Executer {
         if (commands.containsKey(option))
             return commands.get(option);
         else
-        invalidOption.execute();
-            return null;
+            invalidOption.execute();
+        return null;
     }
 }

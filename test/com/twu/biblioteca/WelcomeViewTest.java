@@ -5,7 +5,10 @@ import com.twu.biblioteca.model.Library;
 import com.twu.biblioteca.model.LibrarySection;
 import com.twu.biblioteca.model.Movie;
 import com.twu.biblioteca.operation.*;
-import com.twu.biblioteca.reponse.Success;
+import com.twu.biblioteca.reponse.FailureCheckIn;
+import com.twu.biblioteca.reponse.FailureCheckOut;
+import com.twu.biblioteca.reponse.SuccessCheckIn;
+import com.twu.biblioteca.reponse.SuccessCheckOut;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -29,14 +32,17 @@ public class WelcomeViewTest {
         users.add(userOne);
         users.add(userTwo);
         Login login = new Login(users);
-        Success success = new Success();
-        Library bookLibrary = new Library(books, login, success);
+        SuccessCheckOut successCheckOut = new SuccessCheckOut();
+        FailureCheckOut failureCheckOut = new FailureCheckOut();
+        SuccessCheckIn successCheckIn = new SuccessCheckIn();
+        FailureCheckIn failureCheckIn = new FailureCheckIn();
+        Library bookLibrary = new Library(books, login, successCheckOut, failureCheckOut, successCheckIn, failureCheckIn);
         Movie movieOne = new Movie("Sivaji", "2009", "Sankar", "10");
         Movie movieTwo = new Movie("kaakaaMuttai", "2009", "Bala", "9");
         ArrayList<LibrarySection> movies = new ArrayList<LibrarySection>();
         movies.add(movieOne);
         movies.add(movieTwo);
-        Library movieLibrary = new Library(movies, login, success);
+        Library movieLibrary = new Library(movies, login, successCheckOut, failureCheckOut, successCheckIn, failureCheckIn);
 
         HashMap<String, Operation> librarianCommands = new HashMap<>();
         librarianCommands.put("1", new ListItems(bookLibrary, view, "List Books"));

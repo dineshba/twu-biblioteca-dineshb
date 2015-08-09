@@ -19,15 +19,11 @@ public class CheckIn implements Operation {
     public void execute() {
         view.show("Enter the Name");
         String userBook = view.getInput();
-        if (library.checkIn(userBook)) {
-            view.show("Thank you for returning");
-        }
-        else
-            view.show("That is not a valid item to return");
+        view.show(library.checkIn(userBook) + "" + representation);
     }
 
     @Override
     public String toString() {
-        return representation;
+        return "CheckIn " + representation;
     }
 }

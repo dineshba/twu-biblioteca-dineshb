@@ -24,6 +24,6 @@ public class  ListCheckedOutItems implements Operation {
 
     @Override
     public String toString() {
-        return representation;
+        return "List Checked Out " + representation;
     }
 }

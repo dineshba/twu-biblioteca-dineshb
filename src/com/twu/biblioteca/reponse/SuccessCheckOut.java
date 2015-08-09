@@ -1,6 +1,6 @@
 package com.twu.biblioteca.reponse;
 
-public class Success implements Response {
+public class SuccessCheckOut implements Response {
     private final String success = "Thank you! Enjoy the ";
 
     @Override

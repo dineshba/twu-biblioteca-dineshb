@@ -19,11 +19,11 @@ public class CheckOut implements Operation {
     public void execute() {
         view.show("Enter the Name");
         String requestedItem = view.getInput();
-        view.show(library.checkOut(requestedItem) + "" + this);
+        view.show(library.checkOut(requestedItem) + "" + representation);
     }
 
     @Override
     public String toString() {
-        return representation;
+        return "CheckOut " + representation;
     }
 }

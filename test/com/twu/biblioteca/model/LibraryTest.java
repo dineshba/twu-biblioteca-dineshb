@@ -1,11 +1,11 @@
 package com.twu.biblioteca.model;
 
 import com.twu.biblioteca.Login;
-import com.twu.biblioteca.model.Book;
-import com.twu.biblioteca.model.Library;
-import com.twu.biblioteca.model.LibrarySection;
 import com.twu.biblioteca.Users;
-import com.twu.biblioteca.reponse.Success;
+import com.twu.biblioteca.reponse.FailureCheckIn;
+import com.twu.biblioteca.reponse.FailureCheckOut;
+import com.twu.biblioteca.reponse.SuccessCheckIn;
+import com.twu.biblioteca.reponse.SuccessCheckOut;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -45,8 +45,11 @@ public class LibraryTest {
         users.add(userOne);
         users.add(userTwo);
         Login login = new Login(users);
-        Success success = new Success();
-        Library library = new Library(books, login, success);
+        SuccessCheckOut successCheckOut = new SuccessCheckOut();
+        FailureCheckOut failureCheckOut = new FailureCheckOut();
+        SuccessCheckIn successCheckIn = new SuccessCheckIn();
+        FailureCheckIn failureCheckIn = new FailureCheckIn();
+        Library library = new Library(books, login, successCheckOut, failureCheckOut, successCheckIn, failureCheckIn);
 
         assertEquals(String.format("%-15s %-15s %-20s\n%-15s %-15s %-20s\n", "Java", "Robert", "2009", "C++", "Dinesh", "2020"), library.availableDetails());
     }
@@ -64,11 +67,14 @@ public class LibraryTest {
         users.add(userOne);
         users.add(userTwo);
         Login login = new Login(users);
-        Success success = new Success();
-        Library library = new Library(books, login, success);
+        SuccessCheckOut successCheckOut = new SuccessCheckOut();
+        FailureCheckOut failureCheckOut = new FailureCheckOut();
+        SuccessCheckIn successCheckIn = new SuccessCheckIn();
+        FailureCheckIn failureCheckIn = new FailureCheckIn();
+        Library library = new Library(books, login, successCheckOut, failureCheckOut, successCheckIn, failureCheckIn);
         Users user = new Users("111-1111", "dinydiny", "User", "Dinesh", "dinesh@gmail.com", "8973882730");
 
-        assertEquals(success, library.checkOut("Java"));
+        assertEquals(successCheckOut, library.checkOut("Java"));
     }
 
     @Test
@@ -84,9 +90,11 @@ public class LibraryTest {
         users.add(userOne);
         users.add(userTwo);
         Login login = new Login(users);
-        Success success = new Success();
-        Library library = new Library(books, login, success);
-
-        assertEquals(false, library.checkIn("Java"));
+        SuccessCheckOut successCheckOut = new SuccessCheckOut();
+        FailureCheckOut failureCheckOut = new FailureCheckOut();
+        SuccessCheckIn successCheckIn = new SuccessCheckIn();
+        FailureCheckIn failureCheckIn = new FailureCheckIn();
+        Library library = new Library(books, login, successCheckOut, failureCheckOut, successCheckIn, failureCheckIn);
+        assertEquals(failureCheckIn, library.checkIn("Java"));
     }
 }
