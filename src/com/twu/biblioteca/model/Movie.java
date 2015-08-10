@@ -20,6 +20,11 @@ public class Movie implements LibrarySection {
     }
 
     @Override
+    public String header() {
+        return "Name" + " " + "Year" + " " + "Director" + " " + "Rating";
+    }
+
+    @Override
     public String toString() {
         return name + " " + year + " " + director + " " + rating;
     }

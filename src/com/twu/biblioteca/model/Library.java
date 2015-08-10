@@ -57,30 +57,11 @@ public class Library {
         return failureCheckIn;
     }
 
-    public String availableDetails() {
-        String formattedDetail = "";
-        for (LibrarySection item : available) {
-            String itemDetail = item.toString();
-            String[] detail = itemDetail.split(" ");
-            if (detail.length == 3)
-                formattedDetail += String.format("%-15s %-15s %-20s\n", detail[0], detail[1], detail[2]);
-            else
-                formattedDetail += String.format("%-15s %-15s %-15s %-15s\n", detail[0], detail[1], detail[2], detail[3]);
-        }
-        return formattedDetail;
+    public ArrayList<LibrarySection> availableDetails() {
+        return available;
     }
 
-    public String checkedOutDetails() {
-        String formattedDetail = "";
-        for (LibrarySection item : checkedOutUser.keySet()) {
-            String itemDetail = item.toString();
-            itemDetail += " " + checkedOutUser.get(item);
-            String[] detail = itemDetail.split(" ");
-            if (detail.length == 4)
-                formattedDetail += String.format("%-15s %-15s %-20s %-15s\n", detail[0], detail[1], detail[2], detail[3]);
-            else
-                formattedDetail += String.format("%-15s %-15s %-15s %-15s %-15s\n", detail[0], detail[1], detail[2], detail[3], detail[4]);
-        }
-        return formattedDetail;
+    public HashMap<LibrarySection, Users> checkedOutDetails() {
+        return checkedOutUser;
     }
 }

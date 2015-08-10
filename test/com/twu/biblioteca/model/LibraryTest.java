@@ -51,7 +51,7 @@ public class LibraryTest {
         FailureCheckIn failureCheckIn = new FailureCheckIn();
         Library library = new Library(books, login, successCheckOut, failureCheckOut, successCheckIn, failureCheckIn);
 
-        assertEquals(String.format("%-15s %-15s %-20s\n%-15s %-15s %-20s\n", "Java", "Robert", "2009", "C++", "Dinesh", "2020"), library.availableDetails());
+        assertEquals(books, library.availableDetails());
     }
 
     @Test
@@ -72,7 +72,6 @@ public class LibraryTest {
         SuccessCheckIn successCheckIn = new SuccessCheckIn();
         FailureCheckIn failureCheckIn = new FailureCheckIn();
         Library library = new Library(books, login, successCheckOut, failureCheckOut, successCheckIn, failureCheckIn);
-        Users user = new Users("111-1111", "dinydiny", "User", "Dinesh", "dinesh@gmail.com", "8973882730");
 
         assertEquals(successCheckOut, library.checkOut("Java"));
     }

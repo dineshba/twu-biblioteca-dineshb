@@ -19,6 +19,11 @@ public class Book implements LibrarySection{
     }
 
     @Override
+    public String header() {
+        return "Name" + " " + "Author" + " " + "YearOfPublish";
+    }
+
+    @Override
     public String toString() {
         return bookName + " " + author + " " + yearOfPublish;
     }
