@@ -1,4 +1,5 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.view;
+
 
 public class QuitView implements IView {
 

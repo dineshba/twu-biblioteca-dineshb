@@ -1,4 +1,8 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.view;
+
+import com.twu.biblioteca.helper.Login;
+import com.twu.biblioteca.model.Users;
+
 
 public class LoginView implements IView {
 

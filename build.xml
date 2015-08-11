@@ -17,93 +17,28 @@
 
     <target name="runjunit" depends="compile">
         <junit haltonfailure="true" printsummary="true" showoutput="yes">
-            <test name="com.twu.biblioteca.ViewTest"/>
-            <classpath>
-                <pathelement location="out"/>
-                <path refid="classpath"/>
-            </classpath>
-        </junit>
-
-        <junit haltonfailure="true" printsummary="true" showoutput="yes">
+            <test name="com.twu.biblioteca.view.ViewTest"/>
+            <test name="com.twu.biblioteca.view.CustomerViewTest"/>
+            <test name="com.twu.biblioteca.view.LoginViewTest"/>
+            <test name="com.twu.biblioteca.view.MainMenuViewTest"/>
+            <test name="com.twu.biblioteca.view.WelcomeViewTest"/>
             <test name="com.twu.biblioteca.operation.CheckOutTest"/>
-            <classpath>
-                <pathelement location="out"/>
-                <path refid="classpath"/>
-            </classpath>
-        </junit>
-
-        <junit haltonfailure="true" printsummary="true" showoutput="yes">
             <test name="com.twu.biblioteca.operation.InvalidOptionTest"/>
-            <classpath>
-                <pathelement location="out"/>
-                <path refid="classpath"/>
-            </classpath>
-        </junit>
-
-        <junit haltonfailure="true" printsummary="true" showoutput="yes">
-            <test name="com.twu.biblioteca.model.LibraryTest"/>
-            <classpath>
-                <pathelement location="out"/>
-                <path refid="classpath"/>
-            </classpath>
-        </junit>
-
-        <junit haltonfailure="true" printsummary="true" showoutput="yes">
-            <test name="com.twu.biblioteca.operation.ListItemsTest"/>
-            <classpath>
-                <pathelement location="out"/>
-                <path refid="classpath"/>
-            </classpath>
-        </junit>
-
-        <junit haltonfailure="true" printsummary="true" showoutput="yes">
             <test name="com.twu.biblioteca.operation.CheckInTest"/>
-            <classpath>
-                <pathelement location="out"/>
-                <path refid="classpath"/>
-            </classpath>
-        </junit>
-
-        <junit haltonfailure="true" printsummary="true" showoutput="yes">
-            <test name="com.twu.biblioteca.model.BookTest"/>
-            <classpath>
-                <pathelement location="out"/>
-                <path refid="classpath"/>
-            </classpath>
-        </junit>
-
-        <junit haltonfailure="true" printsummary="true" showoutput="yes">
-            <test name="com.twu.biblioteca.model.MovieTest"/>
-            <classpath>
-                <pathelement location="out"/>
-                <path refid="classpath"/>
-            </classpath>
-        </junit>
-
-        <junit haltonfailure="true" printsummary="true" showoutput="yes">
             <test name="com.twu.biblioteca.operation.ListCheckedOutItemTest"/>
+            <test name="com.twu.biblioteca.operation.UserInformationTest"/>
+            <test name="com.twu.biblioteca.operation.ListItemsTest"/>
+            <test name="com.twu.biblioteca.model.BookTest"/>
+            <test name="com.twu.biblioteca.model.LibraryTest"/>
+            <test name="com.twu.biblioteca.model.MovieTest"/>
+            <test name="com.twu.biblioteca.model.UsersTest"/>
+            <test name="com.twu.biblioteca.helper.ExecuterTest"/>
+            <test name="com.twu.biblioteca.helper.LoginTest"/>
             <classpath>
                 <pathelement location="out"/>
                 <path refid="classpath"/>
             </classpath>
         </junit>
-
-        <junit haltonfailure="true" printsummary="true" showoutput="yes">
-            <test name="com.twu.biblioteca.LoginTest"/>
-            <classpath>
-                <pathelement location="out"/>
-                <path refid="classpath"/>
-            </classpath>
-        </junit>
-
-        <junit haltonfailure="true" printsummary="true" showoutput="yes">
-            <test name="com.twu.biblioteca.UsersTest"/>
-            <classpath>
-                <pathelement location="out"/>
-                <path refid="classpath"/>
-            </classpath>
-        </junit>
-
     </target>
 
     <target name="createjar" depends="runjunit">

@@ -1,9 +1,8 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.view;
 
-import com.twu.biblioteca.model.Book;
-import com.twu.biblioteca.model.Library;
-import com.twu.biblioteca.model.LibrarySection;
-import com.twu.biblioteca.model.Movie;
+import com.twu.biblioteca.helper.Executer;
+import com.twu.biblioteca.helper.Login;
+import com.twu.biblioteca.model.*;
 import com.twu.biblioteca.operation.*;
 import com.twu.biblioteca.reponse.FailureCheckIn;
 import com.twu.biblioteca.reponse.FailureCheckOut;
@@ -17,11 +16,12 @@ import java.util.HashMap;
 
 import static junit.framework.TestCase.assertNull;
 
-public class CustomerViewTest {
+
+public class LoginViewTest {
 
     @Test
-    public void shouldReturnMainView() {
-        View view = Mockito.mock(View.class);
+    public void shouldReturnNextViewBasedOnLoggedUser() {
+        View view = new View();
         Book bookOne = new Book("Java", "Robert", "2009");
         Book bookTwo = new Book("C++", "Dinesh", "2020");
         ArrayList<LibrarySection> books = new ArrayList<LibrarySection>();
@@ -32,7 +32,7 @@ public class CustomerViewTest {
         ArrayList<Users> users = new ArrayList<>();
         users.add(userOne);
         users.add(userTwo);
-        Login login = new Login(users);
+        Login login = Mockito.mock(Login.class);
         SuccessCheckOut successCheckOut = new SuccessCheckOut();
         FailureCheckOut failureCheckOut = new FailureCheckOut();
         SuccessCheckIn successCheckIn = new SuccessCheckIn();
@@ -45,6 +45,17 @@ public class CustomerViewTest {
         movies.add(movieTwo);
         Library movieLibrary = new Library(movies, login, successCheckOut, failureCheckOut, successCheckIn, failureCheckIn);
 
+        HashMap<String, Operation> librarianCommands = new HashMap<>();
+        librarianCommands.put("1", new ListItems(bookLibrary, view, "List Books"));
+        librarianCommands.put("2", new CheckOut(bookLibrary, view, "CheckOut Books"));
+        librarianCommands.put("3", new CheckIn(bookLibrary, view, "CheckIn Books"));
+        librarianCommands.put("4", new ListItems(movieLibrary, view, "ListMovies"));
+        librarianCommands.put("5", new CheckOut(movieLibrary, view, "CheckOut Movie"));
+        librarianCommands.put("6", new CheckIn(movieLibrary, view, "CheckIn Movie"));
+        librarianCommands.put("7", new UserInformation(view, login));
+        librarianCommands.put("8", new ListCheckedOutItems(bookLibrary, view, "List Checked Out Books"));
+        librarianCommands.put("9", new ListCheckedOutItems(movieLibrary, view, "List Checked Out Movies"));
+
         HashMap<String, Operation> customerCommands = new HashMap<>();
         customerCommands.put("1", new ListItems(bookLibrary, view, "List Books"));
         customerCommands.put("2", new CheckOut(bookLibrary, view, "CheckOut Book"));
@@ -56,9 +67,11 @@ public class CustomerViewTest {
 
         Executer executer = new Executer(new InvalidOption(view));
         CustomerView customerView = new CustomerView(view, executer, customerCommands, login);
+        LibrarianView librarianView = new LibrarianView(view, executer, librarianCommands, login);
+        LoginView loginView = new LoginView(login, view, librarianView, customerView);
 
-        Mockito.when(view.getInput()).thenReturn("1");
+        Mockito.when(login.execute(view)).thenReturn(userTwo);
 
-        assertNull(customerView.execute());
+        assertNull(loginView.execute());
     }
 }

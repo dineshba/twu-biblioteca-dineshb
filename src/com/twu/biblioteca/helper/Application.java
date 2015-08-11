@@ -1,4 +1,8 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.helper;
+
+import com.twu.biblioteca.view.IView;
+import com.twu.biblioteca.view.MainMenuView;
+import com.twu.biblioteca.view.WelcomeView;
 
 
 public class Application {

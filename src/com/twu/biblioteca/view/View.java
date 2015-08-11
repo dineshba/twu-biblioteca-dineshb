@@ -1,9 +1,9 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.view;
 
 import java.util.Scanner;
 
 
-public class View implements IView{
+public class View implements IView {
 
     public void show(String message) {
         System.out.println(message);

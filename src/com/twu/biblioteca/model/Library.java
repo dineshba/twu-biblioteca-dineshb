@@ -1,7 +1,6 @@
 package com.twu.biblioteca.model;
 
-import com.twu.biblioteca.Login;
-import com.twu.biblioteca.Users;
+import com.twu.biblioteca.helper.Login;
 import com.twu.biblioteca.reponse.*;
 
 import java.util.ArrayList;

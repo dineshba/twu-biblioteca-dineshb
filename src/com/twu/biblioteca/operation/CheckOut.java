@@ -1,6 +1,6 @@
 package com.twu.biblioteca.operation;
 
-import com.twu.biblioteca.View;
+import com.twu.biblioteca.view.View;
 import com.twu.biblioteca.model.Library;
 
 
@@ -9,7 +9,7 @@ public class CheckOut implements Operation {
     private final View view;
     private String representation;
 
-    public CheckOut(Library library, View view,String representation) {
+    public CheckOut(Library library, View view, String representation) {
         this.view = view;
         this.library = library;
         this.representation = representation;

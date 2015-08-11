@@ -1,7 +1,9 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.helper;
 
 import com.twu.biblioteca.operation.InvalidOption;
 import com.twu.biblioteca.operation.Operation;
+import com.twu.biblioteca.view.IView;
+import com.twu.biblioteca.view.View;
 
 import java.util.HashMap;
 

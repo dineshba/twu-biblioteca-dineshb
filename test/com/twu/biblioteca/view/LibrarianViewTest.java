@@ -1,5 +1,8 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.view;
 
+import com.twu.biblioteca.helper.Executer;
+import com.twu.biblioteca.helper.Login;
+import com.twu.biblioteca.model.Users;
 import com.twu.biblioteca.model.Book;
 import com.twu.biblioteca.model.Library;
 import com.twu.biblioteca.model.LibrarySection;
@@ -15,13 +18,14 @@ import org.mockito.Mockito;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import static org.junit.Assert.assertEquals;
+import static junit.framework.TestCase.assertNull;
 
-public class LoginViewTest {
+
+public class LibrarianViewTest {
 
     @Test
-    public void shouldReturnNextViewBasedOnLoggedUser() {
-        View view = new View();
+    public void shouldReturnMainView() {
+        View view = Mockito.mock(View.class);
         Book bookOne = new Book("Java", "Robert", "2009");
         Book bookTwo = new Book("C++", "Dinesh", "2020");
         ArrayList<LibrarySection> books = new ArrayList<LibrarySection>();
@@ -56,22 +60,13 @@ public class LoginViewTest {
         librarianCommands.put("8", new ListCheckedOutItems(bookLibrary, view, "List Checked Out Books"));
         librarianCommands.put("9", new ListCheckedOutItems(movieLibrary, view, "List Checked Out Movies"));
 
-        HashMap<String, Operation> customerCommands = new HashMap<>();
-        customerCommands.put("1", new ListItems(bookLibrary, view, "List Books"));
-        customerCommands.put("2", new CheckOut(bookLibrary, view, "CheckOut Book"));
-        customerCommands.put("3", new CheckIn(bookLibrary, view, "CheckIn Book"));
-        customerCommands.put("4", new ListItems(movieLibrary, view, "List Movies"));
-        customerCommands.put("5", new CheckOut(movieLibrary, view, "CheckOut Movie"));
-        customerCommands.put("6", new CheckIn(movieLibrary, view, "CheckIn Movie"));
-        customerCommands.put("7", new UserInformation(view, login));
-
         Executer executer = new Executer(new InvalidOption(view));
-        CustomerView customerView = new CustomerView(view, executer, customerCommands, login);
+
         LibrarianView librarianView = new LibrarianView(view, executer, librarianCommands, login);
-        LoginView loginView = new LoginView(login, view, librarianView, customerView);
 
-        Mockito.when(login.execute(view)).thenReturn(userTwo);
+        Mockito.when(view.getInput()).thenReturn("1");
 
-        assertEquals(librarianView.getClass(), loginView.execute().getClass());
+        assertNull(librarianView.execute());
     }
+
 }

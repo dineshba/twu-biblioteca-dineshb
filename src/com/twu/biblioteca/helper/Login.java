@@ -1,6 +1,10 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.helper;
+
+import com.twu.biblioteca.view.View;
+import com.twu.biblioteca.model.Users;
 
 import java.util.ArrayList;
+
 
 public class Login {
     private final ArrayList<Users> users;

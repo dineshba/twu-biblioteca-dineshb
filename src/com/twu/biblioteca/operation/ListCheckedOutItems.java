@@ -1,14 +1,14 @@
 package com.twu.biblioteca.operation;
 
-import com.twu.biblioteca.Users;
+import com.twu.biblioteca.model.Users;
 import com.twu.biblioteca.model.Library;
-import com.twu.biblioteca.View;
+import com.twu.biblioteca.view.View;
 import com.twu.biblioteca.model.LibrarySection;
 
 import java.util.HashMap;
 
 
-public class  ListCheckedOutItems implements Operation {
+public class ListCheckedOutItems implements Operation {
     private final Library library;
     private final View view;
     private String representation;

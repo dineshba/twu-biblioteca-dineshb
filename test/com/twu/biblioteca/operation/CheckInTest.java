@@ -1,11 +1,11 @@
 package com.twu.biblioteca.operation;
 
-import com.twu.biblioteca.Login;
+import com.twu.biblioteca.helper.Login;
 import com.twu.biblioteca.model.Book;
 import com.twu.biblioteca.model.Library;
 import com.twu.biblioteca.model.LibrarySection;
-import com.twu.biblioteca.Users;
-import com.twu.biblioteca.View;
+import com.twu.biblioteca.model.Users;
+import com.twu.biblioteca.view.View;
 import com.twu.biblioteca.reponse.FailureCheckIn;
 import com.twu.biblioteca.reponse.FailureCheckOut;
 import com.twu.biblioteca.reponse.SuccessCheckIn;
@@ -35,8 +35,8 @@ public class CheckInTest {
         FailureCheckOut failureCheckOut = new FailureCheckOut();
         SuccessCheckIn successCheckIn = new SuccessCheckIn();
         FailureCheckIn failureCheckIn = new FailureCheckIn();
-        Library library = new Library(books, login, successCheckOut, failureCheckOut, successCheckIn, failureCheckIn);        View view = Mockito.mock(View.class);
-        Users user = new Users("111-1111", "dinydiny", "User", "Dinesh", "dinesh@gmail.com", "8973882730");
+        Library library = new Library(books, login, successCheckOut, failureCheckOut, successCheckIn, failureCheckIn);
+        View view = Mockito.mock(View.class);
         CheckIn checkIn = new CheckIn(library, view, "Book");
         Mockito.when(view.getInput()).thenReturn("Java");
 

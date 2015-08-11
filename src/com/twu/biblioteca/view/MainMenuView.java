@@ -1,6 +1,9 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.view;
+
+import com.twu.biblioteca.helper.Executer;
 
 import java.util.HashMap;
+
 
 public class MainMenuView implements IView {
 
@@ -24,7 +27,7 @@ public class MainMenuView implements IView {
     public String toString() {
         String input = "";
         int index = 0;
-        String stringIndex = "" +index;
+        String stringIndex = "" + index;
         while (commands.containsKey(stringIndex)) {
             input += stringIndex + " " + commands.get(stringIndex) + '\n';
             stringIndex = "" + ++index;

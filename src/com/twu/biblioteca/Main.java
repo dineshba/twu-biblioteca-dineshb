@@ -1,14 +1,32 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.helper.Application;
+import com.twu.biblioteca.helper.Executer;
+import com.twu.biblioteca.helper.Login;
 import com.twu.biblioteca.model.Book;
 import com.twu.biblioteca.model.Library;
-import com.twu.biblioteca.model.LibrarySection;
+import com.twu.biblioteca.model.Users;
 import com.twu.biblioteca.model.Movie;
+import com.twu.biblioteca.model.LibrarySection;
+
+
+
+
+
 import com.twu.biblioteca.operation.*;
+
 import com.twu.biblioteca.reponse.FailureCheckIn;
 import com.twu.biblioteca.reponse.FailureCheckOut;
 import com.twu.biblioteca.reponse.SuccessCheckIn;
-import com.twu.biblioteca.reponse.SuccessCheckOut;
+import com.twu.biblioteca.reponse.*;
+import com.twu.biblioteca.view.LibrarianView;
+import com.twu.biblioteca.view.CustomerView;
+import com.twu.biblioteca.view.IView;
+import com.twu.biblioteca.view.LoginView;
+import com.twu.biblioteca.view.MainMenuView;
+import com.twu.biblioteca.view.QuitView;
+import com.twu.biblioteca.view.View;
+import com.twu.biblioteca.view.WelcomeView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -55,7 +73,7 @@ public class Main {
         librarianCommands.put("9", new ListCheckedOutItems(movieLibrary, view, "Movies"));
 
         HashMap<String, Operation> customerCommands = new HashMap<>();
-        customerCommands.put( "0", new Logout(login));
+        customerCommands.put("0", new Logout(login));
         customerCommands.put("1", new ListItems(bookLibrary, view, "Books"));
         customerCommands.put("2", new CheckOut(bookLibrary, view, "Book"));
         customerCommands.put("3", new CheckIn(bookLibrary, view, "Book"));

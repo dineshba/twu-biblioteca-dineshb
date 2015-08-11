@@ -1,11 +1,11 @@
 package com.twu.biblioteca.operation;
 
-import com.twu.biblioteca.Login;
+import com.twu.biblioteca.helper.Login;
 import com.twu.biblioteca.model.Book;
 import com.twu.biblioteca.model.Library;
 import com.twu.biblioteca.model.LibrarySection;
-import com.twu.biblioteca.Users;
-import com.twu.biblioteca.View;
+import com.twu.biblioteca.model.Users;
+import com.twu.biblioteca.view.View;
 import com.twu.biblioteca.reponse.FailureCheckIn;
 import com.twu.biblioteca.reponse.FailureCheckOut;
 import com.twu.biblioteca.reponse.SuccessCheckIn;
@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.atLeast;
+
 
 public class ListCheckedOutItemTest {
 
@@ -37,7 +38,8 @@ public class ListCheckedOutItemTest {
         FailureCheckOut failureCheckOut = new FailureCheckOut();
         SuccessCheckIn successCheckIn = new SuccessCheckIn();
         FailureCheckIn failureCheckIn = new FailureCheckIn();
-        Library library = new Library(books, login, successCheckOut, failureCheckOut, successCheckIn, failureCheckIn);        View view = Mockito.mock(View.class);
+        Library library = new Library(books, login, successCheckOut, failureCheckOut, successCheckIn, failureCheckIn);
+        View view = Mockito.mock(View.class);
         CheckOut checkOut = new CheckOut(library, view, " ");
         ListCheckedOutItems listCheckedOutItems = new ListCheckedOutItems(library, view, " ");
         checkOut.execute();

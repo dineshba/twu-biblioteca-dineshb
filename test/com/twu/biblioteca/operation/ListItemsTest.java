@@ -1,11 +1,11 @@
 package com.twu.biblioteca.operation;
 
-import com.twu.biblioteca.Login;
-import com.twu.biblioteca.Users;
+import com.twu.biblioteca.helper.Login;
+import com.twu.biblioteca.model.Users;
 import com.twu.biblioteca.model.Book;
 import com.twu.biblioteca.model.Library;
 import com.twu.biblioteca.model.LibrarySection;
-import com.twu.biblioteca.View;
+import com.twu.biblioteca.view.View;
 import com.twu.biblioteca.reponse.FailureCheckIn;
 import com.twu.biblioteca.reponse.FailureCheckOut;
 import com.twu.biblioteca.reponse.SuccessCheckIn;

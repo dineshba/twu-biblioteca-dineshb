@@ -1,5 +1,6 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.helper;
 
+import com.twu.biblioteca.model.Users;
 import org.junit.Test;
 
 import java.util.ArrayList;

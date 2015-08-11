@@ -1,7 +1,7 @@
 package com.twu.biblioteca.model;
 
 
-public class Book implements LibrarySection{
+public class Book implements LibrarySection {
 
     private final String bookName;
     private final String author;
